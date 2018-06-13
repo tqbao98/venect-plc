@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <POU Name="MAIN" Id="{097a5673-74b2-4e34-8629-64bba0383cb7}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[GVL.bHV[1] := GVL.bLoadTank1;
+GVL.bHV[4] := GVL.bLoadTank2;
+GVL.bHV[7] := GVL.bLoadTank3;
+IOConversion();
+ModbusCommunication();]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="20" Count="0" />
+      <LineId Id="22" Count="1" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="18" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

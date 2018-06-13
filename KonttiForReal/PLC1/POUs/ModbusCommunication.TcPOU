@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <POU Name="ModbusCommunication" Id="{bf59a4bc-9bbb-44a9-a9e0-c1d2c7fb1f0e}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM ModbusCommunication
+VAR
+	aP1, aP2				: ARRAY [GrundfosRegAddress.listStart..GrundfosRegAddress.listEnd] OF WORD;
+	nStep					: INT := 0;
+END_VAR
+
+VAR CONSTANT
+	bP1Addr					: BYTE := 2;
+	bP2Addr					: BYTE := 4;
+	wStartPumpCmd			: WORD := 16#0000;
+	wStopPumpCmd			: WORD := 16#8000;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[HWVar.ModbusMaster.ReadRegs(Execute := FALSE);
+HWVar.ModbusMaster.WriteRegs(Execute := FALSE);
+CASE nStep OF
+	0:
+		P1Read();
+	1:
+		P2Read();
+	2:
+		GrundfosDataConversion(arrReg:= aP1, pstGrundfosMagna3:= ADR(GVL.stP1));
+		GrundfosDataConversion(arrReg:= aP2, pstGrundfosMagna3:= ADR(GVL.stP2));
+		nStep := 0;
+END_CASE;
+]]></ST>
+    </Implementation>
+    <Method Name="_P1Read" Id="{b9f1af86-d931-4bc8-9247-4c25a97ce7f9}">
+      <Declaration><![CDATA[METHOD PRIVATE _P1Read : BOOL
+VAR_STAT
+	nRegisterAddress	: GrundfosRegAddress;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (NOT HWVar.ModbusMaster.BUSY) THEN
+	HWVar.ModbusMaster.ReadRegs(
+		UnitID := bP1Addr,
+		Quantity := 1,
+		MBAddr := nRegisterAddress,
+		cbLength := 2,
+		pMemoryAddr := ADR(aP1[nRegisterAddress]),
+		Execute := TRUE,
+		Timeout := T#5S,
+		BUSY => ,
+		Error =>
+		);
+	nRegisterAddress := nRegisterAddress+1;
+	IF (nRegisterAddress = GrundfosRegAddress.listEnd + 1) THEN
+		nStep := 1;
+		nRegisterAddress :=  GrundfosRegAddress.listStart;
+	END_IF
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="_P2Read" Id="{4de9e116-2209-4dad-8d5a-4715edb7e7e7}">
+      <Declaration><![CDATA[METHOD PRIVATE _P2Read : BOOL
+VAR_STAT
+	nRegisterAddress	: GrundfosRegAddress;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (NOT HWVar.ModbusMaster.BUSY) THEN
+	HWVar.ModbusMaster.ReadRegs(
+		UnitID := bP2Addr,
+		Quantity := 1,
+		MBAddr := nRegisterAddress,
+		cbLength := 2,
+		pMemoryAddr := ADR((aP2[nRegisterAddress])),
+		Execute := TRUE,
+		Timeout := T#5S,
+		BUSY => ,
+		Error =>
+		);
+	nRegisterAddress := nRegisterAddress+1;
+	IF (nRegisterAddress = GrundfosRegAddress.listEnd+1) THEN
+		nStep := 2;
+		nRegisterAddress :=  GrundfosRegAddress.listStart;
+	END_IF
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GrundfosDataConversion" Id="{e207b614-c65b-464e-b6c3-2ac0f5daff8e}">
+      <Declaration><![CDATA[METHOD PUBLIC GrundfosDataConversion : BOOL
+VAR_INPUT
+	arrReg	: ARRAY [GrundfosRegAddress.listStart..GrundfosRegAddress.listEnd] OF WORD;
+	pstGrundfosMagna3	: POINTER TO GrundfosMagna3;
+END_VAR
+
+VAR
+	iMemIndex: GrundfosRegAddress;
+	iRegIndex: GrundfosRegAddress;
+	a_MbRegValue	: ARRAY [300..350] OF REAL;
+	dwMergedReg		: DWORD;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[WHILE (iMemIndex <  GrundfosRegAddress.listEnd AND iRegIndex < 351) DO
+	IF (iRegIndex <> 311) 
+		AND (iRegIndex <> 326)
+		AND (iRegIndex <> 328) 
+		AND (iRegIndex <> 331)
+		AND (iRegIndex <> 323)
+		AND (iRegIndex <> 342)
+		AND (iRegIndex <> 351)
+		AND (iRegIndex <> 353)
+		AND (iRegIndex <> 356)
+		AND (iRegIndex <> 358)
+		AND (iRegIndex <> 360) THEN
+		a_MbRegValue[iRegIndex] := (arrReg[iMemIndex])*Scale.fGrundfosScale[iRegIndex];
+		iMemIndex := iMemIndex + 1;
+		iRegIndex := iRegIndex + 1;
+	ELSE
+		dwMergedReg := SHL(WORD_TO_DWORD(arrReg[iMemIndex]),16) OR WORD_TO_DWORD(arrReg[iMemIndex+1]);
+		a_MbRegValue[iRegIndex] := (dwMergedReg)*Scale.fGrundfosScale[iRegIndex];
+		iMemIndex := iMemIndex + 2;
+		iRegIndex := iRegIndex + 1;
+	END_IF
+END_WHILE
+MEMCPY(pstGrundfosMagna3, ADR(a_MbRegValue), SIZEOF(GrundfosMagna3));]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="P1Read" Id="{37f61ac5-bad2-4bc1-a0c5-9c26c5ca0162}">
+      <Declaration><![CDATA[METHOD PRIVATE P1Read : BOOL
+VAR_STAT
+	nRegisterAddress	: GrundfosRegAddress;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (NOT HWVar.ModbusMaster.BUSY) THEN
+	HWVar.ModbusMaster.ReadRegs(
+		UnitID := bP2Addr,
+		Quantity := 62,
+		MBAddr := 300,
+		cbLength := SIZEOF(aP2),
+		pMemoryAddr := ADR(aP2),
+		Execute := TRUE,
+		Timeout := T#5S,
+		BUSY => ,
+		Error =>
+		);
+		nStep := 1;
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="P2Read" Id="{335cbb27-56a2-45cb-b675-2b8cdf6cd692}">
+      <Declaration><![CDATA[METHOD PRIVATE P2Read : BOOL
+VAR_STAT
+	nRegisterAddress	: GrundfosRegAddress;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (NOT HWVar.ModbusMaster.BUSY) THEN
+	HWVar.ModbusMaster.ReadRegs(
+		UnitID := bP1Addr,
+		Quantity := 62,
+		MBAddr := 300,
+		cbLength := SIZEOF(aP1),
+		pMemoryAddr := ADR(aP1),
+		Execute := TRUE,
+		Timeout := T#5S,
+		BUSY => ,
+		Error =>
+		);
+		nStep := 2;
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Action Name="SC01Read" Id="{ec0a3cb0-d056-4f29-9dbb-7c9033aa133f}">
+      <Implementation>
+        <ST><![CDATA[nStep := 3;]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="ModbusCommunication">
+      <LineId Id="13" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="61" Count="1" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+    <LineIds Name="ModbusCommunication._P1Read">
+      <LineId Id="7" Count="11" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="19" Count="3" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="ModbusCommunication._P2Read">
+      <LineId Id="7" Count="11" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="19" Count="3" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="ModbusCommunication.GrundfosDataConversion">
+      <LineId Id="7" Count="1" />
+      <LineId Id="26" Count="5" />
+      <LineId Id="33" Count="3" />
+      <LineId Id="9" Count="8" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="25" Count="0" />
+    </LineIds>
+    <LineIds Name="ModbusCommunication.P1Read">
+      <LineId Id="7" Count="10" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="ModbusCommunication.P2Read">
+      <LineId Id="7" Count="10" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="ModbusCommunication.SC01Read">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

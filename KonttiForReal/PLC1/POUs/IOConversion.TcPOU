@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <POU Name="IOConversion" Id="{241e541d-1429-41f7-a6f5-b51ae6e6a06a}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM IOConversion
+VAR
+	i: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[GVL.fTE[1] := HWVar.iAI1_VK[4]/10.0;
+GVL.fTE[18] := HWVar.iAI1_JK[1]/10.0;
+
+GVL.fTE[6] := HWVar.iAI1_VK[3]/10.0;
+GVL.fTE[7] := HWVar.iAI1_VK[2]/10.0;
+GVL.fTE[8] := HWVar.iAI1_VK[1]/10.0;
+GVL.fTE[5] := HWVar.iAI1_JK[2]/10.0;
+
+GVL.fTE[19] := HWVar.iAI1_JK[3]/10.0;]]></ST>
+    </Implementation>
+    <LineIds Name="IOConversion">
+      <LineId Id="10" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="11" Count="3" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

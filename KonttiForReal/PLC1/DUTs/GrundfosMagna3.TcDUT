@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <DUT Name="GrundfosMagna3" Id="{a4717a2f-4198-47e7-827b-513be9a03258}">
+    <Declaration><![CDATA[TYPE GrundfosMagna3 :
+STRUCT
+	fHead                       : REAL; 
+	fVolumeFlow                 : REAL;
+	fRelativePerformance        : REAL;
+	fSpeed                      : REAL;
+	fFrequency                  : REAL;
+	fDigitalInput               : REAL;
+	fDigitalOutput              : REAL;
+	fActualSetpoint             : REAL;
+	fMotorCurrent               : REAL;
+	fDCLinkVoltage              : REAL;
+	fMotorVoltage			    : REAL;
+	fPower                      : REAL;
+	fRemoteFlow                 : REAL;
+	fInletPressure              : REAL;
+    fRemotePressure             : REAL;
+	fLevel                      : REAL;
+	fPowerElectronicTemp        : REAL;
+	fMotorTemp                  : REAL;
+	fRemoteTemp                 : REAL;
+	fElectronicTemp             : REAL;
+	fPumpLiquidTemp             : REAL;
+	fBearingTempDE			    : REAL;
+	fBearingTempNDE             : REAL;
+    fAuxSensorInput             : REAL;
+    fSpecificEnergyConsumption  : REAL;
+    fOperationTime              : REAL;         
+    fTotalPoweredTime           : REAL;
+    fTorque                     : REAL;
+    fEnergy                     : REAL;
+    fNumberOfStarts             : REAL;
+    fReserved1                  : REAL;
+    fRemoteTemp2                : REAL;
+    fUserSetpoint               : REAL;
+    fDiffPressure               : REAL;
+    fOutletPressure             : REAL;
+    fRemotePressure2            : REAL;
+    fLoadPercent                : REAL;
+    fPumpUnixRtc                : REAL;
+    fMaxFlowLimit               : REAL;
+    fRemoteDiffTemp             : REAL;
+    fInletDiffPressure          : REAL;
+    fOutletDiffPressure         : REAL;
+    fRemoteDiffPressure         : REAL;
+    fStorageTankLevel           : REAL;
+    fAmbientTemp                : REAL;
+    fHeatEnergyLifetime         : REAL;
+    fHeatPower                  : REAL;
+    fHeatDiffTemp               : REAL;
+    fVolume                     : REAL;
+    fHeatEnergyCounter2         : REAL;
+    fVolume2                    : REAL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

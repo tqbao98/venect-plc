@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <Task Name="ModbusComm" Id="{b90cb714-43e2-4024-9d51-d9146bd89aac}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>1000</CycleTime>
+    <Priority>21</Priority>
+    <PouCall>
+      <Name>BackgroundComm</Name>
+    </PouCall>
+    <TaskFBGuid>{f96f348f-c871-43db-b2bc-42331073d8db}</TaskFBGuid>
+    <Fb_init>{5375cb7d-caa0-481f-a890-2718bdf44734}</Fb_init>
+    <Fb_exit>{70b33ee9-2424-4843-a02c-989849400012}</Fb_exit>
+    <CycleUpdate>{7676db52-86f2-4a79-98fb-92756b204b65}</CycleUpdate>
+    <PostCycleUpdate>{125cb626-a825-4d44-b20d-7f82f2da066a}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <DUT Name="GrundfosRegAddress" Id="{6a85841a-e978-4055-a2a4-7c2ac522c02c}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+TYPE GrundfosRegAddress :
+(
+	listStart				   := 300,
+	Head                       := 300, 
+	VolumeFlow                 ,
+	RelativePerformance        ,
+	Speed                      ,
+	Frequency                  ,
+	DigitalInput               ,
+	DigitalOutput              ,
+	ActualSetpoint             ,
+	MotorCurrent               ,
+	DCLinkVoltage              ,
+	MotorVoltage			   ,
+	Power                      ,
+	RemoteFlow                 := 313,
+	InletPressure              ,
+    RemotePressure             ,
+	Level                      ,
+	PowerElectronicTemp        ,
+	MotorTemp                  ,
+	RemoteTemp                 ,
+	ElectronicTemp             ,
+	PumpLiquidTemp             ,
+	BearingTempDE			   ,
+	BearingTempNDE             ,
+    AuxSensorInput             ,
+    SpecificEnergyConsumption  ,
+    OperationTime              ,         
+    TotalPoweredTime           := 328,
+    Torque                     := 330,
+    Energy                     ,
+    NumberOfStarts             := 333,
+    Reserved1                  := 335,
+    RemoteTemp2                ,
+    UserSetpoint               ,
+    DiffPressure               ,
+    OutletPressure             ,
+    RemotePressure2            ,
+    LoadPercent                ,
+    PumpUnixRtc                ,
+    MaxFlowLimit               := 344,
+    RemoteDiffTemp             ,
+    InletDiffPressure          ,
+    OutletDiffPressure         ,
+    RemoteDiffPressure         ,
+    StorageTankLevel           ,
+    AmbientTemp                ,
+    HeatEnergyLifetime         ,
+    HeatPower                  := 353,
+    HeatDiffTemp               := 355,
+    Volume                     ,
+    HeatEnergyCounter2         := 358,
+    Volume2                    := 360,
+	listEnd					   := 361
+) WORD := listStart;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

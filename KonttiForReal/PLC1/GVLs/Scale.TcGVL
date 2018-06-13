@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <GVL Name="Scale" Id="{094c21f5-d6c6-48a2-b506-8cae8acb1c9d}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	fGrundfosScale	: ARRAY [300..350] OF REAL := [
+		0.001,		//Head                        
+		0.1,		//VolumeFlow                 
+		0.01,		//RelativePerformance        
+		1.0,		//Speed                      
+		0.1,		//Frequency                  
+		1.0,		//DigitalInput               
+		1.0,		//DigitalOutput              
+		0.01,		//ActualSetpoint             
+		0.1,		//MotorCurrent               
+		0.1,		//DCLinkVoltage              
+		0.1,		//MotorVoltage			    
+		1.0,		//Power                      
+		0.1,		//RemoteFlow                 
+		0.001,		//InletPressure              
+		0.001,		//RemotePressure             
+		0.01,		//Level                      
+		0.01,		//PowerElectronicTemp        
+		0.01,		//MotorTemp                  
+		0.01,		//RemoteTemp                 
+		0.01,		//ElectronicTemp             
+		0.01,		//PumpLiquidTemp             
+		0.01,		//BearingTempDE			    
+		0.01,		//BearingTempNDE             
+		0.01,		//AuxSensorInput             
+		1.0,		//SpecificEnergyConsumption  
+		1.0,		//OperationTime                       
+		1.0,		//TotalPoweredTime           
+		0.1,		//Torque                     
+		1.0,		//Energy                     
+		1.0,		//NumberOfStarts             
+		1.0,		//Reserved1                  
+		0.01,		//RemoteTemp2                
+		0.01,		//UserSetpoint               
+		0.001,		//DiffPressure               
+		0.001,		//OutletPressure             
+		0.001,		//RemotePressure2            
+		0.01,		//LoadPercent                
+		1.0,		//PumpUnixRtc                
+		0.1,		//MaxFlowLimit               
+		0.01,		//RemoteDiffTemp             
+		0.001,		//InletDiffPressure          
+		0.001,		//OutletDiffPressure         
+		0.001,		//RemoteDiffPressure         
+		0.01,		//StorageTankLevel           
+		0.01,		//AmbientTemp                
+		1.0,		//HeatEnergyLifetime         
+		1.0,		//HeatPower                  
+		0.01,		//HeatDiffTemp               
+		0.01,		//Volume                     
+		1.0,		//HeatEnergyCounter2         
+		0.01		//Volume2                    
+	];
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
