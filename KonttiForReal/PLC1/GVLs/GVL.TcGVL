@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <GVL Name="GVL" Id="{884c114f-e978-4949-b759-3e84d5a1e2f7}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -17,6 +17,10 @@ VAR_GLOBAL
 	stP1		: GrundfosMagna3;
 	{attribute 'OPC.UA.DA' := '1'}
 	stP2		: GrundfosMagna3;
+	{attribute 'OPC.UA.DA' := '1'}
+	stFeeder	: ATV212;
+	{attribute 'OPC.UA.DA' := '1'}
+	stFeederControl : ATV212Control;
 	{attribute 'OPC.UA.DA' := '1'}
 	bLoadTank1	: BOOL := TRUE;
 	{attribute 'OPC.UA.DA' := '1'}

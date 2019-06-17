@@ -15,6 +15,21 @@
     <LibraryReferences>{46b02969-6e5b-421a-b1af-6dfa64eec22d}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\ATV212.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ATV212Control.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ATV212CurrentAndTorque.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ATV212Frequency.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ATV212RegAddress.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\EL3433Index.TcDUT">
       <SubType>Code</SubType>
     </Compile>

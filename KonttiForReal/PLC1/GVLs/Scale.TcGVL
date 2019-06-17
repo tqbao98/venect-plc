@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <GVL Name="Scale" Id="{094c21f5-d6c6-48a2-b506-8cae8acb1c9d}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -56,6 +56,12 @@ VAR_GLOBAL
 		1.0,		//HeatEnergyCounter2         
 		0.01		//Volume2                    
 	];
+	fATV212Scale     : ARRAY [874..877] OF REAL := [
+    	1,          //Motor Speed                        
+    	0.01,       //Output frequency                
+    	0.01,       //Output current
+    	0.01        //Output votlage
+    ];
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

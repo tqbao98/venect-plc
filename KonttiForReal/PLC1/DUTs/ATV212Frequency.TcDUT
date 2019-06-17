@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ATV212Frequency" Id="{a3fba1ce-71c8-444d-ab9a-2c95c572329b}">
+    <Declaration><![CDATA[TYPE ATV212Frequency :
+STRUCT
+               OutputFrequency                                                         : REAL; // Hz Current value
+               OutputFrequencyAtLastTrip        : REAL; // Hz Value before trip
+               FrequencyReferenceBeforeRamp             : REAL;// Hz Value before trip (before PI and speed ramp)
+               FrequencyReferenceAfterRamp                : REAL; // Hz Value before trip (after PI AND speed ramp)
+               EstimatedSpeed                                                                           : REAL; // Hz Value before trip
+               PIDFeedbackValue                                                       : REAL; // Hz Value before trip
+               OutputSpeed                                                                 : REAL; // 1 MIN-1 -
+END_STRUCT
+END_TYPE
+
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
