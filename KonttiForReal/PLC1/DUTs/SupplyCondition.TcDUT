@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <DUT Name="SupplyCondition" Id="{bee757b9-90e3-49fd-ac8b-044d7ad1f109}">
+    <Declaration><![CDATA[{attribute 'pack_mode' := '1'}
+TYPE SupplyCondition :
+STRUCT
+	fNeutralConductorCurrent				:REAL;
+	fEnergySum				:REAL;
+	fFrequency				:REAL;
+	fNegativeEnergySum				:REAL;
+	fPSum				:REAL;
+	fSSum				:REAL;
+	fQSum				:REAL;
+	fFundamentalP				:REAL;
+	fFundamentalS				:REAL;
+	fFundamentalQ				:REAL;
+	fEnergyPositive				:REAL;
+	fEnergyPositiveSaved				:REAL;
+	fEnergyNegative				:REAL;
+	fEnergyNegativeSaved				:REAL;
+	fFrequencyAvgRes				:REAL;
+	fFrequencyHiRes				:REAL;
+	fHeldFrequency				:REAL;
+	fHeldFrequencyAvgRes				:REAL;
+	fHeldFrequencyHiRes				:REAL;
+	fADCTemperature				:REAL;
+
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

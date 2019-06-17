@@ -8,6 +8,10 @@ VAR_GLOBAL
     iAI1_VK         AT %I*  : ARRAY [1..4] OF INT;
     iAI1_JK         AT %I*  : ARRAY [1..4] OF INT;
     ModbusMaster            : ModbusRtuMaster_KL6x22B;
+	EL3433_Grid	AT %I*		: ARRAY[1..3] OF stEL3433_In;
+	EL3433_GridIndex AT %Q*	: ARRAY[1..3] OF USINT;
+	EL3433_SolarIndex AT %Q*	: USINT;
+	EL3433_Solar AT %I*		: stEL3433_In;
 	
 END_VAR]]></Declaration>
   </GVL>

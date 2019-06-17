@@ -15,11 +15,27 @@
     <LibraryReferences>{46b02969-6e5b-421a-b1af-6dfa64eec22d}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\EL3433Index.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\EL3433Measurement.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\GrundfosMagna3.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\GrundfosRegAddress.TcDUT">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\stEL3433_In.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\SupplyCondition.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\ConstList.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
     </Compile>
     <Compile Include="GVLs\GVL.TcGVL">
       <SubType>Code</SubType>
@@ -33,6 +49,9 @@
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
+    <Compile Include="IoConversionTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ModbusComm.TcTTO">
       <SubType>Code</SubType>
     </Compile>
@@ -42,6 +61,9 @@
     <Compile Include="POUs\BackgroundComm.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\EL3433SyncData.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\IOConversion.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +71,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\ModbusCommunication.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\MQTTComm.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <Task Name="IoConversionTask" Id="{8d840563-6f8b-4103-a090-e556faeccd65}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>1000</CycleTime>
+    <Priority>10</Priority>
+    <PouCall>
+      <Name>IOConversion</Name>
+    </PouCall>
+    <TaskFBGuid>{a1b1d576-ee67-4fec-895d-37c0426cc969}</TaskFBGuid>
+    <Fb_init>{252972bc-a3fe-445e-b8ad-8c7ac38c6a78}</Fb_init>
+    <Fb_exit>{70424780-c200-4514-8d01-e3a3a4010a47}</Fb_exit>
+    <CycleUpdate>{6a2115a7-8d38-43c8-869e-e0a0b83298b6}</CycleUpdate>
+    <PostCycleUpdate>{e22b18b9-45ec-4d44-a89f-d8e478850df1}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

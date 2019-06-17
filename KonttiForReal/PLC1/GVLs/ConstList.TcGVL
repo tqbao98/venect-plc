@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <GVL Name="ConstList" Id="{6191121b-b301-459b-aa7b-58588709d812}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	aEL3433IndicesScale	: ARRAY[EL3433Index.listStart..EL3433Index.listEnd]	OF REAL := [
+		0.01,
+		0.01,
+		0.001,
+		0.001,
+		0.1,
+		0.001,
+		0.01,
+		0.01,
+		0.01,
+		0.01,
+		0.001,
+		0.001,
+		0.001,
+		0.001,
+		0.01,
+		0.001,
+		0.1,
+		0.01,
+		0.001
+	];
+	aEL3433Indices	: ARRAY[EL3433Index.listStart..EL3433Index.listEnd]	OF  USINT := [
+		0,
+		1,
+		2,
+		3,
+		4,
+		5,
+		6,
+		20,
+		21,
+		22,
+		30,
+		31,
+		32,
+		35,
+		44,
+		45,
+		46,
+		47,
+		48
+	];
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

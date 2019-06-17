@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
   <DUT Name="GrundfosMagna3" Id="{a4717a2f-4198-47e7-827b-513be9a03258}">
-    <Declaration><![CDATA[TYPE GrundfosMagna3 :
+    <Declaration><![CDATA[{attribute 'pack_mode' := '1'}
+TYPE GrundfosMagna3 :
 STRUCT
 	fHead                       : REAL; 
 	fVolumeFlow                 : REAL;

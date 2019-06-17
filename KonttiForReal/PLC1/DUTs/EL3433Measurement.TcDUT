@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <DUT Name="EL3433Measurement" Id="{d59ff543-db6b-4155-9594-38b79e21e26c}">
+    <Declaration><![CDATA[{attribute 'pack_mode' := '1'}
+TYPE EL3433Measurement :
+STRUCT
+	fCurrent		: REAL;
+	fVoltage		: REAL;
+	fP		: REAL;
+	fS		: REAL;
+	fQ		: REAL;
+	fEnergy		: REAL;
+	fPF		: REAL;
+	fFrequency		: REAL;
+	fEnergyNegative		: REAL;
+	fPhaseAngle		: REAL;
+	fP1		: REAL;
+	fS1		: REAL;
+	fQ1		: REAL;
+	fEnergyPositive		: REAL;
+	fEnergyPositiveSaved		: REAL;
+	fEnergySaved		: REAL;
+	fEnergyNegativeSaved		: REAL;
+	fFrequencyAvgRes		: REAL;
+	fFrequencyHiRes		: REAL;
+	fHeldFrequency		: REAL;
+	fHeldFrequencyAvgRes		: REAL;
+	fHeldFrequencyHiRes		: REAL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

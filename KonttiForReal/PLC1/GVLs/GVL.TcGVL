@@ -8,6 +8,8 @@ VAR_GLOBAL
 	{attribute 'OPC.UA.DA' := '1'}
     bHV AT %Q*  : ARRAY [1..11] OF BOOL;
 	{attribute 'OPC.UA.DA' := '1'}
+    bP1, bP2	: BOOL := TRUE;
+	{attribute 'OPC.UA.DA' := '1'}
     bFan AT %Q*  : BOOL;
 	{attribute 'OPC.UA.DA' := '1'}
     bST         : BOOL;
@@ -21,6 +23,10 @@ VAR_GLOBAL
 	bLoadTank2	: BOOL := TRUE;
 	{attribute 'OPC.UA.DA' := '1'}
 	bLoadTank3	: BOOL := TRUE;
+	{attribute 'OPC.UA.DA' := '1'}
+	stMain	: ARRAY [1..3] OF EL3433Measurement; 
+	{attribute 'OPC.UA.DA' := '1'}
+	stSolarL1	: EL3433Measurement;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

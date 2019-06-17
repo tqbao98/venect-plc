@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <DUT Name="stEL3433_In" Id="{fef528d1-93da-4456-a285-25824539107c}">
+    <Declaration><![CDATA[{attribute 'pack_mode' := '1'}
+TYPE stEL3433_In :
+STRUCT
+	dCurrent 	:	DINT;
+	dVoltage 	:	DINT;
+	dPower		:	DINT;
+	dIndex 		:	USINT;
+	dVariant	:	DINT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

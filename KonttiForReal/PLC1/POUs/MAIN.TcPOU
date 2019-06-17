@@ -9,13 +9,11 @@ END_VAR
       <ST><![CDATA[GVL.bHV[1] := GVL.bLoadTank1;
 GVL.bHV[4] := GVL.bLoadTank2;
 GVL.bHV[7] := GVL.bLoadTank3;
-IOConversion();
 ModbusCommunication();]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="20" Count="0" />
       <LineId Id="22" Count="1" />
-      <LineId Id="19" Count="0" />
       <LineId Id="18" Count="0" />
     </LineIds>
   </POU>

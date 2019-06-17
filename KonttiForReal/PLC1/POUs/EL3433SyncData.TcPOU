@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+  <POU Name="EL3433SyncData" Id="{24e958b7-7311-4273-8b0d-0592d477e22b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK EL3433SyncData
+VAR_INPUT
+	pstEL3433Data	: POINTER TO EL3433Measurement;
+	pstEL3433IO		: POINTER TO stEL3433_In;
+	pstEL3433OutputIndex	: POINTER TO USINT;
+END_VAR
+
+VAR
+	pTempReal	: POINTER TO REAL;
+	nArrayIndex	: DWORD := EL3433Index.listStart;
+END_VAR
+
+VAR_STAT
+	nCounter1	: EL3433Index := EL3433Index.listStart;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[FOR nArrayIndex := EL3433Index.listStart TO EL3433Index.listEnd DO
+	IF pstEL3433IO^.dIndex = ConstList.aEL3433Indices[nArrayIndex] THEN
+		pTempReal := pstEL3433Data+nArrayIndex*SIZEOF(REAL);
+		pTempReal^ := pstEL3433IO^.dVariant * ConstList.aEL3433IndicesScale[nArrayIndex];
+		EXIT;
+	END_IF
+END_FOR
+
+pstEL3433OutputIndex^ := ConstList.aEL3433Indices[nCounter1];
+IF pstEL3433IO^.dIndex = ConstList.aEL3433Indices[nCounter1] THEN
+	nCounter1 := nCounter1 + 1;
+	IF nCounter1 > EL3433Index.listEnd THEN
+		nCounter1 := EL3433Index.listStart;
+	END_IF
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="EL3433SyncData">
+      <LineId Id="41" Count="1" />
+      <LineId Id="47" Count="1" />
+      <LineId Id="44" Count="1" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="35" Count="3" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
