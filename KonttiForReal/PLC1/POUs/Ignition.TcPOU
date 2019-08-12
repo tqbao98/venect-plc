@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Ignition" Id="{fa1eb9f1-d6d2-4838-8fbb-7ff8260d154b}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Ignition
+VAR
+END_VAR
+VAR_OUTPUT
+	err : UINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// check that no error is occuring
+IF (GVL.nError <> ErrorCode.SUCCESS) THEN
+	err := GVL.nError;
+RETURN;
+END_IF
+
+// flame detect
+
+// start iginition
+// clean gases]]></ST>
+    </Implementation>
+    <LineIds Name="Ignition">
+      <LineId Id="6" Count="3" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="14" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

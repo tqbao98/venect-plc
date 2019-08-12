@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="ErrorCode" Id="{ef136dff-3693-4972-84b7-ce647f7dd58d}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+TYPE ErrorCode :
+(
+	SUCCESS := 0,
+	
+	// Preparation Error 
+	PREPARATION_WATER_HIGH_TEMP	:= 1000,
+	PREPARATION_FLAME,
+	PREPARATION_PUMP_NOT_CONNECTED,
+	
+	// Ignition Error
+	IGNITION_FLAME	:= 2000,
+	
+	// Burning Error
+	BURNING_EMERGENCY_TEMPERATURE	:= 3000,
+	
+	// Stop Error
+	STOP_ERROR	:= 4000
+) UINT;
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

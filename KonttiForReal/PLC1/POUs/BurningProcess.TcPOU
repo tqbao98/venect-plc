@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="BurningProcess" Id="{c924ffc8-53c3-46d7-8354-936a89d88dbf}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM BurningProcess
+VAR
+	nStep: INT := 0;
+END_VAR
+VAR_OUTPUT
+	err	: UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF GVL.bBurningStart THEN
+	nStep := 1;
+	ELSE nStep := 0;
+END_IF
+CASE nStep OF
+	0:
+		RETURN;
+	1:
+		Preparation(nStepIn := nStep, err => GVL.nError, nStepOut => nStep);
+		
+	2:
+		//Ignition(err => GVL.nError);
+		//nStep := 0;
+	3:
+		
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="BurningProcess">
+      <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="12" Count="1" />
+      <LineId Id="15" Count="1" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="54" Count="1" />
+      <LineId Id="63" Count="2" />
+      <LineId Id="14" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

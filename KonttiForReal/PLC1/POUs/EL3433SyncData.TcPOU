@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
   <POU Name="EL3433SyncData" Id="{24e958b7-7311-4273-8b0d-0592d477e22b}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK EL3433SyncData
 VAR_INPUT
@@ -10,17 +10,17 @@ END_VAR
 
 VAR
 	pTempReal	: POINTER TO REAL;
-	nArrayIndex	: DWORD := EL3433Index.listStart;
+	nArrayIndex	: DWORD := TO_DWORD(EL3433Index.listStart);
 END_VAR
 
 VAR_STAT
 	nCounter1	: EL3433Index := EL3433Index.listStart;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[FOR nArrayIndex := EL3433Index.listStart TO EL3433Index.listEnd DO
+      <ST><![CDATA[FOR nArrayIndex := TO_DWORD(EL3433Index.listStart) TO TO_DWORD(EL3433Index.listEnd) DO
 	IF pstEL3433IO^.dIndex = ConstList.aEL3433Indices[nArrayIndex] THEN
 		pTempReal := pstEL3433Data+nArrayIndex*SIZEOF(REAL);
-		pTempReal^ := pstEL3433IO^.dVariant * ConstList.aEL3433IndicesScale[nArrayIndex];
+		pTempReal^ := TO_REAL(pstEL3433IO^.dVariant) * ConstList.aEL3433IndicesScale[nArrayIndex];
 		EXIT;
 	END_IF
 END_FOR

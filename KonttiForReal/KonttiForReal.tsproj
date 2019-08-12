@@ -11,7 +11,23 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{233F249F-E05B-4400-8182-6D3B01B124FE}" AutoDeleteType="true">stEL3433_In</Name>
+			<Name GUID="{2085F15C-2FDA-4970-9310-1C978E8BFBF4}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL27x1InData</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>iState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>iDataIn</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{039C0258-A5F6-4450-990B-5FD2298A57D0}" AutoDeleteType="true">stEL3433_In</Name>
 			<BitSize>136</BitSize>
 			<SubItem>
 				<Name>dCurrent</Name>
@@ -51,53 +67,13 @@
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name IecBaseType="true">ARRAY [1..3] OF stEL3433_In</Name>
+			<Name GUID="{AA424A30-9E24-41B2-992E-0AC256951FAF}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..3] OF stEL3433_In</Name>
 			<BitSize>408</BitSize>
-			<BaseType GUID="{233F249F-E05B-4400-8182-6D3B01B124FE}">stEL3433_In</BaseType>
+			<BaseType GUID="{039C0258-A5F6-4450-990B-5FD2298A57D0}">stEL3433_In</BaseType>
 			<ArrayInfo>
 				<LBound>1</LBound>
 				<Elements>3</Elements>
 			</ArrayInfo>
-		</DataType>
-		<DataType>
-			<Name GUID="{233F249F-E05B-4400-8182-6D3B01B124FE}" AutoDeleteType="true">stEL3433_In</Name>
-			<BitSize>136</BitSize>
-			<SubItem>
-				<Name>dCurrent</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
-				<BitSize>32</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>dVoltage</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
-				<BitSize>32</BitSize>
-				<BitOffs>32</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>dPower</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
-				<BitSize>32</BitSize>
-				<BitOffs>64</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>dIndex</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>96</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>dVariant</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
-				<BitSize>32</BitSize>
-				<BitOffs>104</BitOffs>
-			</SubItem>
-			<Properties>
-				<Property>
-					<Name>pack_mode</Name>
-					<Value>1</Value>
-				</Property>
-			</Properties>
 		</DataType>
 		<DataType>
 			<Name GUID="{A5AC38E6-0DC4-889C-DC96-B6E74C453944}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..3] OF USINT</Name>
@@ -109,35 +85,168 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{59E066C1-78B4-4FC7-8289-06EA28FD968D}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
-			<BitSize>192</BitSize>
+			<Name GUID="{7B0AEAF3-5C72-4065-8863-5B2D8E3B3BA6}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL27x1OutData</Name>
+			<BitSize>32</BitSize>
 			<SubItem>
-				<Name>Status</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
-				<BitSize>16</BitSize>
+				<Name>iCtrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
 				<BitOffs>0</BitOffs>
 			</SubItem>
 			<SubItem>
-				<Name>D</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>22</Elements>
-				</ArrayInfo>
-				<BitSize>176</BitSize>
+				<Name>iDataOut</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
 				<BitOffs>16</BitOffs>
 			</SubItem>
-			<Properties>
-				<Property>
-					<Name>hide</Name>
-				</Property>
-			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{A75D14F1-5390-4983-A79F-B58D67E814D5}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6outData22B</Name>
+			<Name GUID="{DE7E3010-F1DB-46CF-9F8C-E9856C98C624}" Namespace="Tc2_DALI" AutoDeleteType="true">ST_KL6811InData</Name>
+			<Comment>
+				<![CDATA[ Communication interface for the KL6811]]>
+			</Comment>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>nStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nDummy</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nData</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{589738F5-A143-41B3-A729-6C2E2A52EB8F}" Namespace="Tc2_DALI" AutoDeleteType="true">ST_KL6811OutData</Name>
+			<Comment>
+				<![CDATA[ Communication interface for the KL6811]]>
+			</Comment>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>nCtrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nDummy</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nData</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{E753417F-5E45-461C-9DEC-F1D8CE8C2088}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xInData</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>iState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>iDataIn</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{0A34ADCF-F16B-44C0-8394-BE83DD92261E}" Namespace="Tc2_EnOcean" AutoDeleteType="true">KL6581_Input</Name>
+			<BitSize>96</BitSize>
+			<SubItem>
+				<Name>nStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CNODE</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ORG</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>24</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>40</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>56</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>72</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>80</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>STATUS</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>88</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{D12AF1E4-8B5D-4D68-BE74-D6A5B2F0EA4D}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
 			<BitSize>192</BitSize>
 			<SubItem>
-				<Name>Ctrl</Name>
+				<Name>Status</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
 				<BitSize>16</BitSize>
 				<BitOffs>0</BitOffs>
@@ -168,23 +277,7 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{1B2F4569-A01D-45B8-87F5-14EBE2F3B8A5}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xInData</Name>
-			<BitSize>32</BitSize>
-			<SubItem>
-				<Name>iState</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>iDataIn</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
-				<BitSize>16</BitSize>
-				<BitOffs>16</BitOffs>
-			</SubItem>
-		</DataType>
-		<DataType>
-			<Name GUID="{6D5C53D1-A6A2-433E-9481-908CEB15C29A}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xOutData</Name>
+			<Name GUID="{8CDD60D8-B101-4D1F-9016-B6768334F510}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xOutData</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
 				<Name>iCtrl</Name>
@@ -197,6 +290,107 @@
 				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
 				<BitSize>16</BitSize>
 				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{081C5FFA-532D-438A-BB8C-B3AD48893986}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6outData22B</Name>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>Ctrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>22</Elements>
+				</ArrayInfo>
+				<BitSize>176</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>hide</Name>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
+			<Name GUID="{9912E029-51BA-4AF0-ABF1-8E97E23E91CD}" Namespace="Tc2_EnOcean" AutoDeleteType="true">KL6581_Output</Name>
+			<BitSize>96</BitSize>
+			<SubItem>
+				<Name>nControl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CNODE</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ORG</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>24</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>40</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>DB3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>56</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>72</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ID3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>80</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>STATUS</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>88</BitOffs>
 			</SubItem>
 		</DataType>
 		<DataType>
@@ -298,22 +492,26 @@
 			<Licenses>
 				<Target BkhfOrder="VE2434215">
 					<ManualSelect>{6952449D-F68C-49A2-ADE4-8639D85B33A4}</ManualSelect>
+					<ManualSelect>{1EEBBAAA-51E1-4750-9D6A-7B04116EA32B}</ManualSelect>
 				</Target>
 			</Licenses>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+				<Task Id="3" Priority="20" CycleTime="50000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
-				<Task Id="4" Priority="21" CycleTime="10000" AmsPort="351" AdtTasks="true">
+				<Task Id="4" Priority="21" CycleTime="50000" AmsPort="351" ExceedWarning="1" AdtTasks="true">
 					<Name>ModbusComm</Name>
 				</Task>
 				<Task Id="5" Priority="10" CycleTime="10000" AmsPort="352" AdtTasks="true">
 					<Name>IoConversionTask</Name>
 				</Task>
+				<Task Id="6" Priority="15" CycleTime="10000" AmsPort="353" AdtTasks="true">
+					<Name>DaliComm</Name>
+				</Task>
 			</Tasks>
 		</System>
 		<Plc>
-			<Project GUID="{8AC687C0-CF8B-4FE8-92DA-00C1276BCEAA}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+			<Project GUID="{8AC687C0-CF8B-4FE8-92DA-00C1276BCEAA}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" CopyTmcToTarget="true" CopyTpyToTarget="false" SymbolicMapping="true">
 				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
@@ -324,16 +522,27 @@
 							<Type GUID="{CF887A53-7490-A600-6B5D-04343BF0EA32}">ARRAY [1..4] OF INT</Type>
 						</Var>
 						<Var>
+							<Name>HWVar.iAI2_VK</Name>
+							<Type GUID="{CF887A53-7490-A600-6B5D-04343BF0EA32}">ARRAY [1..4] OF INT</Type>
+						</Var>
+						<Var>
 							<Name>HWVar.iAI1_JK</Name>
 							<Type GUID="{CF887A53-7490-A600-6B5D-04343BF0EA32}">ARRAY [1..4] OF INT</Type>
 						</Var>
 						<Var>
-							<Name>HWVar.EL3433_Grid</Name>
-							<Type GUID="{CB652002-D5CC-CF00-04D9-ED29C0E96DAC}">ARRAY [1..3] OF stEL3433_In</Type>
+							<Name>HWVar.stKL2761_in</Name>
+							<Comment>
+								<![CDATA[ Primary fan input]]>
+							</Comment>
+							<Type GUID="{2085F15C-2FDA-4970-9310-1C978E8BFBF4}" Namespace="Tc2_IoFunctions">ST_KL27x1InData</Type>
 						</Var>
 						<Var>
 							<Name>HWVar.EL3433_Solar</Name>
-							<Type GUID="{233F249F-E05B-4400-8182-6D3B01B124FE}">stEL3433_In</Type>
+							<Type GUID="{039C0258-A5F6-4450-990B-5FD2298A57D0}">stEL3433_In</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.EL3433_Grid</Name>
+							<Type GUID="{AA424A30-9E24-41B2-992E-0AC256951FAF}">ARRAY [1..3] OF stEL3433_In</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
@@ -346,46 +555,90 @@
 							<Name>HWVar.EL3433_GridIndex</Name>
 							<Type GUID="{A5AC38E6-0DC4-889C-DC96-B6E74C453944}">ARRAY [1..3] OF USINT</Type>
 						</Var>
+						<Var>
+							<Name>HWVar.stKL2761_out</Name>
+							<Comment>
+								<![CDATA[Primary fan output]]>
+							</Comment>
+							<Type GUID="{7B0AEAF3-5C72-4065-8863-5B2D8E3B3BA6}" Namespace="Tc2_IoFunctions">ST_KL27x1OutData</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="1">
+						<Name>DaliComm Inputs</Name>
+						<Var>
+							<Name>HWVar.stKL6811_in</Name>
+							<Comment>
+								<![CDATA[ Dali variables
+	stKL6811_in     AT %I*	: ST_DALIV2InData;]]>
+							</Comment>
+							<Type GUID="{DE7E3010-F1DB-46CF-9F8C-E9856C98C624}" Namespace="Tc2_DALI">ST_KL6811InData</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2">
+						<Name>DaliComm Outputs</Name>
+						<Var>
+							<Name>HWVar.stKL6811_out</Name>
+							<Comment>
+								<![CDATA[    stKL6811_out    AT %Q*	: ST_DALIV2OutData;]]>
+							</Comment>
+							<Type GUID="{589738F5-A143-41B3-A729-6C2E2A52EB8F}" Namespace="Tc2_DALI">ST_KL6811OutData</Type>
+						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
+							<Name>HWVar.stKL3204_in</Name>
+							<Type GUID="{E753417F-5E45-461C-9DEC-F1D8CE8C2088}" Namespace="Tc2_IoFunctions">ST_KL320xInData</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.st6581_in</Name>
+							<Comment>
+								<![CDATA[ Enocean valiables	]]>
+							</Comment>
+							<Type GUID="{0A34ADCF-F16B-44C0-8394-BE83DD92261E}" Namespace="Tc2_EnOcean">KL6581_Input</Type>
+						</Var>
+						<Var>
 							<Name>HWVar.ModbusMaster.InData</Name>
-							<Type GUID="{59E066C1-78B4-4FC7-8289-06EA28FD968D}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
+							<Type GUID="{D12AF1E4-8B5D-4D68-BE74-D6A5B2F0EA4D}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>HWVar.ModbusMaster.OutData</Name>
-							<Type GUID="{A75D14F1-5390-4983-A79F-B58D67E814D5}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
-						</Var>
-						<Var>
 							<Name>GVL.bHV</Name>
 							<Type GUID="{C908E820-A3B3-9CB7-AD48-33D54E751470}">ARRAY [1..11] OF BOOL</Type>
 						</Var>
-					</Vars>
-					<Vars VarGrpType="1">
-						<Name>ModbusComm Inputs</Name>
 						<Var>
-							<Name>HWVar.stKL3204_in</Name>
-							<Type GUID="{1B2F4569-A01D-45B8-87F5-14EBE2F3B8A5}" Namespace="Tc2_IoFunctions">ST_KL320xInData</Type>
+							<Name>GVL.bFanPower</Name>
+							<Comment>
+								<![CDATA[ Lauhdutin fan power]]>
+							</Comment>
+							<Type>BOOL</Type>
 						</Var>
-					</Vars>
-					<Vars VarGrpType="2">
-						<Name>ModbusComm Outputs</Name>
 						<Var>
-							<Name>GVL.bFan</Name>
+							<Name>GVL.bPumpPower</Name>
+							<Comment>
+								<![CDATA[ Lauhdutin circulation pump power]]>
+							</Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>HWVar.stKL3204_out</Name>
-							<Type GUID="{6D5C53D1-A6A2-433E-9481-908CEB15C29A}" Namespace="Tc2_IoFunctions">ST_KL320xOutData</Type>
+							<Type GUID="{8CDD60D8-B101-4D1F-9016-B6768334F510}" Namespace="Tc2_IoFunctions">ST_KL320xOutData</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.ModbusMaster.OutData</Name>
+							<Type GUID="{081C5FFA-532D-438A-BB8C-B3AD48893986}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.st6581_out</Name>
+							<Type GUID="{9912E029-51BA-4AF0-ABF1-8E97E23E91CD}" Namespace="Tc2_EnOcean">KL6581_Output</Type>
 						</Var>
 					</Vars>
 					<TaskPouOids>
 						<TaskPouOid Prio="10" OTCID="#x08502001"/>
-						<TaskPouOid Prio="21" OTCID="#x08502003"/>
+						<TaskPouOid Prio="21" OTCID="#x08502004"/>
+						<TaskPouOid Prio="15" OTCID="#x08502003"/>
 						<TaskPouOid Prio="20" OTCID="#x08502002"/>
 					</TaskPouOids>
 				</Instance>
@@ -422,8 +675,11 @@
 				<Image Id="1" AddrType="9" ImageType="3">
 					<Name>Image</Name>
 				</Image>
-				<Image Id="3" AddrType="10" ImageType="3">
+				<Image Id="2" AddrType="10" ImageType="3">
 					<Name>Image-2</Name>
+				</Image>
+				<Image Id="4" AddrType="10" ImageType="3">
+					<Name>Image-3</Name>
 				</Image>
 				<Box BoxType="9099" Id="1">
 					<Name>Term 1 (EK1200)</Name>
@@ -610,31 +866,31 @@
 								<ExcludePdo>#x1a01</ExcludePdo>
 								<ExcludePdo>#x1a02</ExcludePdo>
 								<ExcludePdo>#x1a05</ExcludePdo>
-								<Entry Name="Status__Transmit accepted" Index="#x6000" Sub="#x01">
+								<Entry Name="Status__Transmit accepted" Index="#x6000" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Receive request" Index="#x6000" Sub="#x02">
+								<Entry Name="Status__Receive request" Index="#x6000" Sub="#x02" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Init accepted" Index="#x6000" Sub="#x03">
+								<Entry Name="Status__Init accepted" Index="#x6000" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Buffer full" Index="#x6000" Sub="#x04">
+								<Entry Name="Status__Buffer full" Index="#x6000" Sub="#x04" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Parity error" Index="#x6000" Sub="#x05">
+								<Entry Name="Status__Parity error" Index="#x6000" Sub="#x05" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Framing error" Index="#x6000" Sub="#x06">
+								<Entry Name="Status__Framing error" Index="#x6000" Sub="#x06" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Overrun error" Index="#x6000" Sub="#x07">
+								<Entry Name="Status__Overrun error" Index="#x6000" Sub="#x07" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
 								</Entry>
-								<Entry Name="Status__Input length" Index="#x6000" Sub="#x09">
+								<Entry Name="Status__Input length" Index="#x6000" Sub="#x09" Flags="#x00008020">
 									<Type>USINT</Type>
 								</Entry>
 								<Entry Name="Data In 0" Index="#x6000" Sub="#x11">
@@ -1009,13 +1265,13 @@
 								<ExcludePdo>#x1601</ExcludePdo>
 								<ExcludePdo>#x1602</ExcludePdo>
 								<ExcludePdo>#x1605</ExcludePdo>
-								<Entry Name="Ctrl__Transmit request" Index="#x7000" Sub="#x01">
+								<Entry Name="Ctrl__Transmit request" Index="#x7000" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Ctrl__Receive accepted" Index="#x7000" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Ctrl__Init request" Index="#x7000" Sub="#x03">
+								<Entry Name="Ctrl__Init request" Index="#x7000" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Ctrl__Send continues" Index="#x7000" Sub="#x04">
@@ -1497,7 +1753,7 @@
 										<Entry Name="Status__Underrange" Index="#x6000" Sub="#x01">
 											<Type>BIT</Type>
 										</Entry>
-										<Entry Name="Status__Overrange" Index="#x6000" Sub="#x02">
+										<Entry Name="Status__Overrange" Index="#x6000" Sub="#x02" Flags="#x00008020">
 											<Type>BIT</Type>
 										</Entry>
 										<Entry Name="Status__">
@@ -1515,7 +1771,7 @@
 										<Entry Name="Status__TxPDO Toggle" Index="#x6000" Sub="#x10">
 											<Type>BIT</Type>
 										</Entry>
-										<Entry Name="Value" Index="#x6000" Sub="#x11" Flags="#x00050000">
+										<Entry Name="HWVar.iAI1_VK[1]" Index="#x6000" Sub="#x11" Flags="#x00050000">
 											<Type>INT</Type>
 										</Entry>
 									</Pdo>
@@ -1541,7 +1797,7 @@
 										<Entry Name="Status__TxPDO Toggle" Index="#x6010" Sub="#x10">
 											<Type>BIT</Type>
 										</Entry>
-										<Entry Name="Value" Index="#x6010" Sub="#x11" Flags="#x00050000">
+										<Entry Name="HWVar.iAI1_VK[2]" Index="#x6010" Sub="#x11" Flags="#x00050000">
 											<Type>INT</Type>
 										</Entry>
 									</Pdo>
@@ -1567,7 +1823,7 @@
 										<Entry Name="Status__TxPDO Toggle" Index="#x6020" Sub="#x10">
 											<Type>BIT</Type>
 										</Entry>
-										<Entry Name="Value" Index="#x6020" Sub="#x11" Flags="#x00050000">
+										<Entry Name="HWVar.iAI1_VK[3]" Index="#x6020" Sub="#x11" Flags="#x00050000">
 											<Type>INT</Type>
 										</Entry>
 									</Pdo>
@@ -1593,6 +1849,139 @@
 										<Entry Name="Status__TxPDO Toggle" Index="#x6030" Sub="#x10">
 											<Type>BIT</Type>
 										</Entry>
+										<Entry Name="HWVar.iAI1_VK[4]" Index="#x6030" Sub="#x11" Flags="#x00050000">
+											<Type>INT</Type>
+										</Entry>
+									</Pdo>
+									<CoeProfile ProfileNo="20976521"/>
+									<CoeProfile ProfileNo="20976521"/>
+									<CoeProfile ProfileNo="20976521"/>
+									<CoeProfile ProfileNo="20976521"/>
+								</EtherCAT>
+							</Box>
+							<Box BoxType="9099" BoxFlags="#x00000020" Id="24">
+								<Name>Term 24 (EL3204)</Name>
+								<ImageId>1005</ImageId>
+								<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x0c843052" RevisionNo="#x00150000" InfoDataAddr="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL3204 4Ch. Ana. Input PT100 (RTD)" Desc="EL3204" PortABoxInfo="#x01000007">
+									<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
+									<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
+									<SyncMan>001100000400000003000000000000000000001104000000</SyncMan>
+									<SyncMan>801110002000010004000000000000001000801120010000</SyncMan>
+									<Fmmu>0000000000000000801100010100000002000000000000000000000000000000</Fmmu>
+									<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+									<BootStrapData>0010f400f410f400</BootStrapData>
+									<Pdo Name="RTD Inputs Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="3">
+										<Entry Name="Status__Underrange" Index="#x6000" Sub="#x01">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__Overrange" Index="#x6000" Sub="#x02">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__Limit 1" Index="#x6000" Sub="#x03">
+											<Type>BIT2</Type>
+										</Entry>
+										<Entry Name="Status__Limit 2" Index="#x6000" Sub="#x05">
+											<Type>BIT2</Type>
+										</Entry>
+										<Entry Name="Status__Error" Index="#x6000" Sub="#x07">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry>
+											<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+										</Entry>
+										<Entry Name="Status__TxPDO State" Index="#x1800" Sub="#x07">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__TxPDO Toggle" Index="#x1800" Sub="#x09">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Value" Index="#x6000" Sub="#x11" Flags="#x00050000">
+											<Type>INT</Type>
+										</Entry>
+									</Pdo>
+									<Pdo Name="RTD Inputs Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="3">
+										<Entry Name="Status__Underrange" Index="#x6010" Sub="#x01">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__Overrange" Index="#x6010" Sub="#x02">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__Limit 1" Index="#x6010" Sub="#x03">
+											<Type>BIT2</Type>
+										</Entry>
+										<Entry Name="Status__Limit 2" Index="#x6010" Sub="#x05">
+											<Type>BIT2</Type>
+										</Entry>
+										<Entry Name="Status__Error" Index="#x6010" Sub="#x07">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry>
+											<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+										</Entry>
+										<Entry Name="Status__TxPDO State" Index="#x1801" Sub="#x07">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__TxPDO Toggle" Index="#x1801" Sub="#x09">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Value" Index="#x6010" Sub="#x11" Flags="#x00050000">
+											<Type>INT</Type>
+										</Entry>
+									</Pdo>
+									<Pdo Name="RTD Inputs Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="3">
+										<Entry Name="Status__Underrange" Index="#x6020" Sub="#x01">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__Overrange" Index="#x6020" Sub="#x02">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__Limit 1" Index="#x6020" Sub="#x03">
+											<Type>BIT2</Type>
+										</Entry>
+										<Entry Name="Status__Limit 2" Index="#x6020" Sub="#x05">
+											<Type>BIT2</Type>
+										</Entry>
+										<Entry Name="Status__Error" Index="#x6020" Sub="#x07">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry>
+											<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+										</Entry>
+										<Entry Name="Status__TxPDO State" Index="#x1802" Sub="#x07">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__TxPDO Toggle" Index="#x1802" Sub="#x09">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Value" Index="#x6020" Sub="#x11" Flags="#x00050000">
+											<Type>INT</Type>
+										</Entry>
+									</Pdo>
+									<Pdo Name="RTD Inputs Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="3">
+										<Entry Name="Status__Underrange" Index="#x6030" Sub="#x01">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__Overrange" Index="#x6030" Sub="#x02">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__Limit 1" Index="#x6030" Sub="#x03">
+											<Type>BIT2</Type>
+										</Entry>
+										<Entry Name="Status__Limit 2" Index="#x6030" Sub="#x05">
+											<Type>BIT2</Type>
+										</Entry>
+										<Entry Name="Status__Error" Index="#x6030" Sub="#x07">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry>
+											<Type GUID="{18071995-0000-0000-0000-002000000007}">ARRAY [0..6] OF BIT</Type>
+										</Entry>
+										<Entry Name="Status__TxPDO State" Index="#x1803" Sub="#x07">
+											<Type>BIT</Type>
+										</Entry>
+										<Entry Name="Status__TxPDO Toggle" Index="#x1803" Sub="#x09">
+											<Type>BIT</Type>
+										</Entry>
 										<Entry Name="Value" Index="#x6030" Sub="#x11" Flags="#x00050000">
 											<Type>INT</Type>
 										</Entry>
@@ -1606,7 +1995,7 @@
 							<Box BoxType="9099" Id="16">
 								<Name>Term 16 (EL9011)</Name>
 								<ImageId>1006</ImageId>
-								<EtherCAT CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23333050" InfoDataState="false" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9011 End Terminal" Desc="EL9011" PortABoxInfo="#x01000007"/>
+								<EtherCAT CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23333050" InfoDataState="false" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9011 End Terminal" Desc="EL9011" PortABoxInfo="#x01000018"/>
 							</Box>
 						</Box>
 						<Box BoxType="9099" Id="8">
@@ -2856,24 +3245,55 @@
 											</Var>
 										</Vars>
 									</Term>
-									<Term Id="6" TermType="#x7dc" Fieldbus="7">
-										<Name>Term 6 (KL2012)</Name>
-										<ImageId>31</ImageId>
+									<Term Id="13" TermType="#x3ea" Fieldbus="7">
+										<Name>Term 13 (KL1002)</Name>
+										<ImageId>7</ImageId>
 										<Vars VarGrpType="3">
 											<Name>Channel 1</Name>
 											<Var>
-												<Name>Output</Name>
+												<Name>Input</Name>
 												<Type>BIT</Type>
-												<BitOffs>712</BitOffs>
-												<InOut>1</InOut>
+												<BitOffs>744</BitOffs>
+												<InOut>0</InOut>
 											</Var>
 										</Vars>
 										<Vars VarGrpType="3">
 											<Name>Channel 2</Name>
 											<Var>
-												<Name>Output</Name>
+												<Name>Input</Name>
 												<Type>BIT</Type>
-												<BitOffs>713</BitOffs>
+												<BitOffs>745</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+										</Vars>
+									</Term>
+									<Term Id="15" TermType="#xac9" Fieldbus="7">
+										<Name>Term 15 (KL2761)</Name>
+										<ImageId>31</ImageId>
+										<Vars VarGrpType="3">
+											<Name>Channel 1</Name>
+											<Var>
+												<Name>State</Name>
+												<Type>USINT</Type>
+												<BitOffs>712</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+											<Var DisplayScale="#x1">
+												<Name>Data In</Name>
+												<Type>INT</Type>
+												<BitOffs>728</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+											<Var>
+												<Name>Ctrl</Name>
+												<Type>USINT</Type>
+												<BitOffs>712</BitOffs>
+												<InOut>1</InOut>
+											</Var>
+											<Var DisplayScale="#x1">
+												<Name>Data Out</Name>
+												<Type>INT</Type>
+												<BitOffs>728</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2883,11 +3303,11 @@
 										<ImageId>32</ImageId>
 									</Term>
 								</BusCoupler>
-								<EtherCAT SlaveType="3" AdsServerAddress="052affde020df303" PdiType="#x0008" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="51" FoeType="1" VendorId="#x00000002" ProductCode="#x04e22c22" RevisionNo="#x00120000" InfoDataAddr="true" InfoDataNetId="true" TimeoutStateChange1="5000" TimeoutMailbox2="6000" GenerateOwnNetId="true" PortPhys="3" PortABoxInfo="#x0100000b">
+								<EtherCAT SlaveType="3" AdsServerAddress="052affde020df403" PdiType="#x0008" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="51" FoeType="1" VendorId="#x00000002" ProductCode="#x04e22c22" RevisionNo="#x00120000" InfoDataAddr="true" InfoDataNetId="true" TimeoutStateChange1="5000" TimeoutMailbox2="6000" GenerateOwnNetId="true" PortPhys="3" PortABoxInfo="#x0100000b">
 									<SyncMan>001c88002600010001000000400000028800001c26010000</SyncMan>
 									<SyncMan>001e88002200010002000000400000028800001e22010000</SyncMan>
-									<SyncMan>001034006400010003000000000000000000001064010000</SyncMan>
-									<SyncMan>001632000000010004000000000000000000001600010000</SyncMan>
+									<SyncMan>001036006400010003000000000000000000001064010000</SyncMan>
+									<SyncMan>001638000000010004000000000000000000001600010000</SyncMan>
 									<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
 									<Fmmu>0000000000000000001600010100000002000000000000000000000000000000</Fmmu>
 									<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
@@ -3132,7 +3552,7 @@
 								<Entry Name="STATUS__Undervoltage" Index="#x6000" Sub="#x02">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="STATUS__Overcurrent" Index="#x6000" Sub="#x03">
+								<Entry Name="STATUS__Overcurrent" Index="#x6000" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="STATUS__">
@@ -3348,7 +3768,7 @@
 ]]>
 								</Comment>
 								<Type>UINT</Type>
-								<BitOffs>12944</BitOffs>
+								<BitOffs>12496</BitOffs>
 							</Var>
 						</Vars>
 						<Vars VarGrpType="2">
@@ -3361,7 +3781,7 @@
 ]]>
 								</Comment>
 								<Type>UINT</Type>
-								<BitOffs>12944</BitOffs>
+								<BitOffs>12496</BitOffs>
 							</Var>
 						</Vars>
 						<BusCoupler ComplexTermSupport="true" NewHardware="true">
@@ -3374,145 +3794,145 @@
 									<Var>
 										<Name>Status</Name>
 										<Type>USINT</Type>
-										<BitOffs>12960</BitOffs>
+										<BitOffs>12512</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input CNODE</Name>
 										<Type>USINT</Type>
-										<BitOffs>12968</BitOffs>
+										<BitOffs>12520</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input ORG</Name>
 										<Type>USINT</Type>
-										<BitOffs>12976</BitOffs>
+										<BitOffs>12528</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input DB0</Name>
 										<Type>USINT</Type>
-										<BitOffs>12984</BitOffs>
+										<BitOffs>12536</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input DB1</Name>
 										<Type>USINT</Type>
-										<BitOffs>12992</BitOffs>
+										<BitOffs>12544</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input DB2</Name>
 										<Type>USINT</Type>
-										<BitOffs>13000</BitOffs>
+										<BitOffs>12552</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input DB3</Name>
 										<Type>USINT</Type>
-										<BitOffs>13008</BitOffs>
+										<BitOffs>12560</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input ID0</Name>
 										<Type>USINT</Type>
-										<BitOffs>13016</BitOffs>
+										<BitOffs>12568</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input ID1</Name>
 										<Type>USINT</Type>
-										<BitOffs>13024</BitOffs>
+										<BitOffs>12576</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input ID2</Name>
 										<Type>USINT</Type>
-										<BitOffs>13032</BitOffs>
+										<BitOffs>12584</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input ID3</Name>
 										<Type>USINT</Type>
-										<BitOffs>13040</BitOffs>
+										<BitOffs>12592</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input STATUS</Name>
 										<Type>USINT</Type>
-										<BitOffs>13048</BitOffs>
+										<BitOffs>12600</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Control</Name>
 										<Type>USINT</Type>
-										<BitOffs>12960</BitOffs>
+										<BitOffs>12512</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output CNODE</Name>
 										<Type>USINT</Type>
-										<BitOffs>12968</BitOffs>
+										<BitOffs>12520</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output ORG</Name>
 										<Type>USINT</Type>
-										<BitOffs>12976</BitOffs>
+										<BitOffs>12528</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output DB0</Name>
 										<Type>USINT</Type>
-										<BitOffs>12984</BitOffs>
+										<BitOffs>12536</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output DB1</Name>
 										<Type>USINT</Type>
-										<BitOffs>12992</BitOffs>
+										<BitOffs>12544</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output DB2</Name>
 										<Type>USINT</Type>
-										<BitOffs>13000</BitOffs>
+										<BitOffs>12552</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output DB3</Name>
 										<Type>USINT</Type>
-										<BitOffs>13008</BitOffs>
+										<BitOffs>12560</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output ID0</Name>
 										<Type>USINT</Type>
-										<BitOffs>13016</BitOffs>
+										<BitOffs>12568</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output ID1</Name>
 										<Type>USINT</Type>
-										<BitOffs>13024</BitOffs>
+										<BitOffs>12576</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output ID2</Name>
 										<Type>USINT</Type>
-										<BitOffs>13032</BitOffs>
+										<BitOffs>12584</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output ID3</Name>
 										<Type>USINT</Type>
-										<BitOffs>13040</BitOffs>
+										<BitOffs>12592</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output STATUS</Name>
 										<Type>USINT</Type>
-										<BitOffs>13048</BitOffs>
+										<BitOffs>12600</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 								</Vars>
@@ -3525,25 +3945,25 @@
 									<Var>
 										<Name>State</Name>
 										<Type>USINT</Type>
-										<BitOffs>13056</BitOffs>
+										<BitOffs>12608</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Data In</Name>
 										<Type>INT</Type>
-										<BitOffs>13072</BitOffs>
+										<BitOffs>12624</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Ctrl</Name>
 										<Type>USINT</Type>
-										<BitOffs>13056</BitOffs>
+										<BitOffs>12608</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Data Out</Name>
 										<Type>INT</Type>
-										<BitOffs>13072</BitOffs>
+										<BitOffs>12624</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 								</Vars>
@@ -3553,7 +3973,7 @@
 								<ImageId>32</ImageId>
 							</Term>
 						</BusCoupler>
-						<EtherCAT SlaveType="3" AdsServerAddress="052affde0210f603" PdiType="#x0008" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="51" FoeType="1" VendorId="#x00000002" ProductCode="#x04e22c22" InfoDataAddr="true" InfoDataNetId="true" TimeoutMailbox2="6000" GenerateOwnNetId="true" PortPhys="3" PortABoxInfo="#x0100000e">
+						<EtherCAT SlaveType="3" AdsServerAddress="052affde0210f703" PdiType="#x0008" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="51" FoeType="1" VendorId="#x00000002" ProductCode="#x04e22c22" InfoDataAddr="true" InfoDataNetId="true" TimeoutMailbox2="6000" GenerateOwnNetId="true" PortPhys="3" PortABoxInfo="#x0100000e">
 							<SyncMan>001c88002600010001000000400000028800001c26010000</SyncMan>
 							<SyncMan>001e88002200010002000000400000028800001e22010000</SyncMan>
 							<SyncMan>001012006400010003000000000000000000001064010000</SyncMan>
@@ -3570,10 +3990,42 @@
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{08502003-0010-0304-0020-500810000403}" Id="#x02030020" Watchdog="04000000040000000400000004000000"/>
+		<MappingInfo Identifier="{08502002-0020-0304-0020-500820000403}" Id="#x02030030" Watchdog="00000000000000000000000000000000"/>
+		<MappingInfo Identifier="{08502002-0010-0304-0020-500810000403}" Id="#x02030020" Watchdog="00000000000000000000000000000000"/>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
-		<MappingInfo Identifier="{00000000-2002-0850-0120-500831000403}" Id="#x02030030"/>
+		<MappingInfo Identifier="{00000000-2003-0850-0120-500821000403}" Id="#x02030040"/>
+		<MappingInfo Identifier="{00000000-2002-0850-0220-500842000403}" Id="#x02030050"/>
 		<OwnerA Name="TIPC^PLC1^PLC1 Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Box 15 (BK1250)">
+				<Link VarA="DaliComm Inputs^HWVar.stKL6811_in^nData" VarB="Term 8 (KL6811)^Channel 1^Data In"/>
+				<Link VarA="DaliComm Inputs^HWVar.stKL6811_in^nStatus" VarB="Term 8 (KL6811)^Channel 1^State"/>
+				<Link VarA="DaliComm Outputs^HWVar.stKL6811_out^nCtrl" VarB="Term 8 (KL6811)^Channel 1^Ctrl"/>
+				<Link VarA="DaliComm Outputs^HWVar.stKL6811_out^nData" VarB="Term 8 (KL6811)^Channel 1^Data Out"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input CNODE" Size="8" OffsA="8"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input DB0" Size="8" OffsA="24"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input DB1" Size="8" OffsA="32"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input DB2" Size="8" OffsA="40"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input DB3" Size="8" OffsA="48"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input ID0" Size="8" OffsA="56"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input ID1" Size="8" OffsA="64"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input ID2" Size="8" OffsA="72"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input ID3" Size="8" OffsA="80"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input ORG" Size="8" OffsA="16"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Input STATUS" Size="8" OffsA="88"/>
+				<Link VarA="PlcTask Inputs^HWVar.st6581_in" VarB="Term 7 (KL6581)^Channel 1^Status"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Control"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output CNODE" Size="8" OffsA="8"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output DB0" Size="8" OffsA="24"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output DB1" Size="8" OffsA="32"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output DB2" Size="8" OffsA="40"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output DB3" Size="8" OffsA="48"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output ID0" Size="8" OffsA="56"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output ID1" Size="8" OffsA="64"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output ID2" Size="8" OffsA="72"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output ID3" Size="8" OffsA="80"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output ORG" Size="8" OffsA="16"/>
+				<Link VarA="PlcTask Outputs^HWVar.st6581_out" VarB="Term 7 (KL6581)^Channel 1^Output STATUS" Size="8" OffsA="88"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 13 (EL3433)">
 				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[1]^dCurrent" VarB="PM Inputs Channel 1^Current"/>
 				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[1]^dIndex" VarB="PM Inputs Channel 1^Index"/>
@@ -3602,7 +4054,14 @@
 				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Solar^dVoltage" VarB="PM Inputs Channel 1^Voltage"/>
 				<Link VarA="IoConversionTask Outputs^HWVar.EL3433_SolarIndex" VarB="PM Outputs Channel 1^Index"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 5 (EK1914)^Term 24 (EL3204)">
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI2_VK[1]" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI2_VK[2]" VarB="RTD Inputs Channel 2^Value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI2_VK[3]" VarB="RTD Inputs Channel 3^Value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI2_VK[4]" VarB="RTD Inputs Channel 4^Value"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 5 (EK1914)^Term 6 (EL2809)">
+				<Link VarA="PlcTask Outputs^GVL.bFanPower" VarB="Channel 12^Output"/>
 				<Link VarA="PlcTask Outputs^GVL.bHV[10]" VarB="Channel 10^Output"/>
 				<Link VarA="PlcTask Outputs^GVL.bHV[11]" VarB="Channel 11^Output"/>
 				<Link VarA="PlcTask Outputs^GVL.bHV[1]" VarB="Channel 1^GVL.bHV[1]"/>
@@ -3614,18 +4073,73 @@
 				<Link VarA="PlcTask Outputs^GVL.bHV[7]" VarB="Channel 7^Output"/>
 				<Link VarA="PlcTask Outputs^GVL.bHV[8]" VarB="Channel 8^Output"/>
 				<Link VarA="PlcTask Outputs^GVL.bHV[9]" VarB="Channel 9^Output"/>
+				<Link VarA="PlcTask Outputs^GVL.bPumpPower" VarB="Channel 13^Output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 5 (EK1914)^Term 7 (EL3214)">
-				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[1]" VarB="RTD Inputs Channel 1^Value"/>
-				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[2]" VarB="RTD Inputs Channel 2^Value"/>
-				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[3]" VarB="RTD Inputs Channel 3^Value"/>
-				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[4]" VarB="RTD Inputs Channel 4^Value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[1]" VarB="RTD Inputs Channel 1^HWVar.iAI1_VK[1]"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[2]" VarB="RTD Inputs Channel 2^HWVar.iAI1_VK[2]"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[3]" VarB="RTD Inputs Channel 3^HWVar.iAI1_VK[3]"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[4]" VarB="RTD Inputs Channel 4^HWVar.iAI1_VK[4]"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 8 (EK1100)^Box 12 (BK1250)">
 				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_JK[1]" VarB="Term 5 (KL3204)^Channel 1^Data In"/>
 				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_JK[2]" VarB="Term 5 (KL3204)^Channel 2^Data In"/>
 				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_JK[3]" VarB="Term 5 (KL3204)^Channel 3^Data In"/>
-				<Link VarA="ModbusComm Outputs^GVL.bFan" VarB="Term 6 (KL2012)^Channel 1^Output"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_JK[4]" VarB="Term 5 (KL3204)^Channel 4^Data In"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.stKL2761_in^iDataIn" VarB="Term 15 (KL2761)^Channel 1^Data In"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.stKL2761_in^iState" VarB="Term 15 (KL2761)^Channel 1^State"/>
+				<Link VarA="IoConversionTask Outputs^HWVar.stKL2761_out^iCtrl" VarB="Term 15 (KL2761)^Channel 1^Ctrl"/>
+				<Link VarA="IoConversionTask Outputs^HWVar.stKL2761_out^iDataOut" VarB="Term 15 (KL2761)^Channel 1^Data Out"/>
+				<Link VarA="PlcTask Outputs^HWVar.stKL3204_out^iCtrl" VarB="Term 5 (KL3204)^Channel 4^Ctrl"/>
+				<Link VarA="PlcTask Outputs^HWVar.stKL3204_out^iDataOut" VarB="Term 5 (KL3204)^Channel 4^Data Out"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 8 (EK1100)^Term 9 (EL6021)">
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 0"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 1" Size="8" OffsA="8"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 10" Size="8" OffsA="80"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 11" Size="8" OffsA="88"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 12" Size="8" OffsA="96"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 13" Size="8" OffsA="104"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 14" Size="8" OffsA="112"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 15" Size="8" OffsA="120"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 16" Size="8" OffsA="128"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 17" Size="8" OffsA="136"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 18" Size="8" OffsA="144"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 19" Size="8" OffsA="152"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 2" Size="8" OffsA="16"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 20" Size="8" OffsA="160"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 21" Size="8" OffsA="168"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 3" Size="8" OffsA="24"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 4" Size="8" OffsA="32"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 5" Size="8" OffsA="40"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 6" Size="8" OffsA="48"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 7" Size="8" OffsA="56"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 8" Size="8" OffsA="64"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 9" Size="8" OffsA="72"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^Status" VarB="COM TxPDO-Map Inputs^Status"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^Ctrl" VarB="COM RxPDO-Map Outputs^Ctrl"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 0"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 1" Size="8" OffsA="8"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 10" Size="8" OffsA="80"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 11" Size="8" OffsA="88"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 12" Size="8" OffsA="96"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 13" Size="8" OffsA="104"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 14" Size="8" OffsA="112"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 15" Size="8" OffsA="120"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 16" Size="8" OffsA="128"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 17" Size="8" OffsA="136"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 18" Size="8" OffsA="144"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 19" Size="8" OffsA="152"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 2" Size="8" OffsA="16"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 20" Size="8" OffsA="160"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 21" Size="8" OffsA="168"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 3" Size="8" OffsA="24"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 4" Size="8" OffsA="32"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 5" Size="8" OffsA="40"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 6" Size="8" OffsA="48"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 7" Size="8" OffsA="56"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 8" Size="8" OffsA="64"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D" VarB="COM RxPDO-Map Outputs^Data Out 9" Size="8" OffsA="72"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

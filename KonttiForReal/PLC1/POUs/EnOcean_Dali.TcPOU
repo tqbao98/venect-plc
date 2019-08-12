@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="EnOcean_Dali" Id="{7e99dff4-f419-4974-a0ee-12c99ad68b07}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM EnOcean_Dali
+VAR
+	fbKL6581	: FB_KL6581;
+	dwID		: DWORD;
+	bReady		: BOOL;
+	bBusy		: BOOL;
+	bError		: BOOL;
+	iErrorID	: INT;
+	EnOceanID 	: DWORD;
+	EnOceanAction : BYTE;
+	
+	// These are in globals
+	// st6581_in	: KL6581_Input;
+	// st6581_out	: KL6581_Output;
+	// stKL6581	: STR_KL6581;
+	
+	bLeftButtonUp	: BOOL;
+	bLeftButtonDown	: BOOL;
+	bRightButtonUp	: BOOL;
+	bRightButtonDown: BOOL;
+	
+	TankLight	: FB_DALIV2Dimmer1Switch; //left button
+	BoilerLight	: FB_DALIV2Dimmer1Switch; //right button
+	DaliAddressing	: FB_DALIV2AddressingIntRandomAddressing;
+	DaliSearch		: FB_DALIV2SearchAddr;
+	
+	bDaliBusy	: BOOL;
+	bDaliError	: BOOL;
+	nDaliErrorId: UDINT;
+	
+	bStart : BOOL;
+	nAddressedDevices: BYTE;
+	fbTankLightTimer: TON;
+	nTankLightDim: BYTE;
+	nBoilerLightDim: BYTE;
+	fbBoilerLightTimer: TON;
+	fbTankLightOff: TON;
+	fbBoilerLightOff: TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbTankLightTimer(IN:= , PT:= T#45M, Q=> , ET=> );
+fbBoilerLightTimer(IN:= , PT:= T#45M, Q=> , ET=> );
+fbTankLightOff(IN:= , PT:= T#2M, Q=> , ET=> );
+fbBoilerLightOff(IN:= , PT:= T#2M, Q=> , ET=> );
+fbKL6581(
+	bInit := TRUE, 
+	nIdx := 7, 
+	bReady => bReady, 
+	bBusy => bBusy, 
+	bError => bError, 
+	iErrorID => iErrorID, 
+	str_KL6581 => HWVar.stKL6581, 
+	stKL6581_in := HWVar.st6581_in , 
+	stKL6581_out := HWvar.st6581_out);
+	
+EnOceanID := HWVar.stKL6581.dw_ID;
+EnOceanAction := HWVar.stKL6581.ar_DB[3]; 
+
+IF (EnOceanAction = 16#30) THEN 
+	bLeftButtonUp := TRUE; fbTankLightTimer.IN := TRUE; nTankLightDim := 254; fbTankLightOff.IN := FALSE; ELSE bLeftButtonUp := FALSE;
+END_IF
+IF (EnOceanAction = 16#10) THEN 
+	bLeftButtonDown := TRUE; ELSE bLeftButtonDown := FALSE;
+END_IF
+IF (EnOceanAction = 16#70) THEN 
+	bRightButtonUp := TRUE; fbBoilerLightTimer.IN := TRUE; nBoilerLightDim := 254; fbBoilerLightOff.IN := FALSE; ELSE bRightButtonUp := FALSE;
+END_IF
+IF (EnOceanAction = 16#50) THEN 
+	bRightButtonDown := TRUE; ELSE bRightButtonDown := FALSE;
+END_IF
+
+IF fbTankLightTimer.Q THEN
+	nTankLightDim := 170;
+	fbTankLightTimer.IN := FALSE;
+	fbTankLightOff.IN := TRUE;
+END_IF
+
+IF fbTankLightOff.Q THEN
+	nTankLightDim := 0;
+	fbTankLightOff.IN := FALSE;
+END_IF
+
+IF fbBoilerLightTimer.Q THEN
+	nBoilerLightDim := 170;
+	fbBoilerLightTimer.IN := FALSE;
+	fbBoilerLightOff.IN := TRUE;
+END_IF
+
+IF fbBoilerLightOff.Q THEN
+	nBoilerLightDim := 0;
+	fbBoilerLightOff.IN := FALSE;
+END_IF
+
+TankLight(
+	bSwitchDimm:= bLeftButtonUp, 
+	bOn:= bLeftButtonUp, 
+	bOff:= bLeftButtonDown, 
+	bSetDimmValue:= bLeftButtonUp, 
+	nDimmValue:= nTankLightDim, 
+	tSwitchOverTime:= T#50MS, 
+	tCycleDelay:= T#500MS, 
+	bMemoryModeOn:= FALSE, 
+	nOnValueWithoutMemoryMode:= 254, // max value
+	nAddr:= 0, 
+	eAddrType:= , 
+	nMasterDevAddr:= , // addr of master dev in group, not used for now
+	nMinLevelMasterDev:= 126, // min value
+	nMaxLevelMasterDev:= 254, //max value
+	tCycleActualLevelMasterDev:= , 
+	nActualLevelMasterDev=> , 
+	bBusy=> bDaliBusy, 
+	bError=> bDaliError, 
+	nErrorId=> nDaliErrorId, 
+	stCommandBuffer:= HWVar.stKL6811_CommandBuffer);
+
+BoilerLight(
+	bSwitchDimm:= bRightButtonUp, 
+	bOn:= bRightButtonUp, 
+	bOff:= bRightButtonDown, 
+	bSetDimmValue:= bRightButtonUp, 
+	nDimmValue:= nBoilerLightDim, 
+	tSwitchOverTime:= T#50MS, 
+	tCycleDelay:= T#500MS, 
+	bMemoryModeOn:= FALSE, 
+	nOnValueWithoutMemoryMode:= 254, // max value
+	nAddr:= 1, 
+	eAddrType:= , 
+	nMasterDevAddr:= , // addr of master dev in group, not used for now
+	nMinLevelMasterDev:= 126, // min value
+	nMaxLevelMasterDev:= 254, //max value
+	tCycleActualLevelMasterDev:= , 
+	nActualLevelMasterDev=> , 
+	bBusy=> bDaliBusy, 
+	bError=> bDaliError, 
+	nErrorId=> nDaliErrorId, 
+	stCommandBuffer:= HWVar.stKL6811_CommandBuffer);
+]]></ST>
+    </Implementation>
+    <LineIds Name="EnOcean_Dali">
+      <LineId Id="163" Count="0" />
+      <LineId Id="195" Count="0" />
+      <LineId Id="202" Count="0" />
+      <LineId Id="206" Count="0" />
+      <LineId Id="16" Count="8" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="28" Count="1" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="37" Count="1" />
+      <LineId Id="40" Count="1" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="43" Count="1" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="46" Count="1" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="164" Count="2" />
+      <LineId Id="168" Count="0" />
+      <LineId Id="207" Count="0" />
+      <LineId Id="167" Count="0" />
+      <LineId Id="209" Count="0" />
+      <LineId Id="208" Count="0" />
+      <LineId Id="210" Count="0" />
+      <LineId Id="212" Count="0" />
+      <LineId Id="211" Count="0" />
+      <LineId Id="197" Count="0" />
+      <LineId Id="199" Count="2" />
+      <LineId Id="213" Count="0" />
+      <LineId Id="198" Count="0" />
+      <LineId Id="216" Count="3" />
+      <LineId Id="215" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="97" Count="19" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="172" Count="21" />
+      <LineId Id="153" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="DaliCommunication" Id="{4c6c39f9-57d0-43fd-97d4-9f011a259ccc}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM DaliCommunication
+VAR
+	arrBufferDemandMeter: ARRAY [0..2] OF BYTE;
+	arrBufferMaximumDemandMeter: ARRAY [0..2] OF BYTE;
+	arrBufferOverflowCounter: ARRAY [0..2] OF UINT;
+	bLineIsBusy: BOOL;
+	bLineIsInitialized: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[HWVar.DaliMaster(
+	bResetMaximumDemandCounter:= HWVar.bDaliReset, 
+	bResetOverflowCounter:= HWVar.bDaliReset, 
+	arrBufferDemandMeter=> arrBufferDemandMeter, 
+	arrBufferMaximumDemandMeter=> arrBufferMaximumDemandMeter, 
+	arrBufferOverflowCounter=> arrBufferOverflowCounter, 
+	bLineIsBusy=> bLineIsBusy, 
+	bLineIsInitialized=> bLineIsInitialized, 
+	stDALIInData:= HWVar.stKL6811_in, 
+	stDALIOutData:= HWVar.stKL6811_out, 
+	stCommandBuffer:= HWVar.stKL6811_CommandBuffer);]]></ST>
+    </Implementation>
+    <LineIds Name="DaliCommunication">
+      <LineId Id="21" Count="9" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

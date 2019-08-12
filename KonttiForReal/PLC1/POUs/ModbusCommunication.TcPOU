@@ -3,46 +3,46 @@
   <POU Name="ModbusCommunication" Id="{54342e5d-ff54-42da-bebd-97328cd56068}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM ModbusCommunication
 VAR
-	aP1, aP2				: ARRAY [GrundfosRegAddress.listStart..GrundfosRegAddress.listEnd] OF WORD;
-	aFeeder					: ARRAY [ATV212RegAddress.listStart..ATV212RegAddress.listEnd] OF WORD;
+	aP1, aP2				: ARRAY [GrundfosRegAddress.listStart +1 ..GrundfosRegAddress.listEnd -1] OF WORD;
+	wMBData					: ARRAY [ATV212RegAddress.listStart +1 .. ATV212RegAddress.listEnd -1] OF WORD;
 	nStep					: INT := 0;
 	wP1Control, wP2Control	: ARRAY [100..105] OF WORD := [
-		16#8000,
-		0,
+		16#0000,
+		16#0080,
 		0,
 		0,
 		0,
 		600
 	];
-	wFeederControl			: ARRAY [16#1870..16#1871] OF WORD := [
-		16#C400,
-		16#9C4
-	];
+	wFeederControl			: ARRAY [16#FA00..16#FA01] OF WORD := [];
+	wFeederControlAddress	: WORD;
 	wP1Status, wP2Status	: ARRAY[200..220] OF WORD;
 	wFeederStatus			: ARRAY[16#D01..16#E01] OF WORD;
+	wContent				: WORD;
 END_VAR
 
 VAR CONSTANT
 	bP1Addr					: BYTE := 2;
 	bP2Addr					: BYTE := 4;
 	bFeederAddr				: BYTE := 5;
-	wStartPumpCmd			: WORD := 16#C000;
-	wStopPumpCmd			: WORD := 16#8000;
+	wStartPumpCmd			: WORD := 16#0027; //27
+	wStopPumpCmd			: WORD := 16#0025; //25
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[HWVar.ModbusMaster.ReadRegs(Execute := FALSE);
 HWVar.ModbusMaster.WriteRegs(Execute := FALSE);
-(*IF GVL.bP1 THEN
-               wP1Control := wStartPumpCmd;
+IF GVL.bP1 THEN
+               wP1Control[100] := wStartPumpCmd;
 ELSE 
-               wP1Control := wStopPumpCmd;
+               wP1Control[100] := wStopPumpCmd;
 END_IF
 IF GVL.bP2 THEN
-               wP2Control := wStartPumpCmd;
+               wP2Control[100] := wStartPumpCmd;
 ELSE 
-               wP2Control := wStopPumpCmd;
+               wP2Control[100] := wStopPumpCmd;
 END_IF
-*)
+
+
 CASE nStep OF 
 	0: 
 		P1Read(); 
@@ -61,70 +61,73 @@ CASE nStep OF
     6:
         P2ReadStatus();
     7:
-        FeederRead();
-        //FeederReadSingle(MBAddr := ATV212RegAddress.EstimatedSpeed, wMBdata := aFeeder[ATV212RegAddress.EstimatedSpeed]);
+        FeederReadSingle();
     8:
-        ATV212DataConversion(arrReg := aFeeder, pstATV212 := ADR(GVL.stFeeder));
+        ATV212DataConversion(arrReg := wMBData, pstATV212 := ADR(GVL.stFeeder));
         nStep := 9;
     9:
-        FeederControl();
-    10:
+        FeederControlRun();
+	10: 
+		FeederSpeedControl(wContent => wContent);
+		FeederWrite(wContent, 16#FA01);
+    11:
         FeederStatus();
-        nStep := 0;
+        //nStep := 0;
 END_CASE;
 ]]></ST>
     </Implementation>
     <Method Name="ATV212DataConversion" Id="{ce9fcc30-4df5-4b9c-8a85-a428ecc2d8c7}">
       <Declaration><![CDATA[METHOD ATV212DataConversion : BOOL
 VAR_INPUT
-               arrReg   : ARRAY [ATV212RegAddress.listStart..ATV212RegAddress.listEnd] OF WORD;
+               arrReg   : ARRAY [ATV212RegAddress.listStart +1 .. ATV212RegAddress.listEnd -1] OF WORD;
                pstATV212           : POINTER TO ATV212;
 END_VAR
 
 VAR
-               iMemIndex: ATV212RegAddress;
-               a_MbRegValue  : ARRAY [874..877] OF REAL;
+			// iMemIndex: ATV212RegAddress;
+			iMemIndex: WORD := ATV212RegAddress.listStart +1;
+               a_MbRegValue  : ARRAY [ATV212RegAddress.listStart +1 .. ATV212RegAddress.listEnd -1] OF REAL;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[WHILE (iMemIndex <  ATV212RegAddress.listEnd) DO
-                              a_MbRegValue[iMemIndex] := (arrReg[iMemIndex])*Scale.fATV212Scale[iMemIndex];
-                              iMemIndex := iMemIndex + 1;
+        <ST><![CDATA[WHILE (iMemIndex <=  ATV212RegAddress.listEnd) DO
+	a_MbRegValue[iMemIndex] := (arrReg[iMemIndex])*Scale.fATV212Scale[iMemIndex];
+    iMemIndex := iMemIndex + 1;
 END_WHILE
 MEMCPY(pstATV212, ADR(a_MbRegValue), SIZEOF(ATV212));
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FeederControl" Id="{41e60fd5-d07e-4b1b-b684-fef6b25a1501}">
-      <Declaration><![CDATA[METHOD FeederControl : BOOL
+    <Method Name="FeederControlRun" Id="{41e60fd5-d07e-4b1b-b684-fef6b25a1501}">
+      <Declaration><![CDATA[METHOD FeederControlRun : BOOL
 VAR_INPUT
 END_VAR
 
 VAR
 	fbStartStop: RS;
 	reStart: R_TRIG;
-	iFrequency: INT;
+	wContent: WORD;
+	wAddress: WORD;
+	tmFeederOn: TON;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[reStart(CLK:= gvl.stFeederControl.bStart, Q=> );
-fbStartStop(SET:= gvl.stFeederControl.bStart, RESET1:= gvl.stFeederControl.bStop, Q1=> );
-IF fbStartStop.Q1 THEN
-	iFrequency := REAL_TO_INT(gvl.stFeederControl.fFrequency/0.01);
-	wFeederControl[16#1871] := INT_TO_WORD(iFrequency);
+        <ST><![CDATA[wAddress := 16#FA00;
+
+IF GVL.stFeederControl.bStart THEN
 	IF gvl.stFeederControl.bForward THEN
-		wFeederControl[16#1870] := 16#C400;
-		ELSE wFeederControl[16#1870] := 16#C600;
+		wContent := 16#C400;
+		ELSE wContent := 16#C600;
 	END_IF
-	FeederWrite(wFeederControl);
+	FeederWrite(wContent, wAddress);
 ELSE
-	wFeederControl[16#1870] := 16#C000;
-	FeederWrite(wFeederControl);
-END_IF
-nStep := 10;]]></ST>
+	wContent := 16#C000;
+	gvl.stFeederControl.fFrequency := 0;
+	FeederWrite(wContent, wAddress);
+END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FeederRead" Id="{51922873-5ebe-4adb-8f91-0160af3c5ec4}">
-      <Declaration><![CDATA[METHOD FeederRead : BOOL
+    <Method Name="FeederReadSingle" Id="{087dd7a2-4d18-4f20-a629-8f15bc3e6957}">
+      <Declaration><![CDATA[METHOD FeederReadSingle : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
@@ -133,31 +136,7 @@ END_VAR
 	HWVar.ModbusMaster.ReadRegs(
 		UnitID := bFeederAddr,
 		Quantity := 4,
-		MBAddr := 16#1874,
-		cbLength := SIZEOF(aFeeder),
-		pMemoryAddr := ADR(aFeeder),
-		Execute := TRUE,
-		Timeout := T#5S,
-		BUSY => ,
-		Error =>
-		);
-		nStep := 8;
-END_IF;]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="FeederReadSingle" Id="{087dd7a2-4d18-4f20-a629-8f15bc3e6957}">
-      <Declaration><![CDATA[METHOD FeederReadSingle : BOOL
-VAR_INPUT
-	MBAddr: WORD;
-	wMBData: WORD;
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[IF (NOT HWVar.ModbusMaster.BUSY) THEN
-	HWVar.ModbusMaster.ReadRegs(
-		UnitID := bFeederAddr,
-		Quantity := 1,
-		MBAddr := MBAddr,
+		MBAddr := 16#1875,
 		cbLength := SIZEOF(wMBData),
 		pMemoryAddr := ADR(wMBData),
 		Execute := TRUE,
@@ -165,7 +144,7 @@ END_VAR
 		BUSY => ,
 		Error =>
 		);
-		nStep := 2;
+		nStep := 8;
 END_IF;]]></ST>
       </Implementation>
     </Method>
@@ -180,7 +159,7 @@ END_VAR
 	HWVar.ModbusMaster.ReadRegs(
 		UnitID := bFeederAddr,
 		Quantity := 1,
-		MBAddr := 16#D01,
+		MBAddr := 16#FD00,
 		cbLength := SIZEOF(wFeederStatus),
 		pMemoryAddr := ADR(wFeederStatus),
 		Execute := TRUE,
@@ -195,35 +174,37 @@ END_IF;]]></ST>
     <Method Name="FeederWrite" Id="{2f47265f-2ad5-409f-b44a-d3a6fc003144}">
       <Declaration><![CDATA[METHOD FeederWrite : BOOL
 VAR_INPUT
-		wControl: ARRAY [16#1870..16#1871] OF WORD;
+	wFeederControl: WORD;
+	wFeederControlAddress: WORD;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[IF (NOT HWVar.ModbusMaster.BUSY) THEN
-	HWVar.ModbusMaster.ReadRegs(
+	HWVar.ModbusMaster.WriteRegs(
 		UnitID := bFeederAddr,
-		Quantity := 2,
-		MBAddr := 16#1870,
-		cbLength := SIZEOF(wFeederControl),
+		Quantity := 1,
+		MBAddr := wFeederControlAddress,
+		cbLength := SIZEOF(WORD),
 		pMemoryAddr := ADR(wFeederControl),
 		Execute := TRUE,
 		Timeout := T#5S,
 		BUSY => ,
 		Error =>
-		);		
+		);	
+	nStep := nStep+1;	
 END_IF;]]></ST>
       </Implementation>
     </Method>
     <Method Name="GrundfosDataConversion" Id="{c1721abb-801a-40d2-a1fb-1b489e79040e}">
       <Declaration><![CDATA[METHOD PUBLIC GrundfosDataConversion : BOOL
 VAR_INPUT
-	arrReg	: ARRAY [GrundfosRegAddress.listStart..GrundfosRegAddress.listEnd] OF WORD;
+	arrReg	: ARRAY [GrundfosRegAddress.listStart +1 ..GrundfosRegAddress.listEnd -1] OF WORD;
 	pstGrundfosMagna3	: POINTER TO GrundfosMagna3;
 END_VAR
 
 VAR
-	iMemIndex: GrundfosRegAddress;
-	iRegIndex: GrundfosRegAddress;
+	iMemIndex: WORD := GrundfosRegAddress.listStart +1;
+	iRegIndex: WORD := GrundfosRegAddress.listStart +1;
 	a_MbRegValue	: ARRAY [300..350] OF REAL;
 	dwMergedReg		: DWORD;
 END_VAR]]></Declaration>
@@ -245,7 +226,7 @@ END_VAR]]></Declaration>
 		iRegIndex := iRegIndex + 1;
 	ELSE
 		dwMergedReg := SHL(WORD_TO_DWORD(arrReg[iMemIndex]),16) OR WORD_TO_DWORD(arrReg[iMemIndex+1]);
-		a_MbRegValue[iRegIndex] := (dwMergedReg)*Scale.fGrundfosScale[iRegIndex];
+		a_MbRegValue[iRegIndex] := (DWORD_TO_REAL(dwMergedReg))*Scale.fGrundfosScale[iRegIndex];
 		iMemIndex := iMemIndex + 2;
 		iRegIndex := iRegIndex + 1;
 	END_IF
@@ -263,7 +244,7 @@ END_VAR
         <ST><![CDATA[IF (NOT HWVar.ModbusMaster.BUSY) THEN
 	HWVar.ModbusMaster.ReadRegs(
 		UnitID := bP1Addr,
-		Quantity := 62,
+		Quantity := 61,
 		MBAddr := 300,
 		cbLength := SIZEOF(aP1),
 		pMemoryAddr := ADR(aP1),
@@ -332,7 +313,7 @@ END_VAR
         <ST><![CDATA[IF (NOT HWVar.ModbusMaster.BUSY) THEN
 	HWVar.ModbusMaster.ReadRegs(
 		UnitID := bP2Addr,
-		Quantity := 62,
+		Quantity := 61,
 		MBAddr := 300,
 		cbLength := SIZEOF(aP2),
 		pMemoryAddr := ADR(aP2),
@@ -397,31 +378,31 @@ END_IF;]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="ModbusCommunication">
-      <LineId Id="254" Count="41" />
+      <LineId Id="687" Count="12" />
+      <LineId Id="760" Count="0" />
+      <LineId Id="700" Count="23" />
+      <LineId Id="725" Count="0" />
+      <LineId Id="727" Count="4" />
+      <LineId Id="733" Count="0" />
       <LineId Id="15" Count="0" />
     </LineIds>
     <LineIds Name="ModbusCommunication.ATV212DataConversion">
       <LineId Id="16" Count="4" />
       <LineId Id="5" Count="0" />
     </LineIds>
-    <LineIds Name="ModbusCommunication.FeederControl">
-      <LineId Id="20" Count="0" />
-      <LineId Id="19" Count="0" />
+    <LineIds Name="ModbusCommunication.FeederControlRun">
+      <LineId Id="53" Count="0" />
+      <LineId Id="66" Count="0" />
       <LineId Id="25" Count="0" />
-      <LineId Id="34" Count="1" />
       <LineId Id="38" Count="1" />
       <LineId Id="41" Count="0" />
       <LineId Id="40" Count="0" />
       <LineId Id="26" Count="0" />
       <LineId Id="28" Count="0" />
       <LineId Id="37" Count="0" />
-      <LineId Id="29" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="52" Count="0" />
       <LineId Id="27" Count="0" />
-      <LineId Id="42" Count="0" />
-    </LineIds>
-    <LineIds Name="ModbusCommunication.FeederRead">
-      <LineId Id="6" Count="12" />
-      <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="ModbusCommunication.FeederReadSingle">
       <LineId Id="6" Count="12" />
@@ -433,6 +414,7 @@ END_IF;]]></ST>
     </LineIds>
     <LineIds Name="ModbusCommunication.FeederWrite">
       <LineId Id="6" Count="11" />
+      <LineId Id="22" Count="0" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="ModbusCommunication.GrundfosDataConversion">

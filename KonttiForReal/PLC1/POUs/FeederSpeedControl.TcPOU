@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FeederSpeedControl" Id="{87c46c4a-7be0-433a-90af-dbdc6e1436f1}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM FeederSpeedControl
+VAR
+	FeederMode: INT;
+	fbMaximumSpeed			: FB_OnOffTimer;
+	fbMinimumSpeed			: FB_OnOffTimer;
+	fbManualSpeed			: FB_OnOffTimer;
+END_VAR
+
+VAR_OUTPUT
+	wContent: WORD;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF GVL.stFeederControl.bManual THEN
+	FeederMode := 2;
+	ELSE IF GVL.fTE[5] > ConstList.WaterTempMax THEN
+			FeederMode := 1;
+			ELSE IF GVL.fTE[5] < ConstList.WaterTempMin THEN 
+				FeederMode := 0;
+			END_IF
+	END_IF
+END_IF
+
+CASE FeederMode OF
+	0:
+		// Maximum speed
+		fbMaximumSpeed(tTimeOn := T#10S, tTimeOff := T#12S, nSpeedOn := 3000, nSpeedOff := 0000, nSpeedOut => wContent);
+	1:
+		// Stand-by speed	
+		fbMaximumSpeed(tTimeOn := T#10S, tTimeOff := T#12M30S, nSpeedOn := 1000, nSpeedOff := 0000, nSpeedOut => wContent);
+	2:
+		// Manual mode
+		fbManualSpeed(tTimeOn := gvl.stFeederControl.tTimeOn, tTimeOff := gvl.stFeederControl.tTimeOff, nSpeedOn := REAL_TO_WORD(GVL.stFeederControl.fFrequency*100), nSpeedOff := 0000, nSpeedOut => wContent);
+END_CASE
+
+IF gvl.stFeederControl.bStart AND gvl.stFeederControl.bForward THEN // not set non-zero freq if motor's not on
+	gvl.stFeederControl.fFrequency := WORD_TO_REAL(wContent/100); // update current freq
+	ELSE wContent := 0000;
+		gvl.stFeederControl.fFrequency := 0;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FeederSpeedControl">
+      <LineId Id="6" Count="8" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="15" Count="10" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="26" Count="3" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

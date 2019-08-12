@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="WaterFlowControl" Id="{f6c82233-30f6-4cd0-a553-a6720ba3592b}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM WaterFlowControl
+VAR
+	bLowFlowTempWarning : BOOL := FALSE;
+	bUnloadBoilerToTanks : BOOL := FALSE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Loading heat to tanks using manual controll
+IF GVL.bValveManual THEN
+	IF GVL.bLoadTank1 THEN
+		GVL.bHV[1] := TRUE;  // open input valve for tank1
+	END_IF
+	IF GVL.bLoadTank2 THEN
+		GVL.bHV[4] := TRUE;  // open input valve for tank1
+	END_IF
+	IF GVL.bLoadTank3 THEN
+		GVL.bHV[7] := TRUE;  // open input valve for tank1
+	END_IF
+	
+	ELSE 
+		IF (GVL.fTE[18] >= (GVL.fTE[9] +5) 
+			OR (GVL.fTE[18] >= (GVL.fTE[11] +5)) 
+			OR (GVL.fTE[18] >= (GVL.fTE[13] +5))) AND NOT(bUnloadBoilerToTanks) THEN
+			bUnloadBoilerToTanks := TRUE;
+		END_IF
+		IF bUnloadBoilerToTanks THEN
+			IF GVL.fTE[18] >= GVL.fTE[9] +5 AND GVL.fTE[10] < 80 THEN
+			GVL.bHV[1] := TRUE;
+			GVL.bHV[4] := FALSE;
+			GVL.bHV[7] := FALSE;
+			GVL.bP2 := TRUE;
+			IF GVL.fTE[10] + 3 >= GVL.fTE[5] THEN
+				bUnloadBoilerToTanks := FALSE;
+			END_IF
+			ELSE IF GVL.fTE[18] >= GVL.fTE[11] +5 AND GVL.fTE[12] < 80 THEN
+					GVL.bHV[1] := FALSE;
+					GVL.bHV[4] := TRUE;
+					GVL.bHV[7] := FALSE;
+					GVL.bP2 := TRUE;
+					IF GVL.fTE[5] <= GVL.fTE[12] + 3 THEN
+						bUnloadBoilerToTanks := FALSE;
+					END_IF
+					ELSE IF GVL.fTE[18] >= GVL.fTE[13]+5 AND GVL.fTE[14] < 80 THEN
+						GVL.bHV[1] := FALSE;
+						GVL.bHV[4] := FALSE;
+						GVL.bHV[7] := TRUE;
+						GVL.bP2 := TRUE;
+						IF GVL.fTE[5] <= GVL.fTE[14] + 3 THEN
+							bUnloadBoilerToTanks := FALSE;
+						END_IF
+						ELSE GVL.bFanPower := TRUE; // lauhdutin fan
+							 GVL.bPumpPower := TRUE; 
+							 GVL.bHV[11] := TRUE;	// return valve
+							 GVL.bHV[9] := TRUE; // tank3 top valve
+							 GVL.bHV[1] := FALSE;
+							 GVL.bHV[4] := FALSE;
+							 GVL.bHV[7] := FALSE;
+							 GVL.bP2 := FALSE;
+					END_IF
+			END_IF
+		END_IF
+		ELSE GVL.bHV[1] := FALSE;
+			 GVL.bHV[4] := FALSE;
+			 GVL.bHV[7] := FALSE;
+			 GVL.bP2 := FALSE;
+	END_IF	
+END_IF
+
+
+
+
+// Automatic controll for lauhdutin fan
+// Turn fan OFF if in-out temp diff > 10 or out temp < 55 
+IF GVL.fTE[15]-GVL.fTE[16] > 10 THEN 
+	GVL.bFanPower := FALSE; 
+ELSE 
+	IF NOT bLowFlowTempWarning THEN
+		GVL.bFanPower := TRUE;
+	END_IF
+END_IF
+IF GVL.fTE[15] < 55 THEN // activate low flow temp warning
+	bLowFlowTempWarning := TRUE;
+	GVL.bFanPower := FALSE;
+	GVL.bPumpPower := FALSE;
+	GVL.bHV[11] := FALSE;
+END_IF
+IF GVl.fTE[15] > 56 THEN
+	GVL.bPumpPower := TRUE;;
+	GVL.bHV[11] := TRUE;
+END_IF
+IF GVL.fTE[15] > 59 THEN  // reset low flow temp warning
+	bLowFlowTempWarning := FALSE;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="WaterFlowControl">
+      <LineId Id="12" Count="0" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="123" Count="7" />
+      <LineId Id="122" Count="0" />
+      <LineId Id="223" Count="0" />
+      <LineId Id="189" Count="0" />
+      <LineId Id="243" Count="3" />
+      <LineId Id="242" Count="0" />
+      <LineId Id="241" Count="0" />
+      <LineId Id="194" Count="3" />
+      <LineId Id="256" Count="0" />
+      <LineId Id="226" Count="0" />
+      <LineId Id="228" Count="0" />
+      <LineId Id="227" Count="0" />
+      <LineId Id="198" Count="3" />
+      <LineId Id="254" Count="0" />
+      <LineId Id="229" Count="2" />
+      <LineId Id="202" Count="3" />
+      <LineId Id="255" Count="0" />
+      <LineId Id="233" Count="2" />
+      <LineId Id="206" Count="1" />
+      <LineId Id="236" Count="0" />
+      <LineId Id="208" Count="3" />
+      <LineId Id="253" Count="0" />
+      <LineId Id="212" Count="1" />
+      <LineId Id="192" Count="0" />
+      <LineId Id="215" Count="1" />
+      <LineId Id="214" Count="0" />
+      <LineId Id="252" Count="0" />
+      <LineId Id="193" Count="0" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="30" Count="1" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="32" Count="1" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="48" Count="1" />
+      <LineId Id="59" Count="2" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="67" Count="1" />
+      <LineId Id="52" Count="2" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

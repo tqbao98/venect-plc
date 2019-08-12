@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
   <DUT Name="GrundfosRegAddress" Id="{6a85841a-e978-4055-a2a4-7c2ac522c02c}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 TYPE GrundfosRegAddress :
 (
-	listStart				   := 300,
+	listStart				   := 299,
 	Head                       := 300, 
 	VolumeFlow                 ,
 	RelativePerformance        ,

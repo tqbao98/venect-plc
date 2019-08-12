@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <Task Name="ModbusComm" Id="{b90cb714-43e2-4024-9d51-d9146bd89aac}">
     <!--CycleTime in micro seconds.-->
-    <CycleTime>1000</CycleTime>
+    <CycleTime>5000</CycleTime>
     <Priority>21</Priority>
     <PouCall>
       <Name>BackgroundComm</Name>

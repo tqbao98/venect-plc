@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
   <DUT Name="EL3433Index" Id="{9974ad63-0f4c-4436-9c32-fd27fc1e6895}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 TYPE EL3433Index :
 (	
-	listStart	:= 3,
-	ApparentPower:=3,
+	listStart := 3,
+	ApparentPower :=3,
 	Q,
 	Energy,
 	PF,

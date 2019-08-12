@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
   <DUT Name="ATV212RegAddress" Id="{7ea17180-0d84-47f1-bc82-61931389fc91}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 TYPE ATV212RegAddress :
 (
                listStart                        := 16#1874,
-               MotorSpeed                       := 16#1874,
-               OutputFreq                       := 16#1875,
-               OutputCur                        := 16#1876,
-               OutputVol                        := 16#1877,
+               MotorSpeed                       := 16#1875,
+               Frequency                       	:= 16#1876,
+               Current                        	:= 16#1877,
+               Voltage                        	:= 16#1878,
                
-               OutputFrequency                  := 16#FD00, // Hz Current value
+               (*
                OutputFrequencyAtLastTrip		:= 16#FE00, // Hz Value before trip
                FrequencyReferenceBeforeRamp     := 16#FE02, // Hz Value before trip (before PI and speed ramp)
                FrequencyReferenceAfterRamp      := 16#FE15, // Hz Value before trip (after PI AND speed ramp)
                EstimatedSpeed                   := 16#FE16, // Hz Value before trip
                PIDFeedbackValue                 := 16#FE22, // Hz Value before trip
-               OutputSpeed                      := 16#FE90,
                
-               OutputCurrent                    := 16#FE03,
+               
+               
                Torque                           := 16#FE18,
                TorqueCurrent                    := 16#FE20,  //Value before trip
-               ExcitingCurrent                  := 16#FE21,  //Value before trip
-			   listEnd                          := 16#1877
+               ExcitingCurrent                  := 16#FE21,  //Value before trip*)
+			   listEnd                          := 16#1879
 ) WORD := listStart;
 END_TYPE
 ]]></Declaration>

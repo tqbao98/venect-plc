@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="BackgroundComm" Id="{40779a71-740b-4a35-a3c1-34d5abe4afe3}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM BackgroundComm
 VAR

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="FB_OnOffTimer" Id="{a7c94907-8f78-434d-b77b-1923a95ec5ca}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_OnOffTimer
+VAR_INPUT
+	tTimeOff	: TIME;
+	tTimeOn		: TIME;
+	nSpeedOn	: WORD;
+	nSpeedOff	: WORD;
+END_VAR
+VAR_OUTPUT
+	nSpeedOut	: WORD;
+END_VAR
+VAR
+	TimerOff: TON;
+	TimerOn: TOF;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[TimerOff(IN:= NOT(TimerOn.Q), PT:= tTimeOff, Q=> TimerOn.IN, ET=> );
+TimerOn(IN:= , PT:= tTimeOn, Q=> , ET=> );
+IF TimerOn.Q THEN
+	nSpeedOut := nSpeedOn;
+	ELSE nSpeedOut := nSpeedOff;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="FB_OnOffTimer">
+      <LineId Id="13" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="40" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

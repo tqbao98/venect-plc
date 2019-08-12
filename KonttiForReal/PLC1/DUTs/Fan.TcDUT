@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="Fan" Id="{9a2dd2f8-0729-4a1c-bace-ed9eff5a0ecb}">
+    <Declaration><![CDATA[{attribute 'pack_mode' := '1'}
+TYPE Fan :
+STRUCT
+	nSpeed 	: INT; // control primary fan speed 0-100%
+	nTemp	: INT; // prim fan's terminal temp in Celcius
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

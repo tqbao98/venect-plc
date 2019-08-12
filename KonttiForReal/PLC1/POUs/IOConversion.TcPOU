@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <POU Name="IOConversion" Id="{241e541d-1429-41f7-a6f5-b51ae6e6a06a}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM IOConversion
 VAR
@@ -9,29 +9,36 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[GVL.fTE[1] := HWVar.iAI1_VK[4]/10.0;
-GVL.fTE[18] := HWVar.iAI1_JK[1]/10.0;
+      <ST><![CDATA[GVL.fTE[1] := HWVar.iAI1_VK[4]/10.0; // from solar to kattila temp
+GVL.fTE[18] := HWVar.iAI1_JK[1]/10.0; // from kattila to solar temp
 
-GVL.fTE[6] := HWVar.iAI1_VK[3]/10.0;
-GVL.fTE[7] := HWVar.iAI1_VK[2]/10.0;
-GVL.fTE[8] := HWVar.iAI1_VK[1]/10.0;
-GVL.fTE[5] := HWVar.iAI1_JK[2]/10.0;
+GVL.fTE[5] := HWVar.iAI1_JK[2]/10.0; // kattila out temp
+GVL.fTE[6] := HWVar.iAI1_VK[3]/10.0; // tank1 in temp
+GVL.fTE[7] := HWVar.iAI1_VK[2]/10.0; // tank2 in temp
+GVL.fTE[8] := HWVar.iAI1_VK[1]/10.0; // tank8 in temp
 
-GVL.fTE[19] := HWVar.iAI1_JK[3]/10.0;
+GVL.fTE[15] := HWVar.iAI2_VK[1]/10.0; // lauhdutin in temp 
+GVL.fTE[16] := HWVar.iAI2_VK[3]/10.0; // lauhdutin out temp
+
+GVL.fTE[19] := HWVar.iAI1_JK[3]/10.0; // exhaust temp
+GVL.fTE[17] := HWVar.iAI1_JK[4]/10.0; // kattila room temp
+
+GVL.stPrimaryFan.nTemp := HWVar.stKL2761_in.iDataIn; //read prim fan terminal temp
+HWVar.stKL2761_out.iDataOut := GVL.stPrimaryFan.nSpeed*32767/100; //control prim fan speed
 
 FOR i:= 1 TO 3 DO
-	GVL.stMain[i].fCurrent := HWVar.EL3433_Grid[i].dCurrent*0.000001;
-	GVL.stMain[i].fVoltage := HWVar.EL3433_Grid[i].dVoltage*0.0001;
-	GVL.stMain[i].fP := HWVar.EL3433_Grid[i].dPower*0.01;
+	GVL.stMain[i].fCurrent := TO_REAL(HWVar.EL3433_Grid[i].dCurrent)*0.000001;
+	GVL.stMain[i].fVoltage := TO_REAL(HWVar.EL3433_Grid[i].dVoltage)*0.0001;
+	GVL.stMain[i].fP := TO_REAL(HWVar.EL3433_Grid[i].dPower)*0.01;
 	EL3433DataMain[i](
 		pstEL3433Data := ADR(GVL.stMain[i]),
 		pstEL3433IO := ADR(HWVar.EL3433_Grid[i]),
 		pstEL3433OutputIndex := ADR(HWVar.EL3433_GridIndex[i])
 	);
 END_FOR
-GVL.stSolarL1.fCurrent := HWVar.EL3433_Solar.dCurrent*0.000001;
-GVL.stSolarL1.fVoltage := HWVar.EL3433_Solar.dVoltage*0.0001;
-GVL.stSolarL1.fP := HWVar.EL3433_Solar.dPower*0.01;
+GVL.stSolarL1.fCurrent := TO_REAL(HWVar.EL3433_Solar.dCurrent)*0.000001;
+GVL.stSolarL1.fVoltage := TO_REAL(HWVar.EL3433_Solar.dVoltage)*0.0001;
+GVL.stSolarL1.fP := TO_REAL(HWVar.EL3433_Solar.dPower)*0.01;
 	EL3433DataSolar(
 		pstEL3433Data := ADR(GVL.stSolarL1),
 		pstEL3433IO := ADR(HWVar.EL3433_Solar),
@@ -43,10 +50,16 @@ GVL.stSolarL1.fP := HWVar.EL3433_Solar.dPower*0.01;
       <LineId Id="10" Count="0" />
       <LineId Id="17" Count="0" />
       <LineId Id="19" Count="0" />
-      <LineId Id="11" Count="3" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="11" Count="2" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="73" Count="1" />
       <LineId Id="18" Count="0" />
       <LineId Id="15" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="84" Count="0" />
       <LineId Id="25" Count="0" />
+      <LineId Id="85" Count="1" />
       <LineId Id="24" Count="0" />
       <LineId Id="26" Count="0" />
       <LineId Id="29" Count="1" />

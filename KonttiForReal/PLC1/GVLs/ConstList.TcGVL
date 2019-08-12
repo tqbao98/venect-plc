@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.9">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
   <GVL Name="ConstList" Id="{6191121b-b301-459b-aa7b-58588709d812}">
     <Declaration><![CDATA[VAR_GLOBAL
 	aEL3433IndicesScale	: ARRAY[EL3433Index.listStart..EL3433Index.listEnd]	OF REAL := [
@@ -44,6 +44,10 @@
 		47,
 		48
 	];
+	WaterTempMax	: INT 	:= 85; // Maximum water temperature
+	WaterTempMin	: INT	:= 60; // Minimum water temperature
+	WaterTempDes	: INT	:= 75; // Desired water temperature
+	WaterTempWar	: INT	:= 90; // Warning water temperature
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

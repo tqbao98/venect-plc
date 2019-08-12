@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
-  <GVL Name="GVL" Id="{884c114f-e978-4949-b759-3e84d5a1e2f7}">
+  <GVL Name="GVL" Id="{27a454ff-4ac5-4ab3-a2d9-b63386c98c65}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	{attribute 'OPC.UA.DA' := '1'}
@@ -8,15 +8,17 @@ VAR_GLOBAL
 	{attribute 'OPC.UA.DA' := '1'}
     bHV AT %Q*  : ARRAY [1..11] OF BOOL;
 	{attribute 'OPC.UA.DA' := '1'}
-    bP1, bP2	: BOOL := TRUE;
+	bFanPower AT %Q* : BOOL;  // Lauhdutin fan power
 	{attribute 'OPC.UA.DA' := '1'}
-    bFan AT %Q*  : BOOL;
+	bPumpPower AT %Q* : BOOL := TRUE; // Lauhdutin circulation pump power
 	{attribute 'OPC.UA.DA' := '1'}
-    bST         : BOOL;
+    bP1, bP2, bP3	: BOOL := TRUE;
 	{attribute 'OPC.UA.DA' := '1'}
 	stP1		: GrundfosMagna3;
 	{attribute 'OPC.UA.DA' := '1'}
 	stP2		: GrundfosMagna3;
+	{attribute 'OPC.UA.DA' := '1'}
+	stP3		: GrundfosMagna3;
 	{attribute 'OPC.UA.DA' := '1'}
 	stFeeder	: ATV212;
 	{attribute 'OPC.UA.DA' := '1'}
@@ -31,6 +33,18 @@ VAR_GLOBAL
 	stMain	: ARRAY [1..3] OF EL3433Measurement; 
 	{attribute 'OPC.UA.DA' := '1'}
 	stSolarL1	: EL3433Measurement;
+	{attribute 'OPC.UA.DA' := '1'}
+	nError	: UINT; 
+	{attribute 'OPC.UA.DA' := '1'}
+	nFlame		: REAL;
+	{attribute 'OPC.UA.DA' := '1'}
+	stPrimaryFan	: FAN;
+	{attribute 'OPC.UA.DA' := '1'}
+	stSecondaryFan	: FAN;
+	{attribute 'OPC.UA.DA' := '1'}
+	bValveManual	: BOOL; // load tank manually or automatically based on water temps
+	{attribute 'OPC.UA.DA' := '1'}
+	bBurningStart : BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

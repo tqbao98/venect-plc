@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4022.14">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4022.30">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{CF887A53-7490-A600-6B5D-04343BF0EA32}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..4] OF INT</Name>
@@ -11,35 +11,108 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{FE13A515-F397-43FF-8564-59661CB1202A}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
-			<BitSize>192</BitSize>
+			<Name GUID="{95B83CCB-F032-4FDE-8D2F-1CB154184CA5}" AutoDeleteType="true">stEL3433_In</Name>
+			<BitSize>136</BitSize>
 			<SubItem>
-				<Name>Status</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
-				<BitSize>16</BitSize>
+				<Name>dCurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
 				<BitOffs>0</BitOffs>
 			</SubItem>
 			<SubItem>
-				<Name>D</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>22</Elements>
-				</ArrayInfo>
-				<BitSize>176</BitSize>
-				<BitOffs>16</BitOffs>
+				<Name>dVoltage</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>dPower</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>dIndex</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>dVariant</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>104</BitOffs>
 			</SubItem>
 			<Properties>
 				<Property>
-					<Name>hide</Name>
+					<Name>pack_mode</Name>
+					<Value>1</Value>
 				</Property>
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{E9ACFD5E-51B0-459F-AD15-0A7E162F8A7F}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6outData22B</Name>
+			<Name IecBaseType="true">ARRAY [1..3] OF stEL3433_In</Name>
+			<BitSize>408</BitSize>
+			<BaseType GUID="{95B83CCB-F032-4FDE-8D2F-1CB154184CA5}">stEL3433_In</BaseType>
+			<ArrayInfo>
+				<LBound>1</LBound>
+				<Elements>3</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{95B83CCB-F032-4FDE-8D2F-1CB154184CA5}" AutoDeleteType="true">stEL3433_In</Name>
+			<BitSize>136</BitSize>
+			<SubItem>
+				<Name>dCurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>dVoltage</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>dPower</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>dIndex</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>dVariant</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>104</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>pack_mode</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
+			<Name GUID="{A5AC38E6-0DC4-889C-DC96-B6E74C453944}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..3] OF USINT</Name>
+			<BitSize>24</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000002}">USINT</BaseType>
+			<ArrayInfo>
+				<LBound>1</LBound>
+				<Elements>3</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{A1963BCA-1F33-4F1C-A4F5-0AE2276F6E05}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
 			<BitSize>192</BitSize>
 			<SubItem>
-				<Name>Ctrl</Name>
+				<Name>Status</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
 				<BitSize>16</BitSize>
 				<BitOffs>0</BitOffs>
@@ -70,7 +143,32 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{A57F43D8-CC1B-4C08-B37A-8024F08DF2BC}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xInData</Name>
+			<Name GUID="{D4BD498B-1702-4B9E-B812-514B08A7CF4E}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6outData22B</Name>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>Ctrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>22</Elements>
+				</ArrayInfo>
+				<BitSize>176</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>hide</Name>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
+			<Name GUID="{8C351523-CBA0-4987-9F4B-CE48BA409B08}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xInData</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
 				<Name>iState</Name>
@@ -86,7 +184,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{7124AF12-F5C2-4439-AD03-103D475AE013}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xOutData</Name>
+			<Name GUID="{BBEABDED-A942-4850-992D-5A597C3F2AA2}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xOutData</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
 				<Name>iCtrl</Name>
@@ -209,15 +307,18 @@
 				<Task Id="4" Priority="21" CycleTime="10000" AmsPort="351" AdtTasks="true">
 					<Name>ModbusComm</Name>
 				</Task>
+				<Task Id="5" Priority="10" CycleTime="10000" AmsPort="352" AdtTasks="true">
+					<Name>IoConversionTask</Name>
+				</Task>
 			</Tasks>
 		</System>
 		<Plc>
-			<Project GUID="{8AC687C0-CF8B-4FE8-92DA-00C1276BCEAA}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" CopyTmcToTarget="true" CopyTpyToTarget="false" SymbolicMapping="true">
+			<Project GUID="{8AC687C0-CF8B-4FE8-92DA-00C1276BCEAA}" Name="PLC1" PrjFilePath="PLC1\PLC1.plcproj" TmcFilePath="PLC1\PLC1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
 				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC1\PLC1.tmc">
 					<Name>PLC1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
-						<Name>PlcTask Inputs</Name>
+						<Name>IoConversionTask Inputs</Name>
 						<Var>
 							<Name>HWVar.iAI1_VK</Name>
 							<Type GUID="{CF887A53-7490-A600-6B5D-04343BF0EA32}">ARRAY [1..4] OF INT</Type>
@@ -227,41 +328,64 @@
 							<Type GUID="{CF887A53-7490-A600-6B5D-04343BF0EA32}">ARRAY [1..4] OF INT</Type>
 						</Var>
 						<Var>
+							<Name>HWVar.EL3433_Grid</Name>
+							<Type GUID="{1EA9C5C7-CFF8-F677-0BFA-436C8F57AD76}">ARRAY [1..3] OF stEL3433_In</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.EL3433_Solar</Name>
+							<Type GUID="{95B83CCB-F032-4FDE-8D2F-1CB154184CA5}">stEL3433_In</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2">
+						<Name>IoConversionTask Outputs</Name>
+						<Var>
+							<Name>HWVar.EL3433_SolarIndex</Name>
+							<Type>USINT</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.EL3433_GridIndex</Name>
+							<Type GUID="{A5AC38E6-0DC4-889C-DC96-B6E74C453944}">ARRAY [1..3] OF USINT</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
 							<Name>HWVar.ModbusMaster.InData</Name>
-							<Type GUID="{FE13A515-F397-43FF-8564-59661CB1202A}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
+							<Type GUID="{A1963BCA-1F33-4F1C-A4F5-0AE2276F6E05}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>HWVar.ModbusMaster.OutData</Name>
-							<Type GUID="{E9ACFD5E-51B0-459F-AD15-0A7E162F8A7F}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
-						</Var>
-						<Var>
 							<Name>GVL.bHV</Name>
 							<Type GUID="{C908E820-A3B3-9CB7-AD48-33D54E751470}">ARRAY [1..11] OF BOOL</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.ModbusMaster.OutData</Name>
+							<Type GUID="{D4BD498B-1702-4B9E-B812-514B08A7CF4E}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
 						<Name>ModbusComm Inputs</Name>
 						<Var>
 							<Name>HWVar.stKL3204_in</Name>
-							<Type GUID="{A57F43D8-CC1B-4C08-B37A-8024F08DF2BC}" Namespace="Tc2_IoFunctions">ST_KL320xInData</Type>
+							<Type GUID="{8C351523-CBA0-4987-9F4B-CE48BA409B08}" Namespace="Tc2_IoFunctions">ST_KL320xInData</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>ModbusComm Outputs</Name>
 						<Var>
-							<Name>HWVar.stKL3204_out</Name>
-							<Type GUID="{7124AF12-F5C2-4439-AD03-103D475AE013}" Namespace="Tc2_IoFunctions">ST_KL320xOutData</Type>
-						</Var>
-						<Var>
 							<Name>GVL.bFan</Name>
 							<Type>BOOL</Type>
 						</Var>
+						<Var>
+							<Name>HWVar.stKL3204_out</Name>
+							<Type GUID="{BBEABDED-A942-4850-992D-5A597C3F2AA2}" Namespace="Tc2_IoFunctions">ST_KL320xOutData</Type>
+						</Var>
 					</Vars>
 					<TaskPouOids>
-						<TaskPouOid Prio="21" OTCID="#x08502001"/>
+						<TaskPouOid Prio="10" OTCID="#x08502001"/>
+						<TaskPouOid Prio="21" OTCID="#x08502003"/>
 						<TaskPouOid Prio="20" OTCID="#x08502002"/>
 					</TaskPouOids>
 				</Instance>
@@ -297,6 +421,9 @@
 				</AddressInfo>
 				<Image Id="1" AddrType="9" ImageType="3">
 					<Name>Image</Name>
+				</Image>
+				<Image Id="3" AddrType="10" ImageType="3">
+					<Name>Image-2</Name>
 				</Image>
 				<Box BoxType="9099" Id="1">
 					<Name>Term 1 (EK1200)</Name>
@@ -2375,7 +2502,7 @@
 ]]>
 										</Comment>
 										<Type>UINT</Type>
-										<BitOffs>760</BitOffs>
+										<BitOffs>312</BitOffs>
 									</Var>
 								</Vars>
 								<Vars VarGrpType="2">
@@ -2388,7 +2515,7 @@
 ]]>
 										</Comment>
 										<Type>UINT</Type>
-										<BitOffs>760</BitOffs>
+										<BitOffs>312</BitOffs>
 									</Var>
 								</Vars>
 								<BusCoupler ComplexTermSupport="true" NewHardware="true">
@@ -2401,25 +2528,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>776</BitOffs>
+												<BitOffs>328</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>792</BitOffs>
+												<BitOffs>344</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>776</BitOffs>
+												<BitOffs>328</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>792</BitOffs>
+												<BitOffs>344</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2428,25 +2555,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>808</BitOffs>
+												<BitOffs>360</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>824</BitOffs>
+												<BitOffs>376</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>808</BitOffs>
+												<BitOffs>360</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>824</BitOffs>
+												<BitOffs>376</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2455,25 +2582,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>840</BitOffs>
+												<BitOffs>392</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>856</BitOffs>
+												<BitOffs>408</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>840</BitOffs>
+												<BitOffs>392</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>856</BitOffs>
+												<BitOffs>408</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2482,25 +2609,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>872</BitOffs>
+												<BitOffs>424</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>888</BitOffs>
+												<BitOffs>440</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>872</BitOffs>
+												<BitOffs>424</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>888</BitOffs>
+												<BitOffs>440</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2513,25 +2640,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>904</BitOffs>
+												<BitOffs>456</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>920</BitOffs>
+												<BitOffs>472</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>904</BitOffs>
+												<BitOffs>456</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>920</BitOffs>
+												<BitOffs>472</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2540,25 +2667,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>936</BitOffs>
+												<BitOffs>488</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>952</BitOffs>
+												<BitOffs>504</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>936</BitOffs>
+												<BitOffs>488</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>952</BitOffs>
+												<BitOffs>504</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2567,25 +2694,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>968</BitOffs>
+												<BitOffs>520</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>984</BitOffs>
+												<BitOffs>536</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>968</BitOffs>
+												<BitOffs>520</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>984</BitOffs>
+												<BitOffs>536</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2594,25 +2721,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>1000</BitOffs>
+												<BitOffs>552</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>1016</BitOffs>
+												<BitOffs>568</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>1000</BitOffs>
+												<BitOffs>552</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>1016</BitOffs>
+												<BitOffs>568</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2625,25 +2752,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>1032</BitOffs>
+												<BitOffs>584</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>1048</BitOffs>
+												<BitOffs>600</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>1032</BitOffs>
+												<BitOffs>584</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>1048</BitOffs>
+												<BitOffs>600</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2652,25 +2779,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>1064</BitOffs>
+												<BitOffs>616</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>1080</BitOffs>
+												<BitOffs>632</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>1064</BitOffs>
+												<BitOffs>616</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>1080</BitOffs>
+												<BitOffs>632</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2679,25 +2806,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>1096</BitOffs>
+												<BitOffs>648</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>1112</BitOffs>
+												<BitOffs>664</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>1096</BitOffs>
+												<BitOffs>648</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>1112</BitOffs>
+												<BitOffs>664</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2706,25 +2833,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>1128</BitOffs>
+												<BitOffs>680</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>1144</BitOffs>
+												<BitOffs>696</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>1128</BitOffs>
+												<BitOffs>680</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x5">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>1144</BitOffs>
+												<BitOffs>696</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2737,7 +2864,7 @@
 											<Var>
 												<Name>Output</Name>
 												<Type>BIT</Type>
-												<BitOffs>1160</BitOffs>
+												<BitOffs>712</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -2746,7 +2873,7 @@
 											<Var>
 												<Name>Output</Name>
 												<Type>BIT</Type>
-												<BitOffs>1161</BitOffs>
+												<BitOffs>713</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -3221,7 +3348,7 @@
 ]]>
 								</Comment>
 								<Type>UINT</Type>
-								<BitOffs>2264</BitOffs>
+								<BitOffs>12944</BitOffs>
 							</Var>
 						</Vars>
 						<Vars VarGrpType="2">
@@ -3234,7 +3361,7 @@
 ]]>
 								</Comment>
 								<Type>UINT</Type>
-								<BitOffs>2264</BitOffs>
+								<BitOffs>12944</BitOffs>
 							</Var>
 						</Vars>
 						<BusCoupler ComplexTermSupport="true" NewHardware="true">
@@ -3247,145 +3374,145 @@
 									<Var>
 										<Name>Status</Name>
 										<Type>USINT</Type>
-										<BitOffs>2280</BitOffs>
+										<BitOffs>12960</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input CNODE</Name>
 										<Type>USINT</Type>
-										<BitOffs>2288</BitOffs>
+										<BitOffs>12968</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input ORG</Name>
 										<Type>USINT</Type>
-										<BitOffs>2296</BitOffs>
+										<BitOffs>12976</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input DB0</Name>
 										<Type>USINT</Type>
-										<BitOffs>2304</BitOffs>
+										<BitOffs>12984</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input DB1</Name>
 										<Type>USINT</Type>
-										<BitOffs>2312</BitOffs>
+										<BitOffs>12992</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input DB2</Name>
 										<Type>USINT</Type>
-										<BitOffs>2320</BitOffs>
+										<BitOffs>13000</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input DB3</Name>
 										<Type>USINT</Type>
-										<BitOffs>2328</BitOffs>
+										<BitOffs>13008</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input ID0</Name>
 										<Type>USINT</Type>
-										<BitOffs>2336</BitOffs>
+										<BitOffs>13016</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input ID1</Name>
 										<Type>USINT</Type>
-										<BitOffs>2344</BitOffs>
+										<BitOffs>13024</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input ID2</Name>
 										<Type>USINT</Type>
-										<BitOffs>2352</BitOffs>
+										<BitOffs>13032</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input ID3</Name>
 										<Type>USINT</Type>
-										<BitOffs>2360</BitOffs>
+										<BitOffs>13040</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Input STATUS</Name>
 										<Type>USINT</Type>
-										<BitOffs>2368</BitOffs>
+										<BitOffs>13048</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Control</Name>
 										<Type>USINT</Type>
-										<BitOffs>2280</BitOffs>
+										<BitOffs>12960</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output CNODE</Name>
 										<Type>USINT</Type>
-										<BitOffs>2288</BitOffs>
+										<BitOffs>12968</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output ORG</Name>
 										<Type>USINT</Type>
-										<BitOffs>2296</BitOffs>
+										<BitOffs>12976</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output DB0</Name>
 										<Type>USINT</Type>
-										<BitOffs>2304</BitOffs>
+										<BitOffs>12984</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output DB1</Name>
 										<Type>USINT</Type>
-										<BitOffs>2312</BitOffs>
+										<BitOffs>12992</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output DB2</Name>
 										<Type>USINT</Type>
-										<BitOffs>2320</BitOffs>
+										<BitOffs>13000</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output DB3</Name>
 										<Type>USINT</Type>
-										<BitOffs>2328</BitOffs>
+										<BitOffs>13008</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output ID0</Name>
 										<Type>USINT</Type>
-										<BitOffs>2336</BitOffs>
+										<BitOffs>13016</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output ID1</Name>
 										<Type>USINT</Type>
-										<BitOffs>2344</BitOffs>
+										<BitOffs>13024</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output ID2</Name>
 										<Type>USINT</Type>
-										<BitOffs>2352</BitOffs>
+										<BitOffs>13032</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output ID3</Name>
 										<Type>USINT</Type>
-										<BitOffs>2360</BitOffs>
+										<BitOffs>13040</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Output STATUS</Name>
 										<Type>USINT</Type>
-										<BitOffs>2368</BitOffs>
+										<BitOffs>13048</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 								</Vars>
@@ -3398,25 +3525,25 @@
 									<Var>
 										<Name>State</Name>
 										<Type>USINT</Type>
-										<BitOffs>2376</BitOffs>
+										<BitOffs>13056</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Data In</Name>
 										<Type>INT</Type>
-										<BitOffs>2392</BitOffs>
+										<BitOffs>13072</BitOffs>
 										<InOut>0</InOut>
 									</Var>
 									<Var>
 										<Name>Ctrl</Name>
 										<Type>USINT</Type>
-										<BitOffs>2376</BitOffs>
+										<BitOffs>13056</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 									<Var>
 										<Name>Data Out</Name>
 										<Type>INT</Type>
-										<BitOffs>2392</BitOffs>
+										<BitOffs>13072</BitOffs>
 										<InOut>1</InOut>
 									</Var>
 								</Vars>
@@ -3443,9 +3570,84 @@
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{08502001-0010-0304-0020-500810000403}" Id="#x02030020" Watchdog="00000000000000000000000000000000"/>
-		<MappingInfo Identifier="{00000000-2002-0850-0020-500810000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{08502003-0010-0304-0020-500810000403}" Id="#x02030020" Watchdog="04000000040000000400000004000000"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{00000000-2002-0850-0120-500831000403}" Id="#x02030030"/>
 		<OwnerA Name="TIPC^PLC1^PLC1 Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 13 (EL3433)">
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[1]^dCurrent" VarB="PM Inputs Channel 1^Current"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[1]^dIndex" VarB="PM Inputs Channel 1^Index"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[1]^dPower" VarB="PM Inputs Channel 1^Active power"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[1]^dVariant" VarB="PM Inputs Channel 1^Variant value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[1]^dVoltage" VarB="PM Inputs Channel 1^Voltage"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[2]^dCurrent" VarB="PM Inputs Channel 2^Current"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[2]^dIndex" VarB="PM Inputs Channel 2^Index"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[2]^dPower" VarB="PM Inputs Channel 2^Active power"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[2]^dVariant" VarB="PM Inputs Channel 2^Variant value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[2]^dVoltage" VarB="PM Inputs Channel 2^Voltage"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[3]^dCurrent" VarB="PM Inputs Channel 3^Current"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[3]^dIndex" VarB="PM Inputs Channel 3^Index"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[3]^dPower" VarB="PM Inputs Channel 3^Active power"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[3]^dVariant" VarB="PM Inputs Channel 3^Variant value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Grid[3]^dVoltage" VarB="PM Inputs Channel 3^Voltage"/>
+				<Link VarA="IoConversionTask Outputs^HWVar.EL3433_GridIndex[1]" VarB="PM Outputs Channel 1^Index"/>
+				<Link VarA="IoConversionTask Outputs^HWVar.EL3433_GridIndex[2]" VarB="PM Outputs Channel 2^Index"/>
+				<Link VarA="IoConversionTask Outputs^HWVar.EL3433_GridIndex[3]" VarB="PM Outputs Channel 3^Index"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 14 (EL3433)">
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Solar^dCurrent" VarB="PM Inputs Channel 1^Current"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Solar^dIndex" VarB="PM Inputs Channel 1^Index"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Solar^dPower" VarB="PM Inputs Channel 1^Active power"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Solar^dVariant" VarB="PM Inputs Channel 1^Variant value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.EL3433_Solar^dVoltage" VarB="PM Inputs Channel 1^Voltage"/>
+				<Link VarA="IoConversionTask Outputs^HWVar.EL3433_SolarIndex" VarB="PM Outputs Channel 1^Index"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL6021)">
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[0]" VarB="COM TxPDO-Map Inputs^Data In 0"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[10]" VarB="COM TxPDO-Map Inputs^Data In 10"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[11]" VarB="COM TxPDO-Map Inputs^Data In 11"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[12]" VarB="COM TxPDO-Map Inputs^Data In 12"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[13]" VarB="COM TxPDO-Map Inputs^Data In 13"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[14]" VarB="COM TxPDO-Map Inputs^Data In 14"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[15]" VarB="COM TxPDO-Map Inputs^Data In 15"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[16]" VarB="COM TxPDO-Map Inputs^Data In 16"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[17]" VarB="COM TxPDO-Map Inputs^Data In 17"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[18]" VarB="COM TxPDO-Map Inputs^Data In 18"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[19]" VarB="COM TxPDO-Map Inputs^Data In 19"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[1]" VarB="COM TxPDO-Map Inputs^Data In 1"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[20]" VarB="COM TxPDO-Map Inputs^Data In 20"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[21]" VarB="COM TxPDO-Map Inputs^Data In 21"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[2]" VarB="COM TxPDO-Map Inputs^Data In 2"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[3]" VarB="COM TxPDO-Map Inputs^Data In 3"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[4]" VarB="COM TxPDO-Map Inputs^Data In 4"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[5]" VarB="COM TxPDO-Map Inputs^Data In 5"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[6]" VarB="COM TxPDO-Map Inputs^Data In 6"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[7]" VarB="COM TxPDO-Map Inputs^Data In 7"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[8]" VarB="COM TxPDO-Map Inputs^Data In 8"/>
+				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D[9]" VarB="COM TxPDO-Map Inputs^Data In 9"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[0]" VarB="COM RxPDO-Map Outputs^Data Out 0"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[10]" VarB="COM RxPDO-Map Outputs^Data Out 10"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[11]" VarB="COM RxPDO-Map Outputs^Data Out 11"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[12]" VarB="COM RxPDO-Map Outputs^Data Out 12"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[13]" VarB="COM RxPDO-Map Outputs^Data Out 13"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[14]" VarB="COM RxPDO-Map Outputs^Data Out 14"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[15]" VarB="COM RxPDO-Map Outputs^Data Out 15"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[16]" VarB="COM RxPDO-Map Outputs^Data Out 16"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[17]" VarB="COM RxPDO-Map Outputs^Data Out 17"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[18]" VarB="COM RxPDO-Map Outputs^Data Out 18"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[19]" VarB="COM RxPDO-Map Outputs^Data Out 19"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[1]" VarB="COM RxPDO-Map Outputs^Data Out 1"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[20]" VarB="COM RxPDO-Map Outputs^Data Out 20"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[21]" VarB="COM RxPDO-Map Outputs^Data Out 21"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[2]" VarB="COM RxPDO-Map Outputs^Data Out 2"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[3]" VarB="COM RxPDO-Map Outputs^Data Out 3"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[4]" VarB="COM RxPDO-Map Outputs^Data Out 4"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[5]" VarB="COM RxPDO-Map Outputs^Data Out 5"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[6]" VarB="COM RxPDO-Map Outputs^Data Out 6"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[7]" VarB="COM RxPDO-Map Outputs^Data Out 7"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[8]" VarB="COM RxPDO-Map Outputs^Data Out 8"/>
+				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData^D[9]" VarB="COM RxPDO-Map Outputs^Data Out 9"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 5 (EK1914)^Term 6 (EL2809)">
 				<Link VarA="PlcTask Outputs^GVL.bHV[10]" VarB="Channel 10^Output"/>
 				<Link VarA="PlcTask Outputs^GVL.bHV[11]" VarB="Channel 11^Output"/>
@@ -3460,64 +3662,16 @@
 				<Link VarA="PlcTask Outputs^GVL.bHV[9]" VarB="Channel 9^Output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 5 (EK1914)^Term 7 (EL3214)">
-				<Link VarA="PlcTask Inputs^HWVar.iAI1_VK[1]" VarB="RTD Inputs Channel 1^Value"/>
-				<Link VarA="PlcTask Inputs^HWVar.iAI1_VK[2]" VarB="RTD Inputs Channel 2^Value"/>
-				<Link VarA="PlcTask Inputs^HWVar.iAI1_VK[3]" VarB="RTD Inputs Channel 3^Value"/>
-				<Link VarA="PlcTask Inputs^HWVar.iAI1_VK[4]" VarB="RTD Inputs Channel 4^Value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[1]" VarB="RTD Inputs Channel 1^Value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[2]" VarB="RTD Inputs Channel 2^Value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[3]" VarB="RTD Inputs Channel 3^Value"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_VK[4]" VarB="RTD Inputs Channel 4^Value"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 8 (EK1100)^Box 12 (BK1250)">
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_JK[1]" VarB="Term 5 (KL3204)^Channel 1^Data In"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_JK[2]" VarB="Term 5 (KL3204)^Channel 2^Data In"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.iAI1_JK[3]" VarB="Term 5 (KL3204)^Channel 3^Data In"/>
 				<Link VarA="ModbusComm Outputs^GVL.bFan" VarB="Term 6 (KL2012)^Channel 1^Output"/>
-				<Link VarA="PlcTask Inputs^HWVar.iAI1_JK[1]" VarB="Term 5 (KL3204)^Channel 1^Data In"/>
-				<Link VarA="PlcTask Inputs^HWVar.iAI1_JK[2]" VarB="Term 5 (KL3204)^Channel 2^Data In"/>
-				<Link VarA="PlcTask Inputs^HWVar.iAI1_JK[3]" VarB="Term 5 (KL3204)^Channel 3^Data In"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 8 (EK1100)^Term 9 (EL6021)">
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 0" Size="8" OffsA="16"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 1" Size="8" OffsA="24"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 10" Size="8" OffsA="96"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 11" Size="8" OffsA="104"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 12" Size="8" OffsA="112"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 13" Size="8" OffsA="120"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 14" Size="8" OffsA="128"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 15" Size="8" OffsA="136"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 16" Size="8" OffsA="144"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 17" Size="8" OffsA="152"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 18" Size="8" OffsA="160"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 19" Size="8" OffsA="168"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 2" Size="8" OffsA="32"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 20" Size="8" OffsA="176"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 21" Size="8" OffsA="184"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 3" Size="8" OffsA="40"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 4" Size="8" OffsA="48"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 5" Size="8" OffsA="56"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 6" Size="8" OffsA="64"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 7" Size="8" OffsA="72"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 8" Size="8" OffsA="80"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Data In 9" Size="8" OffsA="88"/>
-				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData" VarB="COM TxPDO-Map Inputs^Status"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Ctrl"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 0" Size="8" OffsA="16"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 1" Size="8" OffsA="24"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 10" Size="8" OffsA="96"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 11" Size="8" OffsA="104"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 12" Size="8" OffsA="112"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 13" Size="8" OffsA="120"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 14" Size="8" OffsA="128"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 15" Size="8" OffsA="136"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 16" Size="8" OffsA="144"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 17" Size="8" OffsA="152"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 18" Size="8" OffsA="160"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 19" Size="8" OffsA="168"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 2" Size="8" OffsA="32"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 20" Size="8" OffsA="176"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 21" Size="8" OffsA="184"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 3" Size="8" OffsA="40"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 4" Size="8" OffsA="48"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 5" Size="8" OffsA="56"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 6" Size="8" OffsA="64"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 7" Size="8" OffsA="72"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 8" Size="8" OffsA="80"/>
-				<Link VarA="PlcTask Outputs^HWVar.ModbusMaster.OutData" VarB="COM RxPDO-Map Outputs^Data Out 9" Size="8" OffsA="88"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

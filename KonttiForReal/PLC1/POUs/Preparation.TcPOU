@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Preparation" Id="{884659b8-acb9-47ec-ab22-6a063c31c66d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Preparation
+VAR_INPUT
+	nStepIn	: INT;
+END_VAR
+VAR
+	tonFeeder: TON;
+	bStageIsRunning : BOOL;
+	bFeeder: BOOL;
+	bPump: BOOL;
+	nTime: TIME;
+END_VAR
+VAR_OUTPUT
+	err : UINT;
+	nStepOut	: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// timers used in this program
+tonFeeder(IN:= , PT:= T#15S, Q=> , ET=> nTime);
+
+// check that no error is occuring
+IF (GVL.nError <> ErrorCode.SUCCESS) THEN
+	err := GVL.nError;
+	nStepOut := nStepIn;
+RETURN;
+END_IF
+	
+// water temp judgement, return if temp is already high enough
+IF (GVL.fTE[5] >= ConstList.WaterTempMax) THEN
+	err := ErrorCode.PREPARATION_WATER_HIGH_TEMP;
+	nStepOut := nStepIn;
+RETURN;
+END_IF
+		
+// flame detect
+
+	
+// start preparation
+// load fuels
+//GVL.stFeederControl.bStart := TRUE;
+//GVL.stFeederControl.bForward := TRUE;
+IF NOT(bStageIsRunning) THEN
+	bFeeder := TRUE;
+	bPump := TRUE;
+	tonFeeder.IN := TRUE;
+	bStageIsRunning := TRUE;
+END_IF
+
+// open pumps 1,2 
+//GVL.bP1 := TRUE;
+//GVL.bP2 := TRUE;
+
+IF tonFeeder.Q THEN
+	tonFeeder.IN := FALSE;
+	bFeeder := FALSE;
+	bPump := FALSE;
+	// return that the state is finished and move on to next state
+	err := ErrorCode.SUCCESS;
+	bStageIsRunning := FALSE;
+	nStepOut := nStepIn + 1;
+	RETURN;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="Preparation">
+      <LineId Id="49" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="16" Count="2" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="19" Count="2" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="23" Count="1" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="25" Count="9" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="89" Count="1" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="92" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="84" Count="1" />
+      <LineId Id="76" Count="1" />
+      <LineId Id="93" Count="2" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="40" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
