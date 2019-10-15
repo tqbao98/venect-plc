@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="CoolingFan" Id="{f6c82233-30f6-4cd0-a553-a6720ba3592b}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM CoolingFan
+VAR
+	bLowFlowTempWarning : BOOL := FALSE;
+	bUnloadBoilerToTanks : BOOL := FALSE;
+	tonPump2: TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Automatic controll for lauhdutin fan
+// Turn fan OFF if in-out temp diff > 10 or out temp < 55 
+IF GVL.fTE[15]-GVL.fTE[16] > 10 THEN 
+	GVL.bFanPower := FALSE; 
+ELSE 
+	IF NOT bLowFlowTempWarning THEN
+		GVL.bFanPower := TRUE;
+	END_IF
+END_IF
+IF GVL.fTE[15] < 55 THEN // activate low flow temp warning
+	bLowFlowTempWarning := TRUE;
+	GVL.bFanPower := FALSE;
+	GVL.bP3 := FALSE;
+	GVL.bHV[11] := FALSE;
+END_IF
+IF GVl.fTE[15] > 56 THEN
+	GVL.bP3 := TRUE;;
+	GVL.bHV[11] := TRUE;
+END_IF
+IF GVL.fTE[15] > 59 THEN  // reset low flow temp warning
+	bLowFlowTempWarning := FALSE;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="CoolingFan">
+      <LineId Id="31" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="32" Count="1" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="48" Count="1" />
+      <LineId Id="59" Count="2" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="67" Count="1" />
+      <LineId Id="52" Count="2" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

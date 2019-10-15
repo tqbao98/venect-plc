@@ -6,10 +6,12 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[HWVar.ModbusMaster();]]></ST>
+      <ST><![CDATA[HWVar.ModbusMaster();
+HWVar.ModbusMaster1();]]></ST>
     </Implementation>
     <LineIds Name="BackgroundComm">
       <LineId Id="5" Count="0" />
+      <LineId Id="13" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -18,15 +18,14 @@ END_VAR
 	//GVL.bHV[5] := GVL.bLoadTank2;
 	//GVL.bHV[7] := GVL.bLoadTank3;
 	//GVL.bHV[8] := GVL.bLoadTank3;
-	//GVL.bHV[11] := GVL.bPumpPower;
 	bInitDone := TRUE;
 END_IF
 
-IF GVL.fTE[4] < GVL.fTE[18] THEN
+IF GVL.fTE[4] < GVL.fTE[17] THEN
 	// shut down pump 1 to precent heat loss
-	GVL.bP1 := FALSE;
+	//GVL.bP1 := FALSE;
 	// start boiler to heat interal water
-	 BurningProcess();
+	
 	ELSE 
 	// open pump 1 to get heat from heat exchanger
 	//GVL.bP1 := TRUE;
@@ -35,10 +34,11 @@ IF GVL.fTE[4] < GVL.fTE[18] THEN
 END_IF
 
 ModbusCommunication();
-WaterFlowControl();
+CoolingFan();
+//WaterFlowControl();
 EnOcean_Dali();
-
-// ACT();  setting up KL3204
+BurningProcess();
+//ACT();  //setting up KL3204
 ]]></ST>
     </Implementation>
     <Action Name="ACT" Id="{dda9d99a-3a12-47cf-82c4-df7f61f7071a}">
@@ -454,7 +454,7 @@ EnOcean_Dali();
       <LineId Id="22" Count="0" />
       <LineId Id="28" Count="0" />
       <LineId Id="23" Count="0" />
-      <LineId Id="29" Count="1" />
+      <LineId Id="29" Count="0" />
       <LineId Id="38" Count="0" />
       <LineId Id="36" Count="0" />
       <LineId Id="136" Count="4" />
@@ -464,6 +464,7 @@ EnOcean_Dali();
       <LineId Id="145" Count="1" />
       <LineId Id="73" Count="0" />
       <LineId Id="148" Count="2" />
+      <LineId Id="169" Count="0" />
       <LineId Id="147" Count="0" />
       <LineId Id="84" Count="0" />
       <LineId Id="45" Count="0" />

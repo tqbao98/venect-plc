@@ -15,9 +15,9 @@ END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF GVL.stFeederControl.bManual THEN
 	FeederMode := 2;
-	ELSE IF GVL.fTE[5] > ConstList.WaterTempMax THEN
+	ELSE IF GVL.fTE[17] > ConstList.WaterTempMax THEN
 			FeederMode := 1;
-			ELSE IF GVL.fTE[5] < ConstList.WaterTempMin THEN 
+			ELSE IF GVL.fTE[17] < ConstList.WaterTempMin THEN 
 				FeederMode := 0;
 			END_IF
 	END_IF
@@ -26,10 +26,10 @@ END_IF
 CASE FeederMode OF
 	0:
 		// Maximum speed
-		fbMaximumSpeed(tTimeOn := T#10S, tTimeOff := T#12S, nSpeedOn := 3000, nSpeedOff := 0000, nSpeedOut => wContent);
+		fbMaximumSpeed(tTimeOn := T#2S, tTimeOff := T#30S, nSpeedOn := 5000, nSpeedOff := 0000, nSpeedOut => wContent);
 	1:
 		// Stand-by speed	
-		fbMaximumSpeed(tTimeOn := T#10S, tTimeOff := T#12M30S, nSpeedOn := 1000, nSpeedOff := 0000, nSpeedOut => wContent);
+		fbMaximumSpeed(tTimeOn := T#2S, tTimeOff := T#12M30S, nSpeedOn := 1000, nSpeedOff := 0000, nSpeedOut => wContent);
 	2:
 		// Manual mode
 		fbManualSpeed(tTimeOn := gvl.stFeederControl.tTimeOn, tTimeOff := gvl.stFeederControl.tTimeOff, nSpeedOn := REAL_TO_WORD(GVL.stFeederControl.fFrequency*100), nSpeedOff := 0000, nSpeedOut => wContent);

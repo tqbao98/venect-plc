@@ -10,8 +10,6 @@ VAR_GLOBAL
 	{attribute 'OPC.UA.DA' := '1'}
 	bFanPower AT %Q* : BOOL;  // Lauhdutin fan power
 	{attribute 'OPC.UA.DA' := '1'}
-	bPumpPower AT %Q* : BOOL := TRUE; // Lauhdutin circulation pump power
-	{attribute 'OPC.UA.DA' := '1'}
     bP1, bP2, bP3	: BOOL := TRUE;
 	{attribute 'OPC.UA.DA' := '1'}
 	stP1		: GrundfosMagna3;
@@ -45,6 +43,10 @@ VAR_GLOBAL
 	bValveManual	: BOOL; // load tank manually or automatically based on water temps
 	{attribute 'OPC.UA.DA' := '1'}
 	bBurningStart : BOOL;
+	{attribute 'OPC.UA.DA' := '1'}
+	bIgnited: BOOL;
+	{attribute 'OPC.UA.DA' := '1'}
+	fFE : REAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

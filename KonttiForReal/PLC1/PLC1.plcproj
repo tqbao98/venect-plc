@@ -76,28 +76,43 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\BackgroundComm.TcPOU">
+    <Compile Include="POUs\BurningProcess\BurningProcess.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\BurningProcess.TcPOU">
+    <Compile Include="POUs\BurningProcess\FB_OnOffTimer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\DaliCommunication.TcPOU">
+    <Compile Include="POUs\BurningProcess\FeederSpeedControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\EL3433SyncData.TcPOU">
+    <Compile Include="POUs\BurningProcess\Ignition.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\EnOcean_Dali.TcPOU">
+    <Compile Include="POUs\BurningProcess\Preparation.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\FeederSpeedControl.TcPOU">
+    <Compile Include="POUs\CommunicationPrograms\BackgroundComm.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Ignition.TcPOU">
+    <Compile Include="POUs\CommunicationPrograms\DaliCommunication.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\IOConversion.TcPOU">
+    <Compile Include="POUs\CommunicationPrograms\EL3433SyncData.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\CommunicationPrograms\IOConversion.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\CommunicationPrograms\MQTTComm.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\EnergyFlow\CoolingFan.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\EnergyFlow\WaterFlowControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Lights\EnOcean_Dali.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -106,22 +121,14 @@
     <Compile Include="POUs\ModbusCommunication.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\MQTTComm.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\FB_OnOffTimer.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\Preparation.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\WaterFlowControl.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\Lights" />
+    <Folder Include="POUs\CommunicationPrograms" />
+    <Folder Include="POUs\BurningProcess" />
+    <Folder Include="POUs\EnergyFlow" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

@@ -3,10 +3,10 @@
   <POU Name="ModbusCommunication" Id="{54342e5d-ff54-42da-bebd-97328cd56068}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM ModbusCommunication
 VAR
-	aP1, aP2				: ARRAY [GrundfosRegAddress.listStart +1 ..GrundfosRegAddress.listEnd -1] OF WORD;
+	aP1, aP2, aP3			: ARRAY [GrundfosRegAddress.listStart +1 ..GrundfosRegAddress.listEnd -1] OF WORD;
 	wMBData					: ARRAY [ATV212RegAddress.listStart +1 .. ATV212RegAddress.listEnd -1] OF WORD;
 	nStep					: INT := 0;
-	wP1Control, wP2Control	: ARRAY [100..105] OF WORD := [
+	wP1Control, wP2Control, wP3Control	: ARRAY [100..105] OF WORD := [
 		16#0000,
 		16#0080,
 		0,
@@ -16,7 +16,7 @@ VAR
 	];
 	wFeederControl			: ARRAY [16#FA00..16#FA01] OF WORD := [];
 	wFeederControlAddress	: WORD;
-	wP1Status, wP2Status	: ARRAY[200..220] OF WORD;
+	wP1Status, wP2Status, wP3Status	: ARRAY[200..220] OF WORD;
 	wFeederStatus			: ARRAY[16#D01..16#E01] OF WORD;
 	wContent				: WORD;
 END_VAR
@@ -24,6 +24,7 @@ END_VAR
 VAR CONSTANT
 	bP1Addr					: BYTE := 2;
 	bP2Addr					: BYTE := 4;
+	bP3Addr					: BYTE := 6;
 	bFeederAddr				: BYTE := 5;
 	wStartPumpCmd			: WORD := 16#0027; //27
 	wStopPumpCmd			: WORD := 16#0025; //25
@@ -31,6 +32,8 @@ END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[HWVar.ModbusMaster.ReadRegs(Execute := FALSE);
 HWVar.ModbusMaster.WriteRegs(Execute := FALSE);
+HWVar.ModbusMaster1.ReadRegs(Execute := FALSE);
+HWVar.ModbusMaster1.WriteRegs(Execute := FALSE);
 IF GVL.bP1 THEN
                wP1Control[100] := wStartPumpCmd;
 ELSE 
@@ -41,7 +44,11 @@ IF GVL.bP2 THEN
 ELSE 
                wP2Control[100] := wStopPumpCmd;
 END_IF
-
+IF GVL.bP3 THEN
+               wP3Control[100] := wStartPumpCmd;
+ELSE 
+               wP3Control[100] := wStopPumpCmd;
+END_IF
 
 CASE nStep OF 
 	0: 
@@ -73,10 +80,24 @@ CASE nStep OF
     11:
         FeederStatus();
         //nStep := 0;
+	12:
+		P3Read();
+	13:
+		GrundfosDataConversion(arrReg:= aP3, pstGrundfosMagna3:= ADR(GVL.stP3)); 
+		nStep := 14;
+	14:
+		P3Write();
+	15:
+		P3ReadStatus();
 END_CASE;
 ]]></ST>
     </Implementation>
-    <Method Name="ATV212DataConversion" Id="{ce9fcc30-4df5-4b9c-8a85-a428ecc2d8c7}">
+    <Folder Name="DataConversion" Id="{7e9d04de-3f20-4227-ac15-fac24e614fcd}" />
+    <Folder Name="Feeder" Id="{1e864ac5-d58e-4b0b-830d-53f953ff9d25}" />
+    <Folder Name="P1" Id="{a83e4ea3-e537-49ef-a7b4-a1f2d14aa618}" />
+    <Folder Name="P2" Id="{0ef8efc5-5e00-42d7-9f4d-bced7616a4be}" />
+    <Folder Name="P3" Id="{db486fc1-5241-4f5f-8f25-7652a2436d6a}" />
+    <Method Name="ATV212DataConversion" Id="{ce9fcc30-4df5-4b9c-8a85-a428ecc2d8c7}" FolderPath="DataConversion\">
       <Declaration><![CDATA[METHOD ATV212DataConversion : BOOL
 VAR_INPUT
                arrReg   : ARRAY [ATV212RegAddress.listStart +1 .. ATV212RegAddress.listEnd -1] OF WORD;
@@ -98,7 +119,7 @@ MEMCPY(pstATV212, ADR(a_MbRegValue), SIZEOF(ATV212));
 ]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FeederControlRun" Id="{41e60fd5-d07e-4b1b-b684-fef6b25a1501}">
+    <Method Name="FeederControlRun" Id="{41e60fd5-d07e-4b1b-b684-fef6b25a1501}" FolderPath="Feeder\">
       <Declaration><![CDATA[METHOD FeederControlRun : BOOL
 VAR_INPUT
 END_VAR
@@ -126,7 +147,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FeederReadSingle" Id="{087dd7a2-4d18-4f20-a629-8f15bc3e6957}">
+    <Method Name="FeederReadSingle" Id="{087dd7a2-4d18-4f20-a629-8f15bc3e6957}" FolderPath="Feeder\">
       <Declaration><![CDATA[METHOD FeederReadSingle : BOOL
 VAR_INPUT
 END_VAR
@@ -148,7 +169,7 @@ END_VAR
 END_IF;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FeederStatus" Id="{954db622-fd24-4190-936a-3ec3927809d4}">
+    <Method Name="FeederStatus" Id="{954db622-fd24-4190-936a-3ec3927809d4}" FolderPath="Feeder\">
       <Declaration><![CDATA[METHOD FeederStatus : BOOL
 VAR_INPUT
 
@@ -167,11 +188,11 @@ END_VAR
 		BUSY => ,
 		Error =>
 		);
-		nStep := 0;
+		nStep := 12;
 END_IF;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FeederWrite" Id="{2f47265f-2ad5-409f-b44a-d3a6fc003144}">
+    <Method Name="FeederWrite" Id="{2f47265f-2ad5-409f-b44a-d3a6fc003144}" FolderPath="Feeder\">
       <Declaration><![CDATA[METHOD FeederWrite : BOOL
 VAR_INPUT
 	wFeederControl: WORD;
@@ -195,7 +216,7 @@ END_VAR
 END_IF;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="GrundfosDataConversion" Id="{c1721abb-801a-40d2-a1fb-1b489e79040e}">
+    <Method Name="GrundfosDataConversion" Id="{c1721abb-801a-40d2-a1fb-1b489e79040e}" FolderPath="DataConversion\">
       <Declaration><![CDATA[METHOD PUBLIC GrundfosDataConversion : BOOL
 VAR_INPUT
 	arrReg	: ARRAY [GrundfosRegAddress.listStart +1 ..GrundfosRegAddress.listEnd -1] OF WORD;
@@ -234,7 +255,7 @@ END_WHILE
 MEMCPY(pstGrundfosMagna3, ADR(a_MbRegValue), SIZEOF(GrundfosMagna3));]]></ST>
       </Implementation>
     </Method>
-    <Method Name="P1Read" Id="{c73de48b-54bb-496d-9d86-0a4cfa2e1c2d}">
+    <Method Name="P1Read" Id="{c73de48b-54bb-496d-9d86-0a4cfa2e1c2d}" FolderPath="P1\">
       <Declaration><![CDATA[METHOD PRIVATE P1Read : BOOL
 VAR_STAT
 	nRegisterAddress	: GrundfosRegAddress;
@@ -257,7 +278,7 @@ END_VAR
 END_IF;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="P1ReadStatus" Id="{e940be54-64b5-4d76-a9c5-9116d1bfcb8d}">
+    <Method Name="P1ReadStatus" Id="{e940be54-64b5-4d76-a9c5-9116d1bfcb8d}" FolderPath="P1\">
       <Declaration><![CDATA[METHOD PRIVATE P1ReadStatus : BOOL
 VAR_STAT
 	nRegisterAddress	: GrundfosRegAddress;
@@ -280,7 +301,7 @@ END_VAR
 END_IF;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="P1Write" Id="{8455cd7a-6f3b-4703-a7c5-04d6e9cb6cc9}">
+    <Method Name="P1Write" Id="{8455cd7a-6f3b-4703-a7c5-04d6e9cb6cc9}" FolderPath="P1\">
       <Declaration><![CDATA[METHOD PRIVATE P1Write : BOOL
 VAR_STAT
 	nRegisterAddress	: GrundfosRegAddress;
@@ -303,7 +324,7 @@ END_VAR
 END_IF;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="P2Read" Id="{ff14c237-e459-4ec9-871d-74c9239e39c7}">
+    <Method Name="P2Read" Id="{ff14c237-e459-4ec9-871d-74c9239e39c7}" FolderPath="P2\">
       <Declaration><![CDATA[METHOD PRIVATE P2Read : BOOL
 VAR_STAT
 	nRegisterAddress	: GrundfosRegAddress;
@@ -326,7 +347,7 @@ END_VAR
 END_IF;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="P2ReadStatus" Id="{3caf89c1-a318-494c-aba5-1c31ed772b4f}">
+    <Method Name="P2ReadStatus" Id="{3caf89c1-a318-494c-aba5-1c31ed772b4f}" FolderPath="P2\">
       <Declaration><![CDATA[METHOD PRIVATE P2ReadStatus : BOOL
 VAR_STAT
 	nRegisterAddress	: GrundfosRegAddress;
@@ -349,7 +370,7 @@ END_VAR
 END_IF;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="P2Write" Id="{ef6bb6ba-d829-4627-81b3-f21a4dbedaa5}">
+    <Method Name="P2Write" Id="{ef6bb6ba-d829-4627-81b3-f21a4dbedaa5}" FolderPath="P2\">
       <Declaration><![CDATA[METHOD PRIVATE P2Write : BOOL
 VAR_STAT
 	nRegisterAddress	: GrundfosRegAddress;
@@ -372,17 +393,94 @@ END_VAR
 END_IF;]]></ST>
       </Implementation>
     </Method>
+    <Method Name="P3Read" Id="{20863679-6f80-4e07-9a2c-a5c49a3c25ea}" FolderPath="P3\">
+      <Declaration><![CDATA[METHOD P3Read : BOOL
+VAR_INPUT
+END_VAR
+
+VAR
+
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (NOT HWVar.ModbusMaster1.BUSY) THEN
+	HWVar.ModbusMaster1.ReadRegs(
+		UnitID := bP3Addr,
+		Quantity := 61,
+		MBAddr := 300,
+		cbLength := SIZEOF(aP3),
+		pMemoryAddr := ADR(aP3),
+		Execute := TRUE,
+		Timeout := T#5S,
+		BUSY => ,
+		Error =>
+		);
+		nStep := 13;
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="P3ReadStatus" Id="{686d1587-7ed6-4dae-8bcd-548a0053d1cf}" FolderPath="P3\">
+      <Declaration><![CDATA[METHOD P3ReadStatus : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (NOT HWVar.ModbusMaster1.BUSY) THEN
+	HWVar.ModbusMaster1.ReadRegs(
+		UnitID := bP3Addr,
+		Quantity := 21,
+		MBAddr := 200,
+		cbLength := SIZEOF(wP3Status),
+		pMemoryAddr := ADR(wP3Status),
+		Execute := TRUE,
+		Timeout := T#5S,
+		BUSY => ,
+		Error =>
+		);
+		nStep := 0;
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="P3Write" Id="{98baa8b5-bf22-4f03-9132-c2f236c3fc26}" FolderPath="P3\">
+      <Declaration><![CDATA[METHOD P3Write : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF (NOT HWVar.ModbusMaster1.BUSY) THEN
+	HWVar.ModbusMaster1.WriteRegs(
+		UnitID := bP3Addr,
+		Quantity := 6,
+		MBAddr := 100,
+		cbLength := SIZEOF(wP3Control),
+		pMemoryAddr := ADR(wP3Control),
+		Execute := TRUE,
+		Timeout := T#5S,
+		BUSY => ,
+		Error =>
+		);
+		nStep := 15;
+END_IF;]]></ST>
+      </Implementation>
+    </Method>
     <Action Name="SC01Read" Id="{8e355383-73d5-444b-a223-41e8c10c9f5c}">
       <Implementation>
         <ST><![CDATA[nStep := 3;]]></ST>
       </Implementation>
     </Action>
     <LineIds Name="ModbusCommunication">
-      <LineId Id="687" Count="12" />
+      <LineId Id="687" Count="1" />
+      <LineId Id="822" Count="0" />
+      <LineId Id="820" Count="0" />
+      <LineId Id="689" Count="9" />
+      <LineId Id="823" Count="3" />
+      <LineId Id="699" Count="0" />
       <LineId Id="760" Count="0" />
       <LineId Id="700" Count="23" />
       <LineId Id="725" Count="0" />
       <LineId Id="727" Count="4" />
+      <LineId Id="787" Count="2" />
+      <LineId Id="791" Count="1" />
+      <LineId Id="827" Count="3" />
       <LineId Id="733" Count="0" />
       <LineId Id="15" Count="0" />
     </LineIds>
@@ -451,6 +549,18 @@ END_IF;]]></ST>
     </LineIds>
     <LineIds Name="ModbusCommunication.P2Write">
       <LineId Id="25" Count="12" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="ModbusCommunication.P3Read">
+      <LineId Id="6" Count="12" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="ModbusCommunication.P3ReadStatus">
+      <LineId Id="6" Count="12" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="ModbusCommunication.P3Write">
+      <LineId Id="6" Count="12" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="ModbusCommunication.SC01Read">
