@@ -26,17 +26,17 @@ END_IF
 CASE FeederMode OF
 	0:
 		// Maximum speed
-		fbMaximumSpeed(tTimeOn := T#2S, tTimeOff := T#30S, nSpeedOn := 5000, nSpeedOff := 0000, nSpeedOut => wContent);
+		fbMaximumSpeed(tTimeOn := T#3.25S, tTimeOff := T#25S, nSpeedOn := 2500, nSpeedOff := 0000, nSpeedOut => wContent);
 	1:
 		// Stand-by speed	
-		fbMaximumSpeed(tTimeOn := T#2S, tTimeOff := T#12M30S, nSpeedOn := 1000, nSpeedOff := 0000, nSpeedOut => wContent);
+		fbMaximumSpeed(tTimeOn := T#3.25S, tTimeOff := T#12M30S, nSpeedOn := 1000, nSpeedOff := 0000, nSpeedOut => wContent);
 	2:
 		// Manual mode
 		fbManualSpeed(tTimeOn := gvl.stFeederControl.tTimeOn, tTimeOff := gvl.stFeederControl.tTimeOff, nSpeedOn := REAL_TO_WORD(GVL.stFeederControl.fFrequency*100), nSpeedOff := 0000, nSpeedOut => wContent);
 END_CASE
 
 IF gvl.stFeederControl.bStart AND gvl.stFeederControl.bForward THEN // not set non-zero freq if motor's not on
-	gvl.stFeederControl.fFrequency := WORD_TO_REAL(wContent/100); // update current freq
+	//gvl.stFeederControl.fFrequency := WORD_TO_REAL(wContent/100); // update current freq
 	ELSE wContent := 0000;
 		gvl.stFeederControl.fFrequency := 0;
 END_IF]]></ST>

@@ -9,7 +9,7 @@ VAR_GLOBAL
     iAI2_VK         AT %I*  : ARRAY [1..4] OF INT;
     iAI1_JK         AT %I*  : ARRAY [1..4] OF INT;
     ModbusMaster            : ModbusRtuMaster_KL6x22B;
-	ModbusMaster1            : ModbusRtuMaster_KL6x22B;
+	ModbusMaster1           : ModbusRtuMaster_KL6x22B;
 	EL3433_Grid		AT %I*	: ARRAY[1..3] OF stEL3433_In;
 	EL3433_GridIndex AT %Q*	: ARRAY[1..3] OF USINT;
 	EL3433_SolarIndex AT %Q*: USINT;
@@ -31,6 +31,9 @@ VAR_GLOBAL
 	stKL2761_in		AT %I* 	: ST_KL27x1InData; // Primary fan input
 	stKL2761_out	AT %Q* 	: ST_KL27x1OutData; //Primary fan output
 	
+	stKL3208_in		AT %I*	: ST_KL3208InData;  //8-channel input terminal PT1000, Ni1000 (RTD); NTC sensors, potentiometers
+	stKL3208_out	AT %Q*	: ST_KL3208OutData;
+	KL3208Config			: FB_KL3208Config;
 	// analog DC input HW 
 	iKL3064			AT %I*	: ARRAY [1..4] OF INT;
 	

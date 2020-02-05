@@ -927,7 +927,7 @@ END_VAR
                                                             <o>
                                                               <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                                               <o n="Value" t="StringValue">
-                                                                <v n="Value">"NOT(GVL.bBurningStart)"</v>
+                                                                <v n="Value">"GVL.bBurningStart = FALSE"</v>
                                                                 <v n="DefaultValue">""</v>
                                                               </o>
                                                               <v n="Id">359L</v>
@@ -1130,7 +1130,7 @@ END_VAR
                                                 <o>
                                                   <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                                   <o n="Value" t="StringValue">
-                                                    <v n="Value">"NOT(GVL.bBurningStart)"</v>
+                                                    <v n="Value">"GVL.bBurningStart = FALSE"</v>
                                                     <v n="DefaultValue">""</v>
                                                   </o>
                                                   <v n="Id">286L</v>
@@ -1333,7 +1333,7 @@ END_VAR
                                     <o>
                                       <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                       <o n="Value" t="StringValue">
-                                        <v n="Value">"NOT(GVL.bBurningStart)"</v>
+                                        <v n="Value">"GVL.bBurningStart = FALSE"</v>
                                         <v n="DefaultValue">""</v>
                                       </o>
                                       <v n="Id">213L</v>
@@ -2364,8 +2364,8 @@ END_VAR
                                                 <v n="Value">"GVL.stFeederControl.bStart"</v>
                                                 <v n="DefaultValue">""</v>
                                               </o>
-                                              <v n="Id">255L</v>
-                                              <v n="IdParent">254L</v>
+                                              <v n="Id">285L</v>
+                                              <v n="IdParent">284L</v>
                                             </o>
                                             <o>
                                               <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
@@ -2373,8 +2373,8 @@ END_VAR
                                                 <v n="Value">""</v>
                                                 <v n="DefaultValue">""</v>
                                               </o>
-                                              <v n="Id">256L</v>
-                                              <v n="IdParent">254L</v>
+                                              <v n="Id">286L</v>
+                                              <v n="IdParent">284L</v>
                                             </o>
                                             <o>
                                               <v n="AttributeId">{01580b27-6378-448b-8ecb-0e4b795b58d6}</v>
@@ -2382,8 +2382,8 @@ END_VAR
                                                 <v n="Value">"FALSE"</v>
                                                 <v n="DefaultValue">"FALSE"</v>
                                               </o>
-                                              <v n="Id">257L</v>
-                                              <v n="IdParent">254L</v>
+                                              <v n="Id">287L</v>
+                                              <v n="IdParent">284L</v>
                                             </o>
                                             <o>
                                               <v n="AttributeId">{bc882c11-1e91-4dd8-a6b8-2075724ed18b}</v>
@@ -2393,8 +2393,8 @@ END_VAR
                                                 <v n="Value">"0"</v>
                                                 <v n="DefaultValue">"0"</v>
                                               </o>
-                                              <v n="Id">258L</v>
-                                              <v n="IdParent">254L</v>
+                                              <v n="Id">288L</v>
+                                              <v n="IdParent">284L</v>
                                             </o>
                                             <o>
                                               <v n="AttributeId">{e174fc0d-80b0-4a9e-a530-ca239c249a50}</v>
@@ -2402,11 +2402,11 @@ END_VAR
                                                 <v n="Value">"N"</v>
                                                 <v n="DefaultValue">""</v>
                                               </o>
-                                              <v n="Id">259L</v>
-                                              <v n="IdParent">254L</v>
+                                              <v n="Id">289L</v>
+                                              <v n="IdParent">284L</v>
                                             </o>
                                           </l2>
-                                          <v n="Id">254L</v>
+                                          <v n="Id">284L</v>
                                           <v n="IdParent">79L</v>
                                         </o>
                                         <o>
@@ -2417,8 +2417,8 @@ END_VAR
                                                 <v n="Value">"GVL.stFeederControl.bForward"</v>
                                                 <v n="DefaultValue">""</v>
                                               </o>
-                                              <v n="Id">261L</v>
-                                              <v n="IdParent">260L</v>
+                                              <v n="Id">279L</v>
+                                              <v n="IdParent">278L</v>
                                             </o>
                                             <o>
                                               <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
@@ -2426,8 +2426,8 @@ END_VAR
                                                 <v n="Value">""</v>
                                                 <v n="DefaultValue">""</v>
                                               </o>
-                                              <v n="Id">262L</v>
-                                              <v n="IdParent">260L</v>
+                                              <v n="Id">280L</v>
+                                              <v n="IdParent">278L</v>
                                             </o>
                                             <o>
                                               <v n="AttributeId">{01580b27-6378-448b-8ecb-0e4b795b58d6}</v>
@@ -2435,8 +2435,8 @@ END_VAR
                                                 <v n="Value">"FALSE"</v>
                                                 <v n="DefaultValue">"FALSE"</v>
                                               </o>
-                                              <v n="Id">263L</v>
-                                              <v n="IdParent">260L</v>
+                                              <v n="Id">281L</v>
+                                              <v n="IdParent">278L</v>
                                             </o>
                                             <o>
                                               <v n="AttributeId">{bc882c11-1e91-4dd8-a6b8-2075724ed18b}</v>
@@ -2446,8 +2446,8 @@ END_VAR
                                                 <v n="Value">"0"</v>
                                                 <v n="DefaultValue">"0"</v>
                                               </o>
-                                              <v n="Id">264L</v>
-                                              <v n="IdParent">260L</v>
+                                              <v n="Id">282L</v>
+                                              <v n="IdParent">278L</v>
                                             </o>
                                             <o>
                                               <v n="AttributeId">{e174fc0d-80b0-4a9e-a530-ca239c249a50}</v>
@@ -2455,11 +2455,11 @@ END_VAR
                                                 <v n="Value">"N"</v>
                                                 <v n="DefaultValue">""</v>
                                               </o>
-                                              <v n="Id">265L</v>
-                                              <v n="IdParent">260L</v>
+                                              <v n="Id">283L</v>
+                                              <v n="IdParent">278L</v>
                                             </o>
                                           </l2>
-                                          <v n="Id">260L</v>
+                                          <v n="Id">278L</v>
                                           <v n="IdParent">79L</v>
                                         </o>
                                       </l2>
@@ -3147,7 +3147,7 @@ END_VAR
                                                   <o>
                                                     <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                                     <o n="Value" t="StringValue">
-                                                      <v n="Value">"TRUE"</v>
+                                                      <v n="Value">"GVL.nError = Errorcode.SUCCESS"</v>
                                                       <v n="DefaultValue">""</v>
                                                     </o>
                                                     <v n="Id">246L</v>
@@ -4415,7 +4415,7 @@ END_VAR
     </Action>
     <Action Name="BurnDoneExit_entry" Id="{8ba174d2-0adf-4969-8c35-7f58247cda41}" FolderPath="Burn\">
       <Implementation>
-        <ST><![CDATA[GVL.nError := ErRORCODE.BURNING_DONE;]]></ST>
+        <ST><![CDATA[GVL.nError := ERRORCODE.BURNING_DONE;]]></ST>
       </Implementation>
       <ObjectProperties>
         <XmlArchive>
@@ -4449,10 +4449,63 @@ END_VAR
         </XmlArchive>
       </ObjectProperties>
     </Action>
-    <Action Name="ClearGases_active" Id="{682d4a56-a14f-4ef7-ba57-26c57c77baa2}" FolderPath="Ignition\">
+    <Action Name="ClearGases_active" Id="{002ddb6d-a44c-43c5-ae56-159fbae4642f}" FolderPath="Ignition\">
       <Implementation>
         <ST><![CDATA[GVL.stPrimaryFan.nSpeed := 100;
-GVL.stSecondaryFan.nSpeed := 100;]]></ST>
+GVL.stSecondaryFan.nSpeed := 100;
+]]></ST>
+      </Implementation>
+      <ObjectProperties>
+        <XmlArchive>
+          <Data>
+            <o xml:space="preserve" t="ActionObjectDuplicationModeProperty">
+              <v n="Embedded">true</v>
+            </o>
+          </Data>
+          <TypeList>
+            <Type n="ActionObjectDuplicationModeProperty">{6a58c9ae-b0e2-4127-8d9c-cbfc36a09580}</Type>
+            <Type n="Boolean">System.Boolean</Type>
+          </TypeList>
+        </XmlArchive>
+      </ObjectProperties>
+    </Action>
+    <Action Name="ClearGases_exit" Id="{92945e47-0777-4a1c-ada8-c20afe1edac4}" FolderPath="Ignition\">
+      <Implementation>
+        <ST><![CDATA[GVL.stPrimaryFan.nSpeed := 25;
+GVL.stSecondaryFan.nSpeed := 25;]]></ST>
+      </Implementation>
+      <ObjectProperties>
+        <XmlArchive>
+          <Data>
+            <o xml:space="preserve" t="ActionObjectDuplicationModeProperty">
+              <v n="Embedded">true</v>
+            </o>
+          </Data>
+          <TypeList>
+            <Type n="ActionObjectDuplicationModeProperty">{6a58c9ae-b0e2-4127-8d9c-cbfc36a09580}</Type>
+            <Type n="Boolean">System.Boolean</Type>
+          </TypeList>
+        </XmlArchive>
+      </ObjectProperties>
+    </Action>
+    <Action Name="FanControl_act" Id="{4cdec446-0af2-4186-a68b-8d2f30c74ca8}" FolderPath="Burn\">
+      <Implementation>
+        <ST><![CDATA[IF	GVL.fO2 > 10 THEN
+	GVL.stPrimaryFan.nSpeed := 25;
+	ELSE IF GVL.fO2 < 6 THEN
+		GVL.stPrimaryFan.nSpeed := 50;
+	END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="FeederOn_active" Id="{a744b7b5-a81c-4f02-99fb-fe0ff453a918}" FolderPath="Preparation\">
+      <Implementation>
+        <ST><![CDATA[GVL.stFeederControl.bStart := TRUE;
+GVL.stFeederControl.bForward := TRUE;
+GVL.stFeederControl.bManual := TRUE;
+GVL.stFeederControl.fFrequency := 25;
+GVL.stFeederControl.tTimeOn := T#10S; // 100s
+GVL.stFeederControl.tTimeOff := T#0S;]]></ST>
       </Implementation>
       <ObjectProperties>
         <XmlArchive>
@@ -4470,7 +4523,10 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
     </Action>
     <Action Name="FeederOn_exit" Id="{90473c85-096e-4adb-881b-a1761b46a9e4}" FolderPath="Preparation\">
       <Implementation>
-        <ST><![CDATA[GVL.nError := Errorcode.PREPARATION_DONE;]]></ST>
+        <ST><![CDATA[GVL.stFeederControl.bStart := FALSE;
+GVL.stFeederControl.bForward := FALSE;
+GVL.stFeederControl.bManual := FALSE;
+GVL.nError := Errorcode.PREPARATION_DONE;]]></ST>
       </Implementation>
       <ObjectProperties>
         <XmlArchive>
@@ -4504,9 +4560,10 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
         </XmlArchive>
       </ObjectProperties>
     </Action>
-    <Action Name="Ignite_exit" Id="{6170c120-07a6-4ab9-8e8a-742c3f0ff17f}" FolderPath="Ignition\">
+    <Action Name="Ignite_active" Id="{fc9dcc3f-f214-4cc9-8aaa-87f873dbf448}" FolderPath="Ignition\">
       <Implementation>
-        <ST><![CDATA[GVL.nError := ERRORCODE.IGNITION_DONE;]]></ST>
+        <ST><![CDATA[GVL.stFI1.bBlower := TRUE;
+GVL.stFI1.bHeating := TRUE;]]></ST>
       </Implementation>
       <ObjectProperties>
         <XmlArchive>
@@ -4987,7 +5044,7 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
                                       <o>
                                         <v n="AttributeId">{a2621e18-7de3-4ea6-ae6d-89e9e0b7befd}</v>
                                         <o n="Value" t="StringValue">
-                                          <v n="Value">""</v>
+                                          <v n="Value">"ClearGases_exit"</v>
                                           <v n="DefaultValue">""</v>
                                         </o>
                                         <v n="Id">97L</v>
@@ -5011,7 +5068,7 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
                                                   <o>
                                                     <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                                     <o n="Value" t="StringValue">
-                                                      <v n="Value">"ClearGases.t &gt; T#5s"</v>
+                                                      <v n="Value">"ClearGases.t &gt; T#10s"</v>
                                                       <v n="DefaultValue">""</v>
                                                     </o>
                                                     <v n="Id">99L</v>
@@ -5147,7 +5204,7 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
                                                   <o>
                                                     <v n="AttributeId">{700a583f-b4d4-43e4-8c14-629c7cd3bec8}</v>
                                                     <o n="Value" t="StringValue">
-                                                      <v n="Value">""</v>
+                                                      <v n="Value">"Ignite_active"</v>
                                                       <v n="DefaultValue">""</v>
                                                     </o>
                                                     <v n="Id">160L</v>
@@ -5165,7 +5222,7 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
                                                   <o>
                                                     <v n="AttributeId">{a2621e18-7de3-4ea6-ae6d-89e9e0b7befd}</v>
                                                     <o n="Value" t="StringValue">
-                                                      <v n="Value">"Ignite_exit"</v>
+                                                      <v n="Value">""</v>
                                                       <v n="DefaultValue">""</v>
                                                     </o>
                                                     <v n="Id">162L</v>
@@ -5176,18 +5233,18 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
                                                 <v n="IdParent">115L</v>
                                               </o>
                                               <o t="SFCTransition">
-                                                <v n="VariableName">"Ignite__to__Init_Ignition_act"</v>
+                                                <v n="VariableName">"Ignite__to__WaitFullBurn"</v>
                                                 <n n="EmbeddedTransition" />
                                                 <l2 n="EmbeddedTransitionProperties" />
                                                 <l2 n="Attributes" cet="SFCAttribute">
                                                   <o>
                                                     <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                                     <o n="Value" t="StringValue">
-                                                      <v n="Value">"GVL.bIgnited"</v>
+                                                      <v n="Value">"Ignite.t &gt; T#1m30s"</v>
                                                       <v n="DefaultValue">""</v>
                                                     </o>
-                                                    <v n="Id">164L</v>
-                                                    <v n="IdParent">163L</v>
+                                                    <v n="Id">213L</v>
+                                                    <v n="IdParent">212L</v>
                                                   </o>
                                                   <o>
                                                     <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
@@ -5195,8 +5252,8 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
                                                       <v n="Value">""</v>
                                                       <v n="DefaultValue">""</v>
                                                     </o>
-                                                    <v n="Id">165L</v>
-                                                    <v n="IdParent">163L</v>
+                                                    <v n="Id">214L</v>
+                                                    <v n="IdParent">212L</v>
                                                   </o>
                                                   <o>
                                                     <v n="AttributeId">{01580b27-6378-448b-8ecb-0e4b795b58d6}</v>
@@ -5204,8 +5261,8 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
                                                       <v n="Value">"FALSE"</v>
                                                       <v n="DefaultValue">"FALSE"</v>
                                                     </o>
-                                                    <v n="Id">166L</v>
-                                                    <v n="IdParent">163L</v>
+                                                    <v n="Id">215L</v>
+                                                    <v n="IdParent">212L</v>
                                                   </o>
                                                   <o>
                                                     <v n="AttributeId">{bc882c11-1e91-4dd8-a6b8-2075724ed18b}</v>
@@ -5215,8 +5272,8 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
                                                       <v n="Value">"0"</v>
                                                       <v n="DefaultValue">"0"</v>
                                                     </o>
-                                                    <v n="Id">167L</v>
-                                                    <v n="IdParent">163L</v>
+                                                    <v n="Id">216L</v>
+                                                    <v n="IdParent">212L</v>
                                                   </o>
                                                   <o>
                                                     <v n="AttributeId">{62e1754b-7629-4e63-9cec-10ae0c536f1f}</v>
@@ -5224,11 +5281,183 @@ GVL.stSecondaryFan.nSpeed := 100;]]></ST>
                                                       <v n="Value">"FALSE"</v>
                                                       <v n="DefaultValue">"FALSE"</v>
                                                     </o>
-                                                    <v n="Id">168L</v>
-                                                    <v n="IdParent">163L</v>
+                                                    <v n="Id">217L</v>
+                                                    <v n="IdParent">212L</v>
                                                   </o>
                                                 </l2>
-                                                <v n="Id">163L</v>
+                                                <v n="Id">212L</v>
+                                                <v n="IdParent">115L</v>
+                                              </o>
+                                              <o t="SFCStep">
+                                                <n n="EmbeddedMainAction" />
+                                                <n n="EmbeddedEntryAction" />
+                                                <n n="EmbeddedExitAction" />
+                                                <l2 n="EmbeddedMainActionProperties" />
+                                                <l2 n="EmbeddedEntryActionProperties" />
+                                                <l2 n="EmbeddedExitActionProperties" />
+                                                <o n="ElementList" t="SFCElementList">
+                                                  <l2 n="InnerList" />
+                                                </o>
+                                                <l2 n="Attributes" cet="SFCAttribute">
+                                                  <o>
+                                                    <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
+                                                    <o n="Value" t="StringValue">
+                                                      <v n="Value">"WaitFullBurn"</v>
+                                                      <v n="DefaultValue">""</v>
+                                                    </o>
+                                                    <v n="Id">219L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
+                                                    <o n="Value" t="StringValue">
+                                                      <v n="Value">""</v>
+                                                      <v n="DefaultValue">""</v>
+                                                    </o>
+                                                    <v n="Id">220L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{01580b27-6378-448b-8ecb-0e4b795b58d6}</v>
+                                                    <o n="Value" t="BoolValue">
+                                                      <v n="Value">"FALSE"</v>
+                                                      <v n="DefaultValue">"FALSE"</v>
+                                                    </o>
+                                                    <v n="Id">221L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{bc882c11-1e91-4dd8-a6b8-2075724ed18b}</v>
+                                                    <o n="Value" t="EnumValue">
+                                                      <v n="TemplateGuid">{79a4fdd5-c859-4de4-aa8d-c03372c880c2}</v>
+                                                      <n n="BaseType" />
+                                                      <v n="Value">"0"</v>
+                                                      <v n="DefaultValue">"0"</v>
+                                                    </o>
+                                                    <v n="Id">222L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{6844a48e-46c2-4cc8-a185-a478f3b99cc0}</v>
+                                                    <o n="Value" t="BoolValue">
+                                                      <v n="Value">"FALSE"</v>
+                                                      <v n="DefaultValue">"FALSE"</v>
+                                                    </o>
+                                                    <v n="Id">223L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{62e1754b-7629-4e63-9cec-10ae0c536f1f}</v>
+                                                    <o n="Value" t="BoolValue">
+                                                      <v n="Value">"FALSE"</v>
+                                                      <v n="DefaultValue">"FALSE"</v>
+                                                    </o>
+                                                    <v n="Id">224L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{cacf1a68-236e-47c2-b7b1-1cf9199718cb}</v>
+                                                    <o n="Value" t="StringValue">
+                                                      <v n="Value">""</v>
+                                                      <v n="DefaultValue">""</v>
+                                                    </o>
+                                                    <v n="Id">225L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{b693554c-1b01-4a8d-afde-9e3a46f7465d}</v>
+                                                    <o n="Value" t="StringValue">
+                                                      <v n="Value">""</v>
+                                                      <v n="DefaultValue">""</v>
+                                                    </o>
+                                                    <v n="Id">226L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{700a583f-b4d4-43e4-8c14-629c7cd3bec8}</v>
+                                                    <o n="Value" t="StringValue">
+                                                      <v n="Value">""</v>
+                                                      <v n="DefaultValue">""</v>
+                                                    </o>
+                                                    <v n="Id">227L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{a6b08bd8-b696-47e3-9cbf-7408b61c9ff8}</v>
+                                                    <o n="Value" t="StringValue">
+                                                      <v n="Value">"WaitFullBurn_entry"</v>
+                                                      <v n="DefaultValue">""</v>
+                                                    </o>
+                                                    <v n="Id">228L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{a2621e18-7de3-4ea6-ae6d-89e9e0b7befd}</v>
+                                                    <o n="Value" t="StringValue">
+                                                      <v n="Value">"WaitFullBurn_exit"</v>
+                                                      <v n="DefaultValue">""</v>
+                                                    </o>
+                                                    <v n="Id">229L</v>
+                                                    <v n="IdParent">218L</v>
+                                                  </o>
+                                                </l2>
+                                                <v n="Id">218L</v>
+                                                <v n="IdParent">115L</v>
+                                              </o>
+                                              <o t="SFCTransition">
+                                                <v n="VariableName">"WaitFullBurn__to__Init_Ignition_act"</v>
+                                                <n n="EmbeddedTransition" />
+                                                <l2 n="EmbeddedTransitionProperties" />
+                                                <l2 n="Attributes" cet="SFCAttribute">
+                                                  <o>
+                                                    <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
+                                                    <o n="Value" t="StringValue">
+                                                      <v n="Value">"GVL.fO2 &lt; 10"</v>
+                                                      <v n="DefaultValue">""</v>
+                                                    </o>
+                                                    <v n="Id">231L</v>
+                                                    <v n="IdParent">230L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
+                                                    <o n="Value" t="StringValue">
+                                                      <v n="Value">""</v>
+                                                      <v n="DefaultValue">""</v>
+                                                    </o>
+                                                    <v n="Id">232L</v>
+                                                    <v n="IdParent">230L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{01580b27-6378-448b-8ecb-0e4b795b58d6}</v>
+                                                    <o n="Value" t="BoolValue">
+                                                      <v n="Value">"FALSE"</v>
+                                                      <v n="DefaultValue">"FALSE"</v>
+                                                    </o>
+                                                    <v n="Id">233L</v>
+                                                    <v n="IdParent">230L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{bc882c11-1e91-4dd8-a6b8-2075724ed18b}</v>
+                                                    <o n="Value" t="EnumValue">
+                                                      <v n="TemplateGuid">{79a4fdd5-c859-4de4-aa8d-c03372c880c2}</v>
+                                                      <n n="BaseType" />
+                                                      <v n="Value">"0"</v>
+                                                      <v n="DefaultValue">"0"</v>
+                                                    </o>
+                                                    <v n="Id">234L</v>
+                                                    <v n="IdParent">230L</v>
+                                                  </o>
+                                                  <o>
+                                                    <v n="AttributeId">{62e1754b-7629-4e63-9cec-10ae0c536f1f}</v>
+                                                    <o n="Value" t="BoolValue">
+                                                      <v n="Value">"FALSE"</v>
+                                                      <v n="DefaultValue">"FALSE"</v>
+                                                    </o>
+                                                    <v n="Id">235L</v>
+                                                    <v n="IdParent">230L</v>
+                                                  </o>
+                                                </l2>
+                                                <v n="Id">230L</v>
                                                 <v n="IdParent">115L</v>
                                               </o>
                                             </l2>
@@ -7174,114 +7403,7 @@ GVL.nError := 0;
                                                 <l2 n="EmbeddedEntryActionProperties" />
                                                 <l2 n="EmbeddedExitActionProperties" />
                                                 <o n="ElementList" t="SFCElementList">
-                                                  <l2 n="InnerList" cet="SFCActionAssociation">
-                                                    <o>
-                                                      <l2 n="Attributes" cet="SFCAttribute">
-                                                        <o>
-                                                          <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
-                                                          <o n="Value" t="StringValue">
-                                                            <v n="Value">"GVL.stFeederControl.bStart"</v>
-                                                            <v n="DefaultValue">""</v>
-                                                          </o>
-                                                          <v n="Id">351L</v>
-                                                          <v n="IdParent">350L</v>
-                                                        </o>
-                                                        <o>
-                                                          <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
-                                                          <o n="Value" t="StringValue">
-                                                            <v n="Value">""</v>
-                                                            <v n="DefaultValue">""</v>
-                                                          </o>
-                                                          <v n="Id">352L</v>
-                                                          <v n="IdParent">350L</v>
-                                                        </o>
-                                                        <o>
-                                                          <v n="AttributeId">{01580b27-6378-448b-8ecb-0e4b795b58d6}</v>
-                                                          <o n="Value" t="BoolValue">
-                                                            <v n="Value">"FALSE"</v>
-                                                            <v n="DefaultValue">"FALSE"</v>
-                                                          </o>
-                                                          <v n="Id">353L</v>
-                                                          <v n="IdParent">350L</v>
-                                                        </o>
-                                                        <o>
-                                                          <v n="AttributeId">{bc882c11-1e91-4dd8-a6b8-2075724ed18b}</v>
-                                                          <o n="Value" t="EnumValue">
-                                                            <v n="TemplateGuid">{79a4fdd5-c859-4de4-aa8d-c03372c880c2}</v>
-                                                            <n n="BaseType" />
-                                                            <v n="Value">"0"</v>
-                                                            <v n="DefaultValue">"0"</v>
-                                                          </o>
-                                                          <v n="Id">354L</v>
-                                                          <v n="IdParent">350L</v>
-                                                        </o>
-                                                        <o>
-                                                          <v n="AttributeId">{e174fc0d-80b0-4a9e-a530-ca239c249a50}</v>
-                                                          <o n="Value" t="StringValue">
-                                                            <v n="Value">"N"</v>
-                                                            <v n="DefaultValue">""</v>
-                                                          </o>
-                                                          <v n="Id">355L</v>
-                                                          <v n="IdParent">350L</v>
-                                                        </o>
-                                                      </l2>
-                                                      <v n="Id">350L</v>
-                                                      <v n="IdParent">314L</v>
-                                                    </o>
-                                                    <o>
-                                                      <l2 n="Attributes" cet="SFCAttribute">
-                                                        <o>
-                                                          <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
-                                                          <o n="Value" t="StringValue">
-                                                            <v n="Value">"GVL.stFeederControl.bForward"</v>
-                                                            <v n="DefaultValue">""</v>
-                                                          </o>
-                                                          <v n="Id">357L</v>
-                                                          <v n="IdParent">356L</v>
-                                                        </o>
-                                                        <o>
-                                                          <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
-                                                          <o n="Value" t="StringValue">
-                                                            <v n="Value">""</v>
-                                                            <v n="DefaultValue">""</v>
-                                                          </o>
-                                                          <v n="Id">358L</v>
-                                                          <v n="IdParent">356L</v>
-                                                        </o>
-                                                        <o>
-                                                          <v n="AttributeId">{01580b27-6378-448b-8ecb-0e4b795b58d6}</v>
-                                                          <o n="Value" t="BoolValue">
-                                                            <v n="Value">"FALSE"</v>
-                                                            <v n="DefaultValue">"FALSE"</v>
-                                                          </o>
-                                                          <v n="Id">359L</v>
-                                                          <v n="IdParent">356L</v>
-                                                        </o>
-                                                        <o>
-                                                          <v n="AttributeId">{bc882c11-1e91-4dd8-a6b8-2075724ed18b}</v>
-                                                          <o n="Value" t="EnumValue">
-                                                            <v n="TemplateGuid">{79a4fdd5-c859-4de4-aa8d-c03372c880c2}</v>
-                                                            <n n="BaseType" />
-                                                            <v n="Value">"0"</v>
-                                                            <v n="DefaultValue">"0"</v>
-                                                          </o>
-                                                          <v n="Id">360L</v>
-                                                          <v n="IdParent">356L</v>
-                                                        </o>
-                                                        <o>
-                                                          <v n="AttributeId">{e174fc0d-80b0-4a9e-a530-ca239c249a50}</v>
-                                                          <o n="Value" t="StringValue">
-                                                            <v n="Value">"N"</v>
-                                                            <v n="DefaultValue">""</v>
-                                                          </o>
-                                                          <v n="Id">361L</v>
-                                                          <v n="IdParent">356L</v>
-                                                        </o>
-                                                      </l2>
-                                                      <v n="Id">356L</v>
-                                                      <v n="IdParent">314L</v>
-                                                    </o>
-                                                  </l2>
+                                                  <l2 n="InnerList" />
                                                 </o>
                                                 <l2 n="Attributes" cet="SFCAttribute">
                                                   <o>
@@ -7361,7 +7483,7 @@ GVL.nError := 0;
                                                   <o>
                                                     <v n="AttributeId">{700a583f-b4d4-43e4-8c14-629c7cd3bec8}</v>
                                                     <o n="Value" t="StringValue">
-                                                      <v n="Value">""</v>
+                                                      <v n="Value">"FeederOn_active"</v>
                                                       <v n="DefaultValue">""</v>
                                                     </o>
                                                     <v n="Id">323L</v>
@@ -7397,7 +7519,7 @@ GVL.nError := 0;
                                                   <o>
                                                     <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                                     <o n="Value" t="StringValue">
-                                                      <v n="Value">"FeederOn.t &gt; T#5s"</v>
+                                                      <v n="Value">"FeederOn.t &gt; T#100s"</v>
                                                       <v n="DefaultValue">""</v>
                                                     </o>
                                                     <v n="Id">327L</v>
@@ -8499,7 +8621,6 @@ GVL.nError := 0;
               <Type n="EnumValueTemplate">{d6bfe4f0-d62f-4b5f-9f95-2bbeb1950e28}</Type>
               <Type n="Guid">System.Guid</Type>
               <Type n="Int64">System.Int64</Type>
-              <Type n="SFCActionAssociation">{a94bb75d-5fb3-40ad-9d01-41d5b980784d}</Type>
               <Type n="SFCAttribute">{21f3f16e-04fa-4637-b6b7-d84e4192e99f}</Type>
               <Type n="SFCAttributeCategory">{679adacf-f2a4-4167-a3f7-d21cfc5d451f}</Type>
               <Type n="SFCAttributeDescription">{d851789d-af2c-4990-9d48-a7bdc9181773}</Type>
@@ -8614,10 +8735,13 @@ GVL.nError := 0;
     </Action>
     <Action Name="Stop_entry" Id="{e64abd77-5200-462c-a458-51bc7bffbd9c}" FolderPath="Stop\">
       <Implementation>
-        <ST><![CDATA[GVL.stPrimaryFan.nSpeed := 0;
+        <ST><![CDATA[GVL.bBurningStart := FALSE;
+GVL.stPrimaryFan.nSpeed := 0;
 GVL.stSecondaryFan.nSpeed := 0;
 GVL.stFeederControl.bStart := FALSE;
 GVL.stFeederControl.bForward := FALSE;
+GVL.stFI1.bHeating := FALSE;
+GVL.stFI1.bBlower := FALSE;
 GVL.nError := 0;
 //GVL.bP1 := FALSE;
 //GVL.bP2 := FALSE;]]></ST>
@@ -8653,6 +8777,19 @@ GVL.nError := 0;
           </TypeList>
         </XmlArchive>
       </ObjectProperties>
+    </Action>
+    <Action Name="WaitFullBurn_entry" Id="{3ab44fae-7986-4c61-9833-165b5d3c48a6}" FolderPath="Ignition\">
+      <Implementation>
+        <ST><![CDATA[GVL.stPrimaryFan.nSpeed := 35;
+GVL.stFI1.bHeating := FALSE;
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="WaitFullBurn_exit" Id="{9e5d545c-f416-4ab0-9eaa-4c540920c85d}" FolderPath="Ignition\">
+      <Implementation>
+        <ST><![CDATA[GVL.stFI1.bBlower := FALSE;
+GVL.nError := ERRORCODE.IGNITION_DONE;]]></ST>
+      </Implementation>
     </Action>
     <Action Name="WaterHighTempNotify_entry" Id="{f2240639-9222-45bf-8a05-9a9629abb13f}" FolderPath="Preparation\">
       <Implementation>
@@ -8774,16 +8911,30 @@ GVL.nError := 0;
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="BurningProcess.ClearGases_active">
+      <LineId Id="2" Count="1" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="BurningProcess.ClearGases_exit">
       <LineId Id="2" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
+    <LineIds Name="BurningProcess.FanControl_act">
+      <LineId Id="2" Count="4" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="BurningProcess.FeederOn_active">
+      <LineId Id="2" Count="4" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
     <LineIds Name="BurningProcess.FeederOn_exit">
+      <LineId Id="2" Count="2" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="BurningProcess.FlameDetected_entry">
       <LineId Id="1" Count="0" />
     </LineIds>
-    <LineIds Name="BurningProcess.Ignite_exit">
+    <LineIds Name="BurningProcess.Ignite_active">
+      <LineId Id="2" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="BurningProcess.Init_entry">
@@ -8791,10 +8942,19 @@ GVL.nError := 0;
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="BurningProcess.Stop_entry">
-      <LineId Id="2" Count="5" />
+      <LineId Id="2" Count="8" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="BurningProcess.Wait_exit">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="BurningProcess.WaitFullBurn_entry">
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="3" Count="0" />
+    </LineIds>
+    <LineIds Name="BurningProcess.WaitFullBurn_exit">
+      <LineId Id="2" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="BurningProcess.WaterHighTempNotify_entry">

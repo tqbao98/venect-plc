@@ -19,6 +19,7 @@ END_VAR
 	//GVL.bHV[7] := GVL.bLoadTank3;
 	//GVL.bHV[8] := GVL.bLoadTank3;
 	bInitDone := TRUE;
+	KL3208Comm();
 END_IF
 
 IF GVL.fTE[4] < GVL.fTE[17] THEN
@@ -456,6 +457,7 @@ BurningProcess();
       <LineId Id="23" Count="0" />
       <LineId Id="29" Count="0" />
       <LineId Id="38" Count="0" />
+      <LineId Id="178" Count="0" />
       <LineId Id="36" Count="0" />
       <LineId Id="136" Count="4" />
       <LineId Id="151" Count="0" />

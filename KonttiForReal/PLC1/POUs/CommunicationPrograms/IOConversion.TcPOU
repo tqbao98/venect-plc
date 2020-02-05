@@ -6,7 +6,7 @@ VAR
 	i: INT;
 	EL3433DataMain 	: ARRAY[1..3] OF EL3433SyncData;
 	EL3433DataSolar	: EL3433SyncData;
-	nFlowVoltage: REAL;
+	nFlowVoltage, nO2Voltage: REAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -24,8 +24,13 @@ GVL.fTE[16] := HWVar.iAI2_VK[3]/10.0; // lauhdutin out temp
 GVL.fTE[19] := HWVar.iAI1_JK[3]/10.0; // exhaust temp
 GVL.fTE[17] := HWVar.iAI1_JK[4]/10.0; // kattila room temp
 
+GVL.fTE[20] := HWVar.stKL3208_in.iDataIn/1000.0; // kattila room temp
+
 nFlowVoltage := INT_TO_REAL(HWVar.iKL3064[1])*0.0003 + 0.0008; // 12 bits, output 0.525-2.6V, range 0-1L/s
-GVL.fFE := (46.606*EXPT(nFlowVoltage,3) - 181.24*EXPT(nFlowVoltage,2) + 258.22*nFlowVoltage -93.735) * 1000 / 3600 ;
+GVL.stPrimaryFan.fFE := (46.606*EXPT(nFlowVoltage,3) - 181.24*EXPT(nFlowVoltage,2) + 258.22*nFlowVoltage -93.735) * 1000 / 3600 ;
+
+GVL.fO2 := INT_TO_REAL(HWVar.iKL3064[4])*10/32767*21/5; // 12 bits, output 0.525-2.6V, range 0-1L/s
+
 
 GVL.stPrimaryFan.nTemp := HWVar.stKL2761_in.iDataIn; //read prim fan terminal temp
 HWVar.stKL2761_out.iDataOut := GVL.stPrimaryFan.nSpeed*32767/100; //control prim fan speed
@@ -61,9 +66,13 @@ GVL.stSolarL1.fP := TO_REAL(HWVar.EL3433_Solar.dPower)*0.01;
       <LineId Id="18" Count="0" />
       <LineId Id="15" Count="0" />
       <LineId Id="77" Count="0" />
+      <LineId Id="130" Count="0" />
+      <LineId Id="129" Count="0" />
       <LineId Id="93" Count="0" />
       <LineId Id="84" Count="0" />
       <LineId Id="102" Count="0" />
+      <LineId Id="120" Count="1" />
+      <LineId Id="119" Count="0" />
       <LineId Id="94" Count="0" />
       <LineId Id="25" Count="0" />
       <LineId Id="85" Count="1" />

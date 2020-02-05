@@ -11,7 +11,7 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{039C0258-A5F6-4450-990B-5FD2298A57D0}" AutoDeleteType="true">stEL3433_In</Name>
+			<Name GUID="{A408F055-4B44-409E-98B7-2C708EEC05A8}" AutoDeleteType="true">stEL3433_In</Name>
 			<BitSize>136</BitSize>
 			<SubItem>
 				<Name>dCurrent</Name>
@@ -51,16 +51,16 @@
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{AA424A30-9E24-41B2-992E-0AC256951FAF}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..3] OF stEL3433_In</Name>
+			<Name GUID="{1A78DBFF-7024-4AD5-81EB-B0566D59B946}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..3] OF stEL3433_In</Name>
 			<BitSize>408</BitSize>
-			<BaseType GUID="{039C0258-A5F6-4450-990B-5FD2298A57D0}">stEL3433_In</BaseType>
+			<BaseType GUID="{A408F055-4B44-409E-98B7-2C708EEC05A8}">stEL3433_In</BaseType>
 			<ArrayInfo>
 				<LBound>1</LBound>
 				<Elements>3</Elements>
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{039C0258-A5F6-4450-990B-5FD2298A57D0}" AutoDeleteType="true">stEL3433_In</Name>
+			<Name GUID="{A408F055-4B44-409E-98B7-2C708EEC05A8}" AutoDeleteType="true">stEL3433_In</Name>
 			<BitSize>136</BitSize>
 			<SubItem>
 				<Name>dCurrent</Name>
@@ -100,7 +100,23 @@
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{2085F15C-2FDA-4970-9310-1C978E8BFBF4}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL27x1InData</Name>
+			<Name GUID="{BB9CE89A-39A4-4C1D-8468-B3180D4A9B5B}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL27x1InData</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>iState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>iDataIn</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{570FB12F-7360-4C9C-A088-229998B18A6B}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL3208InData</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
 				<Name>iState</Name>
@@ -125,7 +141,7 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{7B0AEAF3-5C72-4065-8863-5B2D8E3B3BA6}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL27x1OutData</Name>
+			<Name GUID="{24F2CE43-1D97-4088-B07E-72EF22BE4F04}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL27x1OutData</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
 				<Name>iCtrl</Name>
@@ -141,7 +157,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{DE7E3010-F1DB-46CF-9F8C-E9856C98C624}" Namespace="Tc2_DALI" AutoDeleteType="true">ST_KL6811InData</Name>
+			<Name GUID="{71AD3A44-3DA0-4BD5-9FB4-3F1670EFD49B}" Namespace="Tc2_DALI" AutoDeleteType="true">ST_KL6811InData</Name>
 			<Comment>
 				<![CDATA[ Communication interface for the KL6811]]>
 			</Comment>
@@ -166,7 +182,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{589738F5-A143-41B3-A729-6C2E2A52EB8F}" Namespace="Tc2_DALI" AutoDeleteType="true">ST_KL6811OutData</Name>
+			<Name GUID="{CB7117B7-FAD0-491D-BC60-E14731B0CE80}" Namespace="Tc2_DALI" AutoDeleteType="true">ST_KL6811OutData</Name>
 			<Comment>
 				<![CDATA[ Communication interface for the KL6811]]>
 			</Comment>
@@ -191,7 +207,7 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{E753417F-5E45-461C-9DEC-F1D8CE8C2088}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xInData</Name>
+			<Name GUID="{533EA5D4-295E-4F3E-A7F8-79A2588D198A}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xInData</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
 				<Name>iState</Name>
@@ -207,7 +223,32 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{0A34ADCF-F16B-44C0-8394-BE83DD92261E}" Namespace="Tc2_EnOcean" AutoDeleteType="true">KL6581_Input</Name>
+			<Name GUID="{61860C93-2435-4B1B-B2C5-E9929BC9BBD6}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>Status</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>22</Elements>
+				</ArrayInfo>
+				<BitSize>176</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>hide</Name>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
+			<Name GUID="{D7520B07-B308-4A0B-B657-A4382CCEAE88}" Namespace="Tc2_EnOcean" AutoDeleteType="true">KL6581_Input</Name>
 			<BitSize>96</BitSize>
 			<SubItem>
 				<Name>nStatus</Name>
@@ -283,10 +324,35 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{D12AF1E4-8B5D-4D68-BE74-D6A5B2F0EA4D}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
+			<Name GUID="{C908E820-A3B3-9CB7-AD48-33D54E751470}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..11] OF BOOL</Name>
+			<BitSize>88</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+			<ArrayInfo>
+				<LBound>1</LBound>
+				<Elements>11</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{98CE4AEA-C089-47B3-8F0E-0C6BE65FE98C}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xOutData</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>iCtrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>iDataOut</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{8BD9F547-8BA8-4DD2-8091-44D033F03A0A}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6outData22B</Name>
 			<BitSize>192</BitSize>
 			<SubItem>
-				<Name>Status</Name>
+				<Name>Ctrl</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
 				<BitSize>16</BitSize>
 				<BitOffs>0</BitOffs>
@@ -308,32 +374,7 @@
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{C908E820-A3B3-9CB7-AD48-33D54E751470}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..11] OF BOOL</Name>
-			<BitSize>88</BitSize>
-			<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-			<ArrayInfo>
-				<LBound>1</LBound>
-				<Elements>11</Elements>
-			</ArrayInfo>
-		</DataType>
-		<DataType>
-			<Name GUID="{8CDD60D8-B101-4D1F-9016-B6768334F510}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xOutData</Name>
-			<BitSize>32</BitSize>
-			<SubItem>
-				<Name>iCtrl</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>iDataOut</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
-				<BitSize>16</BitSize>
-				<BitOffs>16</BitOffs>
-			</SubItem>
-		</DataType>
-		<DataType>
-			<Name GUID="{9912E029-51BA-4AF0-ABF1-8E97E23E91CD}" Namespace="Tc2_EnOcean" AutoDeleteType="true">KL6581_Output</Name>
+			<Name GUID="{DC8149EC-C065-4A9B-8B12-D2A4FE0CA414}" Namespace="Tc2_EnOcean" AutoDeleteType="true">KL6581_Output</Name>
 			<BitSize>96</BitSize>
 			<SubItem>
 				<Name>nControl</Name>
@@ -409,29 +450,42 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{081C5FFA-532D-438A-BB8C-B3AD48893986}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6outData22B</Name>
-			<BitSize>192</BitSize>
+			<Name GUID="{FFBD325D-D2CD-402A-A472-7AD928C97916}" AutoDeleteType="true">FireIgnitor</Name>
+			<BitSize>16</BitSize>
 			<SubItem>
-				<Name>Ctrl</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
-				<BitSize>16</BitSize>
+				<Name>bHeating</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
 				<BitOffs>0</BitOffs>
 			</SubItem>
 			<SubItem>
-				<Name>D</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
-				<ArrayInfo>
-					<LBound>0</LBound>
-					<Elements>22</Elements>
-				</ArrayInfo>
-				<BitSize>176</BitSize>
-				<BitOffs>16</BitOffs>
+				<Name>bBlower</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
 			</SubItem>
 			<Properties>
 				<Property>
-					<Name>hide</Name>
+					<Name>pack_mode</Name>
+					<Value>1</Value>
 				</Property>
 			</Properties>
+		</DataType>
+		<DataType>
+			<Name GUID="{D39CA876-BDA3-4B06-A650-D83AF08084D9}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL3208OutData</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>iCtrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>iDataOut</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
 		</DataType>
 		<DataType>
 			<Name GUID="{18071995-0000-0000-0000-002000000001}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BIT</Name>
@@ -527,12 +581,11 @@
 		<ImageData Id="1008">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff0000ff0000ff0000ff0000ff0000ff0000c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1009">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000120b0000120b00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c00000c00000c00000c00000c00000c0ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c6000000c6c6c60000c0c6c6c6000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c600ffffc6c6c60000c0c6c6c600ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c6c6c6c6c6c6c60000c0c6c6c6c6c6c6808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c6000000c6c6c60000c0c6c6c6000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c6ff0000c6c6c60000c0c6c6c6ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc6c6c6c6c6c6c6c6c60000c0c6c6c6c6c6c6808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6000000c6c6c60000c0c6c6c6000000808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c60000ffc6c6c60000c0c6c6c60000ff808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6c6c6c6c6c6c60000c0c6c6c6c6c6c6808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6000000c6c6c60000c0c6c6c6000000808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6c6c6c6c6c6c60000c0c6c6c6c6c6c6808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6008400c6c6c60000c0c6c6c6008400808080ff00ffff00ffff00ff007bff007bff007bff007bff007bff007bffc6c6c6c6c6c6c6c6c60000c0c6c6c6c6c6c6808080ff00ffff00ffff00ff</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{04490C9C-EE5A-4A38-8478-D3D02918F624}" Target64Bit="true" ShowHideConfigurations="#x306">
+	<Project ProjectGUID="{04490C9C-EE5A-4A38-8478-D3D02918F624}" TargetNetId="5.42.255.222.1.1" Target64Bit="true" ShowHideConfigurations="#x306">
 		<System>
+			<Settings MaxCpus="2"/>
 			<Licenses>
-				<Target BkhfOrder="VE2434215">
-					<ManualSelect>{9B75F165-D5BA-422F-A750-06BAC761E063}</ManualSelect>
-				</Target>
+				<Target BkhfOrder="VE2434215"/>
 			</Licenses>
 			<Tasks>
 				<Task Id="3" Priority="20" CycleTime="50000" AmsPort="350" AdtTasks="true">
@@ -570,18 +623,18 @@
 						</Var>
 						<Var>
 							<Name>HWVar.EL3433_Grid</Name>
-							<Type GUID="{AA424A30-9E24-41B2-992E-0AC256951FAF}">ARRAY [1..3] OF stEL3433_In</Type>
+							<Type GUID="{1A78DBFF-7024-4AD5-81EB-B0566D59B946}">ARRAY [1..3] OF stEL3433_In</Type>
 						</Var>
 						<Var>
 							<Name>HWVar.EL3433_Solar</Name>
-							<Type GUID="{039C0258-A5F6-4450-990B-5FD2298A57D0}">stEL3433_In</Type>
+							<Type GUID="{A408F055-4B44-409E-98B7-2C708EEC05A8}">stEL3433_In</Type>
 						</Var>
 						<Var>
 							<Name>HWVar.stKL2761_in</Name>
 							<Comment>
 								<![CDATA[ Primary fan input]]>
 							</Comment>
-							<Type GUID="{2085F15C-2FDA-4970-9310-1C978E8BFBF4}" Namespace="Tc2_IoFunctions">ST_KL27x1InData</Type>
+							<Type GUID="{BB9CE89A-39A4-4C1D-8468-B3180D4A9B5B}" Namespace="Tc2_IoFunctions">ST_KL27x1InData</Type>
 						</Var>
 						<Var>
 							<Name>HWVar.iKL3064</Name>
@@ -590,23 +643,30 @@
 							</Comment>
 							<Type GUID="{CF887A53-7490-A600-6B5D-04343BF0EA32}">ARRAY [1..4] OF INT</Type>
 						</Var>
+						<Var>
+							<Name>HWVar.stKL3208_in</Name>
+							<Comment>
+								<![CDATA[8-channel input terminal PT1000, Ni1000 (RTD); NTC sensors, potentiometers]]>
+							</Comment>
+							<Type GUID="{570FB12F-7360-4C9C-A088-229998B18A6B}" Namespace="Tc2_IoFunctions">ST_KL3208InData</Type>
+						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>IoConversionTask Outputs</Name>
 						<Var>
-							<Name>HWVar.EL3433_GridIndex</Name>
-							<Type GUID="{A5AC38E6-0DC4-889C-DC96-B6E74C453944}">ARRAY [1..3] OF USINT</Type>
-						</Var>
-						<Var>
 							<Name>HWVar.EL3433_SolarIndex</Name>
 							<Type>USINT</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.EL3433_GridIndex</Name>
+							<Type GUID="{A5AC38E6-0DC4-889C-DC96-B6E74C453944}">ARRAY [1..3] OF USINT</Type>
 						</Var>
 						<Var>
 							<Name>HWVar.stKL2761_out</Name>
 							<Comment>
 								<![CDATA[Primary fan output]]>
 							</Comment>
-							<Type GUID="{7B0AEAF3-5C72-4065-8863-5B2D8E3B3BA6}" Namespace="Tc2_IoFunctions">ST_KL27x1OutData</Type>
+							<Type GUID="{24F2CE43-1D97-4088-B07E-72EF22BE4F04}" Namespace="Tc2_IoFunctions">ST_KL27x1OutData</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
@@ -617,7 +677,7 @@
 								<![CDATA[ Dali variables
 	stKL6811_in     AT %I*	: ST_DALIV2InData;]]>
 							</Comment>
-							<Type GUID="{DE7E3010-F1DB-46CF-9F8C-E9856C98C624}" Namespace="Tc2_DALI">ST_KL6811InData</Type>
+							<Type GUID="{71AD3A44-3DA0-4BD5-9FB4-3F1670EFD49B}" Namespace="Tc2_DALI">ST_KL6811InData</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
@@ -627,37 +687,33 @@
 							<Comment>
 								<![CDATA[    stKL6811_out    AT %Q*	: ST_DALIV2OutData;]]>
 							</Comment>
-							<Type GUID="{589738F5-A143-41B3-A729-6C2E2A52EB8F}" Namespace="Tc2_DALI">ST_KL6811OutData</Type>
+							<Type GUID="{CB7117B7-FAD0-491D-BC60-E14731B0CE80}" Namespace="Tc2_DALI">ST_KL6811OutData</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
 							<Name>HWVar.stKL3204_in</Name>
-							<Type GUID="{E753417F-5E45-461C-9DEC-F1D8CE8C2088}" Namespace="Tc2_IoFunctions">ST_KL320xInData</Type>
+							<Type GUID="{533EA5D4-295E-4F3E-A7F8-79A2588D198A}" Namespace="Tc2_IoFunctions">ST_KL320xInData</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.ModbusMaster.InData</Name>
+							<Type GUID="{61860C93-2435-4B1B-B2C5-E9929BC9BBD6}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.ModbusMaster1.InData</Name>
+							<Type GUID="{61860C93-2435-4B1B-B2C5-E9929BC9BBD6}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
 						</Var>
 						<Var>
 							<Name>HWVar.st6581_in</Name>
 							<Comment>
 								<![CDATA[ Enocean valiables	]]>
 							</Comment>
-							<Type GUID="{0A34ADCF-F16B-44C0-8394-BE83DD92261E}" Namespace="Tc2_EnOcean">KL6581_Input</Type>
-						</Var>
-						<Var>
-							<Name>HWVar.ModbusMaster.InData</Name>
-							<Type GUID="{D12AF1E4-8B5D-4D68-BE74-D6A5B2F0EA4D}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
-						</Var>
-						<Var>
-							<Name>HWVar.ModbusMaster1.InData</Name>
-							<Type GUID="{D12AF1E4-8B5D-4D68-BE74-D6A5B2F0EA4D}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
+							<Type GUID="{D7520B07-B308-4A0B-B657-A4382CCEAE88}" Namespace="Tc2_EnOcean">KL6581_Input</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
-						<Var>
-							<Name>GVL.bHV</Name>
-							<Type GUID="{C908E820-A3B3-9CB7-AD48-33D54E751470}">ARRAY [1..11] OF BOOL</Type>
-						</Var>
 						<Var>
 							<Name>GVL.bFanPower</Name>
 							<Comment>
@@ -666,29 +722,34 @@
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>HWVar.stKL3204_out</Name>
-							<Type GUID="{8CDD60D8-B101-4D1F-9016-B6768334F510}" Namespace="Tc2_IoFunctions">ST_KL320xOutData</Type>
+							<Name>GVL.bHV</Name>
+							<Type GUID="{C908E820-A3B3-9CB7-AD48-33D54E751470}">ARRAY [1..11] OF BOOL</Type>
 						</Var>
 						<Var>
-							<Name>HWVar.st6581_out</Name>
-							<Type GUID="{9912E029-51BA-4AF0-ABF1-8E97E23E91CD}" Namespace="Tc2_EnOcean">KL6581_Output</Type>
+							<Name>HWVar.stKL3204_out</Name>
+							<Type GUID="{98CE4AEA-C089-47B3-8F0E-0C6BE65FE98C}" Namespace="Tc2_IoFunctions">ST_KL320xOutData</Type>
 						</Var>
 						<Var>
 							<Name>HWVar.ModbusMaster.OutData</Name>
-							<Type GUID="{081C5FFA-532D-438A-BB8C-B3AD48893986}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
+							<Type GUID="{8BD9F547-8BA8-4DD2-8091-44D033F03A0A}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
 						</Var>
 						<Var>
 							<Name>HWVar.ModbusMaster1.OutData</Name>
-							<Type GUID="{081C5FFA-532D-438A-BB8C-B3AD48893986}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
+							<Type GUID="{8BD9F547-8BA8-4DD2-8091-44D033F03A0A}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.st6581_out</Name>
+							<Type GUID="{DC8149EC-C065-4A9B-8B12-D2A4FE0CA414}" Namespace="Tc2_EnOcean">KL6581_Output</Type>
+						</Var>
+						<Var>
+							<Name>GVL.stFI1</Name>
+							<Type GUID="{FFBD325D-D2CD-402A-A472-7AD928C97916}">FireIgnitor</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.stKL3208_out</Name>
+							<Type GUID="{D39CA876-BDA3-4B06-A650-D83AF08084D9}" Namespace="Tc2_IoFunctions">ST_KL3208OutData</Type>
 						</Var>
 					</Vars>
-					<UnrestoredVarLinks ImportTime="2019-08-14T16:16:45">
-						<OwnerA Name="OutputSrc" Prefix="TIPC^PLC1^PLC1 Instance" Type="2">
-							<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 5 (EK1914)^Term 6 (EL2809)">
-								<Link VarA="GVL.bPumpPower" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 13^Output" Size="1" RestoreInfo="ANotFound"/>
-							</OwnerB>
-						</OwnerA>
-					</UnrestoredVarLinks>
 					<TaskPouOids>
 						<TaskPouOid Prio="10" OTCID="#x08502001"/>
 						<TaskPouOid Prio="21" OTCID="#x08502004"/>
@@ -699,7 +760,7 @@
 			</Project>
 		</Plc>
 		<Io>
-			<Device DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="172.24.35.3.2.1" RemoteName="Device 1 (EtherCAT)" Id="1">
+			<Device DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="5.42.255.222.2.1" RemoteName="Device 1 (EtherCAT)" Id="1">
 				<Name>Device 1 (EtherCAT)</Name>
 				<AddressInfo>
 					<Ccat>
@@ -4156,11 +4217,11 @@
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{08502002-0020-0304-0020-500820000403}" Id="#x02030030" Watchdog="00000000000000000000000000000000"/>
+		<MappingInfo Identifier="{08502002-0020-0304-0020-500820000403}" Id="#x02030050" Watchdog="00000000000000000000000000000000"/>
 		<MappingInfo Identifier="{08502002-0010-0304-0020-500810000403}" Id="#x02030020" Watchdog="00000000000000000000000000000000"/>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
-		<MappingInfo Identifier="{00000000-2003-0850-0120-500821000403}" Id="#x02030040"/>
-		<MappingInfo Identifier="{00000000-2002-0850-0220-500842000403}" Id="#x02030050"/>
+		<MappingInfo Identifier="{00000000-2003-0850-0120-500821000403}" Id="#x02030030"/>
+		<MappingInfo Identifier="{00000000-2002-0850-0220-500842000403}" Id="#x02030040"/>
 		<OwnerA Name="TIPC^PLC1^PLC1 Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Box 15 (BK1250)">
 				<Link VarA="DaliComm Inputs^HWVar.stKL6811_in^nData" VarB="Term 8 (KL6811)^Channel 1^Data In"/>
@@ -4305,10 +4366,18 @@
 				<Link VarA="IoConversionTask Inputs^HWVar.iKL3064[4]" VarB="Term 17 (KL3064)^Channel 4^HWVar.iKL3064[4]"/>
 				<Link VarA="IoConversionTask Inputs^HWVar.stKL2761_in^iDataIn" VarB="Term 15 (KL2761)^Channel 1^Data In"/>
 				<Link VarA="IoConversionTask Inputs^HWVar.stKL2761_in^iState" VarB="Term 15 (KL2761)^Channel 1^State"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.stKL3208_in^iDataIn" VarB="Term 3 (KL3208-0010-4)^Channel 1^Data In"/>
+				<Link VarA="IoConversionTask Inputs^HWVar.stKL3208_in^iState" VarB="Term 3 (KL3208-0010-4)^Channel 1^State"/>
 				<Link VarA="IoConversionTask Outputs^HWVar.stKL2761_out^iCtrl" VarB="Term 15 (KL2761)^Channel 1^Ctrl"/>
 				<Link VarA="IoConversionTask Outputs^HWVar.stKL2761_out^iDataOut" VarB="Term 15 (KL2761)^Channel 1^Data Out"/>
 				<Link VarA="PlcTask Outputs^HWVar.stKL3204_out^iCtrl" VarB="Term 5 (KL3204)^Channel 4^Ctrl"/>
 				<Link VarA="PlcTask Outputs^HWVar.stKL3204_out^iDataOut" VarB="Term 5 (KL3204)^Channel 4^Data Out"/>
+				<Link VarA="PlcTask Outputs^HWVar.stKL3208_out^iCtrl" VarB="Term 3 (KL3208-0010-4)^Channel 1^Ctrl"/>
+				<Link VarA="PlcTask Outputs^HWVar.stKL3208_out^iDataOut" VarB="Term 3 (KL3208-0010-4)^Channel 1^Data Out"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 8 (EK1100)^Term 10 (EL2008)">
+				<Link VarA="PlcTask Outputs^GVL.stFI1^bBlower" VarB="Channel 5^Output"/>
+				<Link VarA="PlcTask Outputs^GVL.stFI1^bHeating" VarB="Channel 3^Output"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EK1122)^Term 8 (EK1100)^Term 9 (EL6021)">
 				<Link VarA="PlcTask Inputs^HWVar.ModbusMaster.InData^D" VarB="COM TxPDO-Map Inputs^Data In 0"/>

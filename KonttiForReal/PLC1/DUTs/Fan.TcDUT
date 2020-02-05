@@ -6,6 +6,7 @@ TYPE Fan :
 STRUCT
 	nSpeed 	: INT; // control primary fan speed 0-100%
 	nTemp	: INT; // prim fan's terminal temp in Celcius
+	fFE		: REAL;
 END_STRUCT
 END_TYPE
 ]]></Declaration>
