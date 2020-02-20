@@ -36,7 +36,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">""</v>
+                            <v n="Value">"The program has two prime mode, Manual and automation (default). Manual mode counteracts the whole program so that you can control flows as you want. In automation mode, if boiler water temperature is at least 5 degree greater than tank water's, and tank water is lower than 80 degree; valve and pump will be turned on to load water to tank. If more than one tank meet the requirements, the loading process order will be 1,2,3. There's always one tank being loaded at a time. If 3 tanks have above 80 degree temperature, pump 3 and corresponding valves will be opened to unload the heat. If tank temperature is greater than boiler's, loading will stop in order to avoid heat loss. Consider having most critical condition/function on the most left branches, because in alternative branches, the order is from left to right. "</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">8L</v>
@@ -137,7 +137,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"NOT(GVL.bValveManual)"</v>
+                            <v n="Value">"GVL.bValveManual = FALSE"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">19L</v>
@@ -547,7 +547,7 @@ END_VAR
                                     <o>
                                       <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
                                       <o n="Value" t="StringValue">
-                                        <v n="Value">""</v>
+                                        <v n="Value">"The program has two prime mode, Manual and automation (default). Manual mode counteracts the whole program so that you can control flows as you want. In automation mode, if boiler water temperature is at least 5 degree greater than tank water's, and tank water is lower than 80 degree; valve and pump will be turned on to load water to tank. If more than one tank meet the requirements, the loading process order will be 1,2,3. There's always one tank being loaded at a time. If 3 tanks have above 80 degree temperature, pump 3 and corresponding valves will be opened to unload the heat. If tank temperature is greater than boiler's, loading will stop in order to avoid heat loss. Consider having most critical condition/function on the most left branches, because in alternative branches, the order is from left to right. "</v>
                                         <v n="DefaultValue">""</v>
                                       </o>
                                       <v n="Id">890L</v>

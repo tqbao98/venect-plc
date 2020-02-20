@@ -207,22 +207,6 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{533EA5D4-295E-4F3E-A7F8-79A2588D198A}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xInData</Name>
-			<BitSize>32</BitSize>
-			<SubItem>
-				<Name>iState</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>0</BitOffs>
-			</SubItem>
-			<SubItem>
-				<Name>iDataIn</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
-				<BitSize>16</BitSize>
-				<BitOffs>16</BitOffs>
-			</SubItem>
-		</DataType>
-		<DataType>
 			<Name GUID="{61860C93-2435-4B1B-B2C5-E9929BC9BBD6}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
 			<BitSize>192</BitSize>
 			<SubItem>
@@ -333,20 +317,26 @@
 			</ArrayInfo>
 		</DataType>
 		<DataType>
-			<Name GUID="{98CE4AEA-C089-47B3-8F0E-0C6BE65FE98C}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xOutData</Name>
-			<BitSize>32</BitSize>
+			<Name GUID="{FFBD325D-D2CD-402A-A472-7AD928C97916}" AutoDeleteType="true">FireIgnitor</Name>
+			<BitSize>16</BitSize>
 			<SubItem>
-				<Name>iCtrl</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Name>bHeating</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<BitSize>8</BitSize>
 				<BitOffs>0</BitOffs>
 			</SubItem>
 			<SubItem>
-				<Name>iDataOut</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
-				<BitSize>16</BitSize>
-				<BitOffs>16</BitOffs>
+				<Name>bBlower</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
 			</SubItem>
+			<Properties>
+				<Property>
+					<Name>pack_mode</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
 		</DataType>
 		<DataType>
 			<Name GUID="{8BD9F547-8BA8-4DD2-8091-44D033F03A0A}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6outData22B</Name>
@@ -450,29 +440,39 @@
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{FFBD325D-D2CD-402A-A472-7AD928C97916}" AutoDeleteType="true">FireIgnitor</Name>
-			<BitSize>16</BitSize>
+			<Name GUID="{D39CA876-BDA3-4B06-A650-D83AF08084D9}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL3208OutData</Name>
+			<BitSize>32</BitSize>
 			<SubItem>
-				<Name>bHeating</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Name>iCtrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
 				<BitSize>8</BitSize>
 				<BitOffs>0</BitOffs>
 			</SubItem>
 			<SubItem>
-				<Name>bBlower</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
-				<BitSize>8</BitSize>
-				<BitOffs>8</BitOffs>
+				<Name>iDataOut</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
 			</SubItem>
-			<Properties>
-				<Property>
-					<Name>pack_mode</Name>
-					<Value>1</Value>
-				</Property>
-			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{D39CA876-BDA3-4B06-A650-D83AF08084D9}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL3208OutData</Name>
+			<Name GUID="{533EA5D4-295E-4F3E-A7F8-79A2588D198A}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xInData</Name>
+			<BitSize>32</BitSize>
+			<SubItem>
+				<Name>iState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>iDataIn</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{98CE4AEA-C089-47B3-8F0E-0C6BE65FE98C}" Namespace="Tc2_IoFunctions" AutoDeleteType="true">ST_KL320xOutData</Name>
 			<BitSize>32</BitSize>
 			<SubItem>
 				<Name>iCtrl</Name>
@@ -637,18 +637,18 @@
 							<Type GUID="{BB9CE89A-39A4-4C1D-8468-B3180D4A9B5B}" Namespace="Tc2_IoFunctions">ST_KL27x1InData</Type>
 						</Var>
 						<Var>
-							<Name>HWVar.iKL3064</Name>
-							<Comment>
-								<![CDATA[ analog DC input HW ]]>
-							</Comment>
-							<Type GUID="{CF887A53-7490-A600-6B5D-04343BF0EA32}">ARRAY [1..4] OF INT</Type>
-						</Var>
-						<Var>
 							<Name>HWVar.stKL3208_in</Name>
 							<Comment>
 								<![CDATA[8-channel input terminal PT1000, Ni1000 (RTD); NTC sensors, potentiometers]]>
 							</Comment>
 							<Type GUID="{570FB12F-7360-4C9C-A088-229998B18A6B}" Namespace="Tc2_IoFunctions">ST_KL3208InData</Type>
+						</Var>
+						<Var>
+							<Name>HWVar.iKL3064</Name>
+							<Comment>
+								<![CDATA[ analog DC input HW ]]>
+							</Comment>
+							<Type GUID="{CF887A53-7490-A600-6B5D-04343BF0EA32}">ARRAY [1..4] OF INT</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2">
@@ -693,10 +693,6 @@
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>HWVar.stKL3204_in</Name>
-							<Type GUID="{533EA5D4-295E-4F3E-A7F8-79A2588D198A}" Namespace="Tc2_IoFunctions">ST_KL320xInData</Type>
-						</Var>
-						<Var>
 							<Name>HWVar.ModbusMaster.InData</Name>
 							<Type GUID="{61860C93-2435-4B1B-B2C5-E9929BC9BBD6}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
 						</Var>
@@ -726,8 +722,8 @@
 							<Type GUID="{C908E820-A3B3-9CB7-AD48-33D54E751470}">ARRAY [1..11] OF BOOL</Type>
 						</Var>
 						<Var>
-							<Name>HWVar.stKL3204_out</Name>
-							<Type GUID="{98CE4AEA-C089-47B3-8F0E-0C6BE65FE98C}" Namespace="Tc2_IoFunctions">ST_KL320xOutData</Type>
+							<Name>GVL.stFI1</Name>
+							<Type GUID="{FFBD325D-D2CD-402A-A472-7AD928C97916}">FireIgnitor</Type>
 						</Var>
 						<Var>
 							<Name>HWVar.ModbusMaster.OutData</Name>
@@ -742,12 +738,22 @@
 							<Type GUID="{DC8149EC-C065-4A9B-8B12-D2A4FE0CA414}" Namespace="Tc2_EnOcean">KL6581_Output</Type>
 						</Var>
 						<Var>
-							<Name>GVL.stFI1</Name>
-							<Type GUID="{FFBD325D-D2CD-402A-A472-7AD928C97916}">FireIgnitor</Type>
-						</Var>
-						<Var>
 							<Name>HWVar.stKL3208_out</Name>
 							<Type GUID="{D39CA876-BDA3-4B06-A650-D83AF08084D9}" Namespace="Tc2_IoFunctions">ST_KL3208OutData</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="1">
+						<Name>ModbusComm Inputs</Name>
+						<Var>
+							<Name>HWVar.stKL3204_in</Name>
+							<Type GUID="{533EA5D4-295E-4F3E-A7F8-79A2588D198A}" Namespace="Tc2_IoFunctions">ST_KL320xInData</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2">
+						<Name>ModbusComm Outputs</Name>
+						<Var>
+							<Name>HWVar.stKL3204_out</Name>
+							<Type GUID="{98CE4AEA-C089-47B3-8F0E-0C6BE65FE98C}" Namespace="Tc2_IoFunctions">ST_KL320xOutData</Type>
 						</Var>
 					</Vars>
 					<TaskPouOids>
@@ -3248,8 +3254,8 @@
 											</Var>
 										</Vars>
 									</Term>
-									<Term Id="5" TermType="#xc84" Fieldbus="7">
-										<Name>Term 5 (KL3204)</Name>
+									<Term Id="12" TermType="#xbee" Fieldbus="7">
+										<Name>Term 12 (KL3054)</Name>
 										<ImageId>33</ImageId>
 										<Vars VarGrpType="3">
 											<Name>Channel 1</Name>
@@ -3259,7 +3265,7 @@
 												<BitOffs>584</BitOffs>
 												<InOut>0</InOut>
 											</Var>
-											<Var DisplayScale="#x5">
+											<Var DisplayScale="#x4">
 												<Name>Data In</Name>
 												<Type>INT</Type>
 												<BitOffs>600</BitOffs>
@@ -3271,7 +3277,7 @@
 												<BitOffs>584</BitOffs>
 												<InOut>1</InOut>
 											</Var>
-											<Var DisplayScale="#x5">
+											<Var DisplayScale="#x4">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
 												<BitOffs>600</BitOffs>
@@ -3286,7 +3292,7 @@
 												<BitOffs>616</BitOffs>
 												<InOut>0</InOut>
 											</Var>
-											<Var DisplayScale="#x5">
+											<Var DisplayScale="#x4">
 												<Name>Data In</Name>
 												<Type>INT</Type>
 												<BitOffs>632</BitOffs>
@@ -3298,7 +3304,7 @@
 												<BitOffs>616</BitOffs>
 												<InOut>1</InOut>
 											</Var>
-											<Var DisplayScale="#x5">
+											<Var DisplayScale="#x4">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
 												<BitOffs>632</BitOffs>
@@ -3313,7 +3319,7 @@
 												<BitOffs>648</BitOffs>
 												<InOut>0</InOut>
 											</Var>
-											<Var DisplayScale="#x5">
+											<Var DisplayScale="#x4">
 												<Name>Data In</Name>
 												<Type>INT</Type>
 												<BitOffs>664</BitOffs>
@@ -3325,7 +3331,7 @@
 												<BitOffs>648</BitOffs>
 												<InOut>1</InOut>
 											</Var>
-											<Var DisplayScale="#x5">
+											<Var DisplayScale="#x4">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
 												<BitOffs>664</BitOffs>
@@ -3340,7 +3346,7 @@
 												<BitOffs>680</BitOffs>
 												<InOut>0</InOut>
 											</Var>
-											<Var DisplayScale="#x5">
+											<Var DisplayScale="#x4">
 												<Name>Data In</Name>
 												<Type>INT</Type>
 												<BitOffs>696</BitOffs>
@@ -3352,7 +3358,7 @@
 												<BitOffs>680</BitOffs>
 												<InOut>1</InOut>
 											</Var>
-											<Var DisplayScale="#x5">
+											<Var DisplayScale="#x4">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
 												<BitOffs>696</BitOffs>
@@ -3360,24 +3366,133 @@
 											</Var>
 										</Vars>
 									</Term>
-									<Term Id="13" TermType="#x3ea" Fieldbus="7">
-										<Name>Term 13 (KL1002)</Name>
-										<ImageId>7</ImageId>
+									<Term Id="5" TermType="#xc84" Fieldbus="7">
+										<Name>Term 5 (KL3204)</Name>
+										<ImageId>33</ImageId>
 										<Vars VarGrpType="3">
 											<Name>Channel 1</Name>
 											<Var>
-												<Name>Input</Name>
-												<Type>BIT</Type>
-												<BitOffs>872</BitOffs>
+												<Name>State</Name>
+												<Type>USINT</Type>
+												<BitOffs>712</BitOffs>
 												<InOut>0</InOut>
+											</Var>
+											<Var DisplayScale="#x5">
+												<Name>Data In</Name>
+												<Type>INT</Type>
+												<BitOffs>728</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+											<Var>
+												<Name>Ctrl</Name>
+												<Type>USINT</Type>
+												<BitOffs>712</BitOffs>
+												<InOut>1</InOut>
+											</Var>
+											<Var DisplayScale="#x5">
+												<Name>Data Out</Name>
+												<Type>INT</Type>
+												<BitOffs>728</BitOffs>
+												<InOut>1</InOut>
 											</Var>
 										</Vars>
 										<Vars VarGrpType="3">
 											<Name>Channel 2</Name>
 											<Var>
-												<Name>Input</Name>
+												<Name>State</Name>
+												<Type>USINT</Type>
+												<BitOffs>744</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+											<Var DisplayScale="#x5">
+												<Name>Data In</Name>
+												<Type>INT</Type>
+												<BitOffs>760</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+											<Var>
+												<Name>Ctrl</Name>
+												<Type>USINT</Type>
+												<BitOffs>744</BitOffs>
+												<InOut>1</InOut>
+											</Var>
+											<Var DisplayScale="#x5">
+												<Name>Data Out</Name>
+												<Type>INT</Type>
+												<BitOffs>760</BitOffs>
+												<InOut>1</InOut>
+											</Var>
+										</Vars>
+										<Vars VarGrpType="3">
+											<Name>Channel 3</Name>
+											<Var>
+												<Name>State</Name>
+												<Type>USINT</Type>
+												<BitOffs>776</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+											<Var DisplayScale="#x5">
+												<Name>Data In</Name>
+												<Type>INT</Type>
+												<BitOffs>792</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+											<Var>
+												<Name>Ctrl</Name>
+												<Type>USINT</Type>
+												<BitOffs>776</BitOffs>
+												<InOut>1</InOut>
+											</Var>
+											<Var DisplayScale="#x5">
+												<Name>Data Out</Name>
+												<Type>INT</Type>
+												<BitOffs>792</BitOffs>
+												<InOut>1</InOut>
+											</Var>
+										</Vars>
+										<Vars VarGrpType="3">
+											<Name>Channel 4</Name>
+											<Var>
+												<Name>State</Name>
+												<Type>USINT</Type>
+												<BitOffs>808</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+											<Var DisplayScale="#x5">
+												<Name>Data In</Name>
+												<Type>INT</Type>
+												<BitOffs>824</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+											<Var>
+												<Name>Ctrl</Name>
+												<Type>USINT</Type>
+												<BitOffs>808</BitOffs>
+												<InOut>1</InOut>
+											</Var>
+											<Var DisplayScale="#x5">
+												<Name>Data Out</Name>
+												<Type>INT</Type>
+												<BitOffs>824</BitOffs>
+												<InOut>1</InOut>
+											</Var>
+										</Vars>
+									</Term>
+									<Term Id="13" TermType="#x23c8" Fieldbus="7">
+										<Name>Term 13 (KL9160)</Name>
+										<ImageId>32</ImageId>
+										<Vars VarGrpType="3">
+											<Name>Channel 1</Name>
+											<Var>
+												<Name>Power</Name>
 												<Type>BIT</Type>
-												<BitOffs>873</BitOffs>
+												<BitOffs>1000</BitOffs>
+												<InOut>0</InOut>
+											</Var>
+											<Var>
+												<Name>ShortCircuit</Name>
+												<Type>BIT</Type>
+												<BitOffs>1001</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 										</Vars>
@@ -3390,25 +3505,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>712</BitOffs>
+												<BitOffs>840</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x1">
 												<Name>Data In</Name>
 												<Type>INT</Type>
-												<BitOffs>728</BitOffs>
+												<BitOffs>856</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>712</BitOffs>
+												<BitOffs>840</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x1">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>728</BitOffs>
+												<BitOffs>856</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -3421,25 +3536,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>744</BitOffs>
+												<BitOffs>872</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x1">
 												<Name>HWVar.iKL3064[1]</Name>
 												<Type>INT</Type>
-												<BitOffs>760</BitOffs>
+												<BitOffs>888</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>744</BitOffs>
+												<BitOffs>872</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x1">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>760</BitOffs>
+												<BitOffs>888</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -3448,25 +3563,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>776</BitOffs>
+												<BitOffs>904</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x1">
 												<Name>HWVar.iKL3064[2]</Name>
 												<Type>INT</Type>
-												<BitOffs>792</BitOffs>
+												<BitOffs>920</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>776</BitOffs>
+												<BitOffs>904</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x1">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>792</BitOffs>
+												<BitOffs>920</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -3475,25 +3590,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>808</BitOffs>
+												<BitOffs>936</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x1">
 												<Name>HWVar.iKL3064[3]</Name>
 												<Type>INT</Type>
-												<BitOffs>824</BitOffs>
+												<BitOffs>952</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>808</BitOffs>
+												<BitOffs>936</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x1">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>824</BitOffs>
+												<BitOffs>952</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -3502,25 +3617,25 @@
 											<Var>
 												<Name>State</Name>
 												<Type>USINT</Type>
-												<BitOffs>840</BitOffs>
+												<BitOffs>968</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var DisplayScale="#x1">
 												<Name>HWVar.iKL3064[4]</Name>
 												<Type>INT</Type>
-												<BitOffs>856</BitOffs>
+												<BitOffs>984</BitOffs>
 												<InOut>0</InOut>
 											</Var>
 											<Var>
 												<Name>Ctrl</Name>
 												<Type>USINT</Type>
-												<BitOffs>840</BitOffs>
+												<BitOffs>968</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 											<Var DisplayScale="#x1">
 												<Name>Data Out</Name>
 												<Type>INT</Type>
-												<BitOffs>856</BitOffs>
+												<BitOffs>984</BitOffs>
 												<InOut>1</InOut>
 											</Var>
 										</Vars>
@@ -3533,8 +3648,8 @@
 								<EtherCAT SlaveType="3" AdsServerAddress="052affde020df403" PdiType="#x0008" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="51" FoeType="1" VendorId="#x00000002" ProductCode="#x04e22c22" RevisionNo="#x00120000" InfoDataAddr="true" InfoDataNetId="true" TimeoutStateChange1="5000" TimeoutMailbox2="6000" GenerateOwnNetId="true" PortPhys="3" PortABoxInfo="#x0100000b">
 									<SyncMan>001c88002600010001000000400000028800001c26010000</SyncMan>
 									<SyncMan>001e88002200010002000000400000028800001e22010000</SyncMan>
-									<SyncMan>001046006400010003000000000000000000001064010000</SyncMan>
-									<SyncMan>001648000000010004000000000000000000001600010000</SyncMan>
+									<SyncMan>001056006400010003000000000000000000001064010000</SyncMan>
+									<SyncMan>001658000000010004000000000000000000001600010000</SyncMan>
 									<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
 									<Fmmu>0000000000000000001600010100000002000000000000000000000000000000</Fmmu>
 									<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
@@ -4218,6 +4333,7 @@
 	</Project>
 	<Mappings>
 		<MappingInfo Identifier="{08502002-0020-0304-0020-500820000403}" Id="#x02030050" Watchdog="00000000000000000000000000000000"/>
+		<MappingInfo Identifier="{08502004-0010-0304-0020-500810000403}" Id="#x02030060" Watchdog="00000000000000000000000000000000"/>
 		<MappingInfo Identifier="{08502002-0010-0304-0020-500810000403}" Id="#x02030020" Watchdog="00000000000000000000000000000000"/>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
 		<MappingInfo Identifier="{00000000-2003-0850-0120-500821000403}" Id="#x02030030"/>
@@ -4370,8 +4486,8 @@
 				<Link VarA="IoConversionTask Inputs^HWVar.stKL3208_in^iState" VarB="Term 3 (KL3208-0010-4)^Channel 1^State"/>
 				<Link VarA="IoConversionTask Outputs^HWVar.stKL2761_out^iCtrl" VarB="Term 15 (KL2761)^Channel 1^Ctrl"/>
 				<Link VarA="IoConversionTask Outputs^HWVar.stKL2761_out^iDataOut" VarB="Term 15 (KL2761)^Channel 1^Data Out"/>
-				<Link VarA="PlcTask Outputs^HWVar.stKL3204_out^iCtrl" VarB="Term 5 (KL3204)^Channel 4^Ctrl"/>
-				<Link VarA="PlcTask Outputs^HWVar.stKL3204_out^iDataOut" VarB="Term 5 (KL3204)^Channel 4^Data Out"/>
+				<Link VarA="ModbusComm Outputs^HWVar.stKL3204_out^iCtrl" VarB="Term 5 (KL3204)^Channel 4^Ctrl"/>
+				<Link VarA="ModbusComm Outputs^HWVar.stKL3204_out^iDataOut" VarB="Term 5 (KL3204)^Channel 4^Data Out"/>
 				<Link VarA="PlcTask Outputs^HWVar.stKL3208_out^iCtrl" VarB="Term 3 (KL3208-0010-4)^Channel 1^Ctrl"/>
 				<Link VarA="PlcTask Outputs^HWVar.stKL3208_out^iDataOut" VarB="Term 3 (KL3208-0010-4)^Channel 1^Data Out"/>
 			</OwnerB>

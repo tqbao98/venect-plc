@@ -91,12 +91,6 @@
     <Compile Include="POUs\BurningProcess\FeederSpeedControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\BurningProcess\Ignition.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\BurningProcess\Preparation.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\CommunicationPrograms\BackgroundComm.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -107,9 +101,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\CommunicationPrograms\IOConversion.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\CommunicationPrograms\KL3208Comm.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\EnergyFlow\CoolingFan.TcPOU">

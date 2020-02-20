@@ -33,7 +33,7 @@ VAR_GLOBAL
 	
 	stKL3208_in		AT %I*	: ST_KL3208InData;  //8-channel input terminal PT1000, Ni1000 (RTD); NTC sensors, potentiometers
 	stKL3208_out	AT %Q*	: ST_KL3208OutData;
-	KL3208Config			: FB_KL3208Config;
+	
 	// analog DC input HW 
 	iKL3064			AT %I*	: ARRAY [1..4] OF INT;
 	

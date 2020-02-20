@@ -2299,7 +2299,7 @@ END_VAR
                                       <o>
                                         <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                         <o n="Value" t="StringValue">
-                                          <v n="Value">"NOT(GVL.stFeederControl.bManual)"</v>
+                                          <v n="Value">"GVL.stFeederControl.bManual = FALSE"</v>
                                           <v n="DefaultValue">""</v>
                                         </o>
                                         <v n="Id">37L</v>
@@ -5412,7 +5412,7 @@ GVL.stFI1.bHeating := TRUE;]]></ST>
                                                   <o>
                                                     <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                                     <o n="Value" t="StringValue">
-                                                      <v n="Value">"GVL.fO2 &lt; 10"</v>
+                                                      <v n="Value">"WaitFullBurn.t&gt;T#2m30s"</v>
                                                       <v n="DefaultValue">""</v>
                                                     </o>
                                                     <v n="Id">231L</v>
@@ -8949,9 +8949,8 @@ GVL.nError := ERRORCODE.IGNITION_DONE;]]></ST>
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="BurningProcess.WaitFullBurn_entry">
-      <LineId Id="2" Count="0" />
+      <LineId Id="2" Count="1" />
       <LineId Id="1" Count="0" />
-      <LineId Id="3" Count="0" />
     </LineIds>
     <LineIds Name="BurningProcess.WaitFullBurn_exit">
       <LineId Id="2" Count="0" />

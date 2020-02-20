@@ -26,10 +26,10 @@ END_IF
 CASE FeederMode OF
 	0:
 		// Maximum speed
-		fbMaximumSpeed(tTimeOn := T#3.25S, tTimeOff := T#25S, nSpeedOn := 2500, nSpeedOff := 0000, nSpeedOut => wContent);
+		fbMaximumSpeed(tTimeOn := T#4S, tTimeOff := T#25S, nSpeedOn := 2500, nSpeedOff := 0000, nSpeedOut => wContent);
 	1:
 		// Stand-by speed	
-		fbMaximumSpeed(tTimeOn := T#3.25S, tTimeOff := T#12M30S, nSpeedOn := 1000, nSpeedOff := 0000, nSpeedOut => wContent);
+		fbMaximumSpeed(tTimeOn := T#3.25S, tTimeOff := T#12M30S, nSpeedOn := 2500, nSpeedOff := 0000, nSpeedOut => wContent);
 	2:
 		// Manual mode
 		fbManualSpeed(tTimeOn := gvl.stFeederControl.tTimeOn, tTimeOff := gvl.stFeederControl.tTimeOff, nSpeedOn := REAL_TO_WORD(GVL.stFeederControl.fFrequency*100), nSpeedOff := 0000, nSpeedOut => wContent);
